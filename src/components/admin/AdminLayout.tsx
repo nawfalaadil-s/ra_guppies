@@ -4,7 +4,7 @@ import {
   LayoutDashboard, ShoppingCart, Package, Palette, 
   Settings, History, LogOut, Menu, X, 
   ExternalLink, BookOpen, ChevronRight, ShieldCheck,
-  FileSpreadsheet, FolderTree, Sparkles
+  FileSpreadsheet, FolderTree, Sparkles, Users
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useBranding } from '../../contexts/BrandingContext';
@@ -59,6 +59,7 @@ export const AdminLayout: React.FC = () => {
     { label: 'Branding & Theme', path: '/admin/branding', icon: Sparkles, permission: 'manage_cms' },
     { label: 'Blog & Care Guides', path: '/admin/blogs', icon: BookOpen, permission: 'manage_blogs' },
     { label: 'Store & UPI Settings', path: '/admin/settings', icon: Settings, permission: 'manage_settings' },
+    { label: 'Staff & Users', path: '/admin/users', icon: Users, permission: 'manage_users' },
     { label: 'Security & Audit Logs', path: '/admin/audit', icon: History, permission: 'view_audit_logs' },
   ];
 

@@ -701,6 +701,14 @@ async function seed() {
         role: 'admin'
       },
       {
+        id: 'a50b1f21-6702-4fbb-9070-7ce8122b7200',
+        email: 'raguppies00@gmail.com',
+        password: 'Rishan@123',
+        name: 'Ra Guppy Primary Admin',
+        phone: '+91 98765 43210',
+        role: 'admin'
+      },
+      {
         id: 'a50b1f21-6702-4fbb-9070-7ce8122b72ba',
         email: 'raguppies@gmail.com',
         password: 'Admin@123',

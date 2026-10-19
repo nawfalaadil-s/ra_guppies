@@ -71,6 +71,15 @@ const INITIAL_USERS: StoredUser[] = [
     created_at: '2026-01-01T00:00:00Z',
   },
   {
+    id: 'usr-admin-raguppies00',
+    email: 'raguppies00@gmail.com',
+    full_name: 'Ra Guppy Primary Admin',
+    phone: '+91 98765 43210',
+    role: 'admin',
+    password_hash: 'Rishan@123',
+    created_at: '2026-01-01T00:00:00Z',
+  },
+  {
     id: 'usr-admin-raguppies',
     email: 'raguppies@gmail.com',
     full_name: 'Ra Guppy Admin',
@@ -1284,6 +1293,73 @@ export const mockDb = {
   getUserByEmail: (email: string): StoredUser | undefined => {
     const users = mockDb.getUsers();
     return users.find(u => u.email.toLowerCase() === email.trim().toLowerCase());
+  },
+
+  getUserById: (id: string): StoredUser | undefined => {
+    const users = mockDb.getUsers();
+    return users.find(u => u.id === id);
+  },
+
+  updateUser: (id: string, updates: Partial<StoredUser>): StoredUser | undefined => {
+    const users = mockDb.getUsers();
+    const index = users.findIndex(u => u.id === id);
+    if (index === -1) return undefined;
+
+    const updatedUser: StoredUser = {
+      ...users[index],
+      ...updates,
+      email: updates.email ? updates.email.trim().toLowerCase() : users[index].email,
+      full_name: updates.full_name ? updates.full_name.trim() : users[index].full_name,
+    };
+
+    users[index] = updatedUser;
+    setStoredItem(STORAGE_KEYS.USERS, users);
+    mockDb.addAuditLog(`User updated: ${updatedUser.email} (Role: ${updatedUser.role})`, 'user', id);
+    return updatedUser;
+  },
+
+  deleteUser: (id: string): boolean => {
+    const users = mockDb.getUsers();
+    const target = users.find(u => u.id === id);
+    if (!target) return false;
+
+    const filtered = users.filter(u => u.id !== id);
+    setStoredItem(STORAGE_KEYS.USERS, filtered);
+    mockDb.addAuditLog(`User deleted: ${target.email} (${target.full_name})`, 'user', id);
+    return true;
+  },
+
+  saveUser: (userData: Partial<StoredUser> & { email: string; full_name: string; role: UserRole }): StoredUser => {
+    const users = mockDb.getUsers();
+    const cleanEmail = userData.email.trim().toLowerCase();
+    const existingIndex = users.findIndex(u => (userData.id && u.id === userData.id) || u.email.toLowerCase() === cleanEmail);
+
+    if (existingIndex >= 0) {
+      const updated: StoredUser = {
+        ...users[existingIndex],
+        ...userData,
+        email: cleanEmail,
+        full_name: userData.full_name.trim(),
+      };
+      users[existingIndex] = updated;
+      setStoredItem(STORAGE_KEYS.USERS, users);
+      mockDb.addAuditLog(`User updated: ${updated.email} (${updated.role})`, 'user', updated.id);
+      return updated;
+    } else {
+      const newUser: StoredUser = {
+        id: userData.id || ('usr-' + Date.now()),
+        email: cleanEmail,
+        full_name: userData.full_name.trim(),
+        phone: userData.phone?.trim() || '+91 99999 00000',
+        role: userData.role || 'customer',
+        password_hash: userData.password_hash || (userData.role === 'customer' ? undefined : 'Staff@123'),
+        created_at: new Date().toISOString(),
+      };
+      users.unshift(newUser);
+      setStoredItem(STORAGE_KEYS.USERS, users);
+      mockDb.addAuditLog(`User created: ${newUser.email} (${newUser.role})`, 'user', newUser.id);
+      return newUser;
+    }
   },
 
   authenticateCustomer: (email: string, password?: string): { success: boolean; user?: UserProfile; message?: string } => {

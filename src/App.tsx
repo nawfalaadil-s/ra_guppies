@@ -43,6 +43,7 @@ import { AdminCMSPage } from './pages/admin/AdminCMSPage';
 import { AdminBrandingPage } from './pages/admin/AdminBrandingPage';
 import { AdminBlogsPage } from './pages/admin/AdminBlogsPage';
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
+import { AdminUsersPage } from './pages/admin/AdminUsersPage';
 import { AdminAuditLogsPage } from './pages/admin/AdminAuditLogsPage';
 
 // Shell layout that conditionally hides public header/footer on admin
@@ -142,6 +143,9 @@ export const App: React.FC = () => {
                           </Route>
                           <Route element={<AdminRoute requiredPermission="manage_settings" />}>
                             <Route path="settings" element={<AdminSettingsPage />} />
+                          </Route>
+                          <Route element={<AdminRoute requiredPermission="manage_users" />}>
+                            <Route path="users" element={<AdminUsersPage />} />
                           </Route>
                           <Route element={<AdminRoute requiredPermission="view_audit_logs" />}>
                             <Route path="audit" element={<AdminAuditLogsPage />} />

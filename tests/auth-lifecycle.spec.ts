@@ -132,4 +132,36 @@ test.describe('RA Guppy Customer Authentication Lifecycle', () => {
 
     await context.close();
   });
+
+  test('Admin Authentication & User Management System', async ({ browser }) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    page.on('console', msg => console.log('BROWSER LOG:', msg.text()));
+
+    // 1. Admin Login with requested credentials: raguppies00@gmail.com / Rishan@123
+    await page.goto('/admin/login');
+    await expect(page.locator('body')).toContainText(/ADMIN/i);
+
+    await page.locator('#admin-email').fill('raguppies00@gmail.com');
+    await page.locator('#admin-password').fill('Rishan@123');
+    await page.getByRole('button', { name: /Sign In to Executive Console/i }).click();
+
+    // Verify redirected away from /admin/login to /admin dashboard
+    await expect(page).toHaveURL(/\/admin(\/)?$/, { timeout: 15000 });
+    await expect(page.locator('body')).toContainText(/Dashboard/i);
+
+    // 2. Navigate to User Management
+    await page.goto('/admin/users');
+    await expect(page.locator('h1')).toContainText(/User & Staff Directory/i);
+    await expect(page.locator('body')).toContainText(/Total Accounts|Customers|Full Administrators/i);
+    await expect(page.locator('body')).toContainText('raguppies00@gmail.com');
+
+    // 3. Filter by role or search
+    const searchInput = page.locator('input[placeholder*="Search by customer name"]');
+    await searchInput.fill('raguppies00');
+    await expect(page.locator('body')).toContainText('raguppies00@gmail.com');
+
+    await context.close();
+  });
 });

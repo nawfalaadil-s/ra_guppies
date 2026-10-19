@@ -9,8 +9,20 @@ interface AdminRouteProps {
 }
 
 export const AdminRoute: React.FC<AdminRouteProps> = ({ requiredPermission }) => {
-  const { user, isAuthenticated, isStaff, hasPermission, logout } = useAuth();
+  const { user, isAuthenticated, isStaff, hasPermission, logout, isLoading } = useAuth();
   const location = useLocation();
+
+  // 0. Show administrative loading spinner while session hydrates
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm font-medium text-slate-300">Verifying administrative access...</p>
+        </div>
+      </div>
+    );
+  }
 
   // 1. Unauthenticated visitors must be redirected to dedicated admin login
   if (!isAuthenticated) {

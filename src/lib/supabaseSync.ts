@@ -1,6 +1,6 @@
 import { supabase, isSupabaseConfigured } from './supabase';
-import { Product, Category, HomepageSection, CMSPage, MediaAsset, StoreSettings, Order, PaymentStatus } from './types';
-import { mockDb } from './mockDatabase';
+import { Product, Category, HomepageSection, CMSPage, MediaAsset, StoreSettings, Order, PaymentStatus, UserRole, UserProfile } from './types';
+import { mockDb, StoredUser } from './mockDatabase';
 
 /**
  * Permanently deletes one or more products from Supabase PostgreSQL database
@@ -843,3 +843,136 @@ export async function updateSupabaseOrderShipment(
     return false;
   }
 }
+
+/**
+ * Fetches all users from Supabase public.profiles, merging with local storage
+ */
+export async function fetchSupabaseUsers(): Promise<StoredUser[]> {
+  const localUsers = mockDb.getUsers();
+  if (!isSupabaseConfigured || !supabase) {
+    return localUsers;
+  }
+
+  try {
+    const { data: profiles, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error || !profiles) {
+      console.warn('Supabase fetch profiles notice:', error?.message);
+      return localUsers;
+    }
+
+    const userMap = new Map<string, StoredUser>();
+    localUsers.forEach(u => userMap.set(u.email.toLowerCase(), u));
+
+    profiles.forEach(p => {
+      const email = p.email ? p.email.toLowerCase() : '';
+      if (!email) return;
+
+      const existing = userMap.get(email);
+      userMap.set(email, {
+        id: p.id,
+        email: email,
+        full_name: p.full_name || email.split('@')[0],
+        phone: p.phone || existing?.phone || '+91 99999 00000',
+        role: (p.role as UserRole) || 'customer',
+        password_hash: existing?.password_hash,
+        created_at: p.created_at || existing?.created_at || new Date().toISOString(),
+      });
+    });
+
+    const merged = Array.from(userMap.values());
+    try {
+      localStorage.setItem('ba_users', JSON.stringify(merged));
+    } catch {
+      // ignore
+    }
+    return merged;
+  } catch (err) {
+    console.error('Error fetching users from Supabase:', err);
+    return localUsers;
+  }
+}
+
+/**
+ * Updates a user's role in Supabase public.profiles
+ */
+export async function updateSupabaseUserRole(userId: string, newRole: UserRole): Promise<boolean> {
+  // Update locally first
+  mockDb.updateUser(userId, { role: newRole });
+
+  if (!isSupabaseConfigured || !supabase) return true;
+
+  try {
+    const { error } = await supabase
+      .from('profiles')
+      .update({
+        role: newRole,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', userId);
+
+    if (error) {
+      console.warn('Failed to update user role in Supabase:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Error updating user role in Supabase:', err);
+    return false;
+  }
+}
+
+/**
+ * Upserts a user profile in Supabase
+ */
+export async function saveSupabaseUser(user: Partial<StoredUser> & { email: string; full_name: string; role: UserRole }): Promise<StoredUser> {
+  const savedLocal = mockDb.saveUser(user);
+
+  if (!isSupabaseConfigured || !supabase) return savedLocal;
+
+  try {
+    await supabase
+      .from('profiles')
+      .upsert({
+        id: savedLocal.id,
+        email: savedLocal.email,
+        full_name: savedLocal.full_name,
+        phone: savedLocal.phone || null,
+        role: savedLocal.role,
+        updated_at: new Date().toISOString(),
+      });
+  } catch (err) {
+    console.warn('Error syncing user profile to Supabase:', err);
+  }
+
+  return savedLocal;
+}
+
+/**
+ * Deletes a user profile in Supabase
+ */
+export async function deleteSupabaseUser(userId: string): Promise<boolean> {
+  mockDb.deleteUser(userId);
+
+  if (!isSupabaseConfigured || !supabase) return true;
+
+  try {
+    const { error } = await supabase
+      .from('profiles')
+      .delete()
+      .eq('id', userId);
+
+    if (error) {
+      console.warn('Failed to delete user profile from Supabase:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Error deleting user profile from Supabase:', err);
+    return false;
+  }
+}
+

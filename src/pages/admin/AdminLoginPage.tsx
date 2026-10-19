@@ -10,7 +10,7 @@ import { BrandLogo } from '../../components/common/BrandLogo';
 export const AdminLoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { adminLogin, isAdmin, isMockMode, user, logout } = useAuth();
+  const { adminLogin, isAdmin, isMockMode, user, logout, isLoading: isAuthLoading } = useAuth();
   const { showToast } = useToast();
   const { activeSettings, branding } = useBranding();
   const currentSettings = activeSettings || branding;
@@ -27,6 +27,18 @@ export const AdminLoginPage: React.FC = () => {
   // Destination after successful login
   const from = (location.state as any)?.from?.pathname || '/admin';
 
+  // If auth is still hydrating from Supabase, show admin loader
+  if (isAuthLoading) {
+    return (
+      <div className="bg-slate-900 min-h-screen py-10 sm:py-16 flex items-center justify-center px-4">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm font-medium text-slate-300">Checking administrative session...</p>
+        </div>
+      </div>
+    );
+  }
+
   // If already authenticated as admin, redirect to admin console
   if (isAdmin) {
     return <Navigate to={from} replace />;
@@ -37,8 +49,10 @@ export const AdminLoginPage: React.FC = () => {
     setErrorMessage('');
     setIsLoading(true);
 
+    const cleanEmail = email.trim().toLowerCase();
+
     try {
-      const result = await adminLogin(email, password);
+      const result = await adminLogin(cleanEmail, password);
       if (result.success) {
         showToast('Administrative authorization granted. Welcome!', 'success');
         navigate(from, { replace: true });
