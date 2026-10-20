@@ -42,6 +42,7 @@ import { AdminCategoriesPage } from './pages/admin/AdminCategoriesPage';
 import { AdminCMSPage } from './pages/admin/AdminCMSPage';
 import { AdminBrandingPage } from './pages/admin/AdminBrandingPage';
 import { AdminBlogsPage } from './pages/admin/AdminBlogsPage';
+import { AdminCouponsPage } from './pages/admin/AdminCouponsPage';
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 import { AdminUsersPage } from './pages/admin/AdminUsersPage';
 import { AdminAuditLogsPage } from './pages/admin/AdminAuditLogsPage';
@@ -140,6 +141,9 @@ export const App: React.FC = () => {
                           </Route>
                           <Route element={<AdminRoute requiredPermission="manage_blogs" />}>
                             <Route path="blogs" element={<AdminBlogsPage />} />
+                          </Route>
+                          <Route element={<AdminRoute requiredPermission="manage_coupons" />}>
+                            <Route path="coupons" element={<AdminCouponsPage />} />
                           </Route>
                           <Route element={<AdminRoute requiredPermission="manage_settings" />}>
                             <Route path="settings" element={<AdminSettingsPage />} />

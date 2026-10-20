@@ -4,6 +4,7 @@ import { useStoreSettings } from './StoreSettingsContext';
 import { useToast } from './ToastContext';
 import { mockDb } from '../lib/mockDatabase';
 import { calculateShipping, ShippingCalculation, getStateFromPincode } from '../lib/shipping';
+import { fetchSupabaseCoupons } from '../lib/supabaseSync';
 
 interface CartContextType {
   items: CartItem[];
@@ -90,6 +91,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
     return null;
   });
+
+  useEffect(() => {
+    fetchSupabaseCoupons().catch(() => {});
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('ba_cart_items', JSON.stringify(items));

@@ -8,6 +8,7 @@ export type AdminPermission =
   | 'verify_payments'
   | 'manage_cms'
   | 'manage_blogs'
+  | 'manage_coupons'
   | 'manage_settings'
   | 'manage_users'
   | 'view_audit_logs';
@@ -21,6 +22,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, AdminPermission[]> = {
     'verify_payments',
     'manage_cms',
     'manage_blogs',
+    'manage_coupons',
     'manage_settings',
     'manage_users',
     'view_audit_logs',

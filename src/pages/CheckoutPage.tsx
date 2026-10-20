@@ -18,7 +18,7 @@ import { formatCurrency } from '../lib/utils';
 import { SEO } from '../components/common/SEO';
 import { TaxInvoiceModal } from '../components/common/TaxInvoiceModal';
 import { INDIAN_STATES, getStateFromPincode, lookupPincode } from '../lib/shipping';
-import { syncOrderToSupabase } from '../lib/supabaseSync';
+import { syncOrderToSupabase, incrementSupabaseCouponUsage } from '../lib/supabaseSync';
 
 export const CheckoutPage: React.FC = () => {
   const { user, addresses, addAddress, register, login, logout } = useAuth();
@@ -451,6 +451,11 @@ export const CheckoutPage: React.FC = () => {
 
       // Synchronize directly into Supabase cloud PostgreSQL database
       await syncOrderToSupabase(newOrder);
+
+      // Record coupon usage increment in database if coupon applied
+      if (appliedCoupon?.code) {
+        await incrementSupabaseCouponUsage(appliedCoupon.code);
+      }
 
       // Celebration confetti
       try {

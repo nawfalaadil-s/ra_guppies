@@ -1066,11 +1066,15 @@ export const mockDb = {
     const coupon = coupons.find(c => c.code.toUpperCase() === code.trim().toUpperCase() && c.is_active);
 
     if (!coupon) {
-      return { valid: false, discount: 0, message: 'Invalid or expired coupon code' };
+      return { valid: false, discount: 0, message: 'Invalid or inactive coupon code' };
     }
 
     if (coupon.expires_at && new Date(coupon.expires_at) < new Date()) {
       return { valid: false, discount: 0, message: 'This coupon has expired' };
+    }
+
+    if (coupon.usage_limit && (coupon.times_used || 0) >= coupon.usage_limit) {
+      return { valid: false, discount: 0, message: 'This coupon usage limit has been reached' };
     }
 
     if (subtotal < coupon.min_order_amount) {
@@ -1096,6 +1100,71 @@ export const mockDb = {
       discount, 
       message: `Coupon ${coupon.code} applied successfully! Saved ₹${discount}` 
     };
+  },
+
+  saveCoupon: (couponData: Partial<Coupon> & { code: string; discount_type: 'percentage' | 'fixed'; discount_value: number }): Coupon => {
+    const coupons = mockDb.getCoupons();
+    const cleanCode = couponData.code.trim().toUpperCase();
+    const existingIndex = coupons.findIndex(c => c.id === couponData.id || c.code.toUpperCase() === cleanCode);
+    
+    if (existingIndex >= 0) {
+      const updated: Coupon = {
+        ...coupons[existingIndex],
+        ...couponData,
+        code: cleanCode,
+        discount_value: Number(couponData.discount_value),
+        min_order_amount: Number(couponData.min_order_amount ?? coupons[existingIndex].min_order_amount ?? 0),
+        max_discount: couponData.max_discount !== undefined ? (couponData.max_discount ? Number(couponData.max_discount) : undefined) : coupons[existingIndex].max_discount,
+        usage_limit: couponData.usage_limit !== undefined ? (couponData.usage_limit ? Number(couponData.usage_limit) : null) : coupons[existingIndex].usage_limit,
+        times_used: couponData.times_used ?? coupons[existingIndex].times_used ?? 0,
+      };
+      coupons[existingIndex] = updated;
+      setStoredItem(STORAGE_KEYS.COUPONS, coupons);
+      return updated;
+    } else {
+      const newCoupon: Coupon = {
+        id: couponData.id || `cp-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+        code: cleanCode,
+        description: couponData.description || `${couponData.discount_type === 'percentage' ? couponData.discount_value + '%' : '₹' + couponData.discount_value} promotional discount`,
+        discount_type: couponData.discount_type,
+        discount_value: Number(couponData.discount_value),
+        min_order_amount: Number(couponData.min_order_amount || 0),
+        max_discount: couponData.max_discount ? Number(couponData.max_discount) : undefined,
+        usage_limit: couponData.usage_limit ? Number(couponData.usage_limit) : null,
+        times_used: couponData.times_used || 0,
+        expires_at: couponData.expires_at || null,
+        is_active: couponData.is_active !== undefined ? couponData.is_active : true,
+        created_at: couponData.created_at || new Date().toISOString(),
+      };
+      coupons.unshift(newCoupon);
+      setStoredItem(STORAGE_KEYS.COUPONS, coupons);
+      return newCoupon;
+    }
+  },
+
+  deleteCoupon: (id: string): boolean => {
+    const coupons = mockDb.getCoupons();
+    const filtered = coupons.filter(c => c.id !== id && c.code !== id);
+    setStoredItem(STORAGE_KEYS.COUPONS, filtered);
+    return true;
+  },
+
+  toggleCouponStatus: (id: string, is_active?: boolean): Coupon | null => {
+    const coupons = mockDb.getCoupons();
+    const target = coupons.find(c => c.id === id || c.code === id);
+    if (!target) return null;
+    target.is_active = is_active !== undefined ? is_active : !target.is_active;
+    setStoredItem(STORAGE_KEYS.COUPONS, coupons);
+    return target;
+  },
+
+  incrementCouponUsage: (code: string): void => {
+    const coupons = mockDb.getCoupons();
+    const target = coupons.find(c => c.code.toUpperCase() === code.trim().toUpperCase());
+    if (target) {
+      target.times_used = (target.times_used || 0) + 1;
+      setStoredItem(STORAGE_KEYS.COUPONS, coupons);
+    }
   },
 
   // PINCODE SERVICEABILITY

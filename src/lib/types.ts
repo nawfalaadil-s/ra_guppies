@@ -344,8 +344,11 @@ export interface Coupon {
   discount_value: number;
   min_order_amount: number;
   max_discount?: number;
-  expires_at?: string;
+  usage_limit?: number | null;
+  times_used?: number;
+  expires_at?: string | null;
   is_active: boolean;
+  created_at?: string;
 }
 
 export interface AdminAuditLog {

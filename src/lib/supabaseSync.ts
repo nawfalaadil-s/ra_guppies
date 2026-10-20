@@ -1,5 +1,5 @@
 import { supabase, isSupabaseConfigured } from './supabase';
-import { Product, Category, HomepageSection, CMSPage, MediaAsset, StoreSettings, Order, PaymentStatus, UserRole, UserProfile } from './types';
+import { Product, Category, HomepageSection, CMSPage, MediaAsset, StoreSettings, Order, PaymentStatus, UserRole, UserProfile, Coupon } from './types';
 import { mockDb, StoredUser } from './mockDatabase';
 
 /**
@@ -973,6 +973,202 @@ export async function deleteSupabaseUser(userId: string): Promise<boolean> {
   } catch (err) {
     console.error('Error deleting user profile from Supabase:', err);
     return false;
+  }
+}
+
+/**
+ * Fetches all coupons from Supabase PostgreSQL, merging with local storage
+ */
+export async function fetchSupabaseCoupons(): Promise<Coupon[]> {
+  const localCoupons = mockDb.getCoupons();
+  if (!isSupabaseConfigured || !supabase) {
+    return localCoupons;
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('coupons')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error || !data) {
+      console.warn('Supabase fetch coupons notice:', error?.message);
+      return localCoupons;
+    }
+
+    const couponMap = new Map<string, Coupon>();
+    // Seed with local coupons
+    localCoupons.forEach(c => couponMap.set(c.code.toUpperCase(), c));
+
+    // Overwrite/merge with live DB records
+    data.forEach((row: any) => {
+      const code = (row.code || '').trim().toUpperCase();
+      if (!code) return;
+
+      couponMap.set(code, {
+        id: row.id,
+        code: code,
+        description: row.description || '',
+        discount_type: row.discount_type === 'fixed' ? 'fixed' : 'percentage',
+        discount_value: Number(row.discount_value) || 0,
+        min_order_amount: Number(row.min_order_amount) || 0,
+        max_discount: row.max_discount != null ? Number(row.max_discount) : undefined,
+        usage_limit: row.usage_limit != null ? Number(row.usage_limit) : null,
+        times_used: Number(row.times_used) || 0,
+        expires_at: row.expires_at || null,
+        is_active: Boolean(row.is_active),
+        created_at: row.created_at || new Date().toISOString(),
+      });
+    });
+
+    const merged = Array.from(couponMap.values());
+    try {
+      localStorage.setItem('ba_coupons', JSON.stringify(merged));
+    } catch {
+      // ignore
+    }
+    return merged;
+  } catch (err) {
+    console.error('Error fetching coupons from Supabase:', err);
+    return localCoupons;
+  }
+}
+
+/**
+ * Saves or updates a coupon in local database and syncs to Supabase
+ */
+export async function saveSupabaseCoupon(coupon: Partial<Coupon> & { code: string; discount_type: 'percentage' | 'fixed'; discount_value: number }): Promise<Coupon> {
+  const isUuid = coupon.id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(coupon.id);
+  const validId = isUuid ? coupon.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : undefined);
+
+  const localSaved = mockDb.saveCoupon({
+    ...coupon,
+    ...(validId ? { id: validId } : {}),
+  });
+
+  if (!isSupabaseConfigured || !supabase) {
+    return localSaved;
+  }
+
+  try {
+    const payload: any = {
+      code: localSaved.code.toUpperCase(),
+      description: localSaved.description,
+      discount_type: localSaved.discount_type,
+      discount_value: localSaved.discount_value,
+      min_order_amount: localSaved.min_order_amount,
+      max_discount: localSaved.max_discount ?? null,
+      usage_limit: localSaved.usage_limit ?? null,
+      times_used: localSaved.times_used ?? 0,
+      expires_at: localSaved.expires_at ?? null,
+      is_active: localSaved.is_active,
+    };
+
+    if (validId) {
+      payload.id = validId;
+    }
+
+    const { data, error } = await supabase
+      .from('coupons')
+      .upsert(payload, { onConflict: 'code' })
+      .select()
+      .single();
+
+    if (error) {
+      console.warn('Supabase save coupon notice:', error.message);
+    } else if (data) {
+      localSaved.id = data.id;
+      mockDb.saveCoupon(localSaved);
+    }
+  } catch (err) {
+    console.warn('Error syncing coupon to Supabase:', err);
+  }
+
+  return localSaved;
+}
+
+/**
+ * Deletes a coupon from Supabase and local storage
+ */
+export async function deleteSupabaseCoupon(couponIdOrCode: string): Promise<boolean> {
+  mockDb.deleteCoupon(couponIdOrCode);
+
+  if (!isSupabaseConfigured || !supabase) {
+    return true;
+  }
+
+  try {
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(couponIdOrCode);
+    const query = supabase.from('coupons').delete();
+    const { error } = isUuid 
+      ? await query.eq('id', couponIdOrCode)
+      : await query.eq('code', couponIdOrCode.toUpperCase());
+
+    if (error) {
+      console.warn('Supabase delete coupon notice:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Error deleting coupon from Supabase:', err);
+    return false;
+  }
+}
+
+/**
+ * Toggles coupon active status in local store and Supabase
+ */
+export async function toggleSupabaseCouponStatus(couponIdOrCode: string, isActive: boolean): Promise<boolean> {
+  mockDb.toggleCouponStatus(couponIdOrCode, isActive);
+
+  if (!isSupabaseConfigured || !supabase) {
+    return true;
+  }
+
+  try {
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(couponIdOrCode);
+    const query = supabase.from('coupons').update({ is_active: isActive });
+    const { error } = isUuid 
+      ? await query.eq('id', couponIdOrCode)
+      : await query.eq('code', couponIdOrCode.toUpperCase());
+
+    if (error) {
+      console.warn('Supabase toggle coupon status notice:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Error toggling coupon status in Supabase:', err);
+    return false;
+  }
+}
+
+/**
+ * Increments coupon usage count after order is confirmed
+ */
+export async function incrementSupabaseCouponUsage(code: string): Promise<void> {
+  const cleanCode = code.trim().toUpperCase();
+  mockDb.incrementCouponUsage(cleanCode);
+
+  if (!isSupabaseConfigured || !supabase) {
+    return;
+  }
+
+  try {
+    const { data: existing } = await supabase
+      .from('coupons')
+      .select('times_used')
+      .eq('code', cleanCode)
+      .single();
+
+    if (existing) {
+      await supabase
+        .from('coupons')
+        .update({ times_used: (existing.times_used || 0) + 1 })
+        .eq('code', cleanCode);
+    }
+  } catch (err) {
+    console.warn('Error incrementing coupon usage in Supabase:', err);
   }
 }
 
