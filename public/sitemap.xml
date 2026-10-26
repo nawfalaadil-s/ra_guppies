@@ -3,7 +3,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://raguppies.vercel.app/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,103 +11,133 @@
   <!-- Catalog / Shop -->
   <url>
     <loc>https://raguppies.vercel.app/shop</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Categories -->
   <url>
-    <loc>https://raguppies.vercel.app/shop?cat=cat-betta</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://raguppies.vercel.app/shop?cat=cat-guppy</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://raguppies.vercel.app/shop?cat=cat-pairs</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://raguppies.vercel.app/shop?cat=cat-plants</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://raguppies.vercel.app/shop?cat=cat-food</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://raguppies.vercel.app/shop?cat=cat-accessories</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Core Specimen Product URLs -->
+  <!-- Core RA Guppy Specimen & Product URLs -->
   <url>
-    <loc>https://raguppies.vercel.app/product/royal-blue-halfmoon-betta-show-class</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://raguppies.vercel.app/product/electric-blue-guppy-pair</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://raguppies.vercel.app/product/galaxy-koi-plakat-betta-candy-marbled</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://raguppies.vercel.app/product/tiger-half-moon-guppy-pair</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://raguppies.vercel.app/product/black-orchid-crowntail-betta</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://raguppies.vercel.app/product/afr-flower-dorsal-guppy-pair</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://raguppies.vercel.app/product/super-white-dumbo-ear-halfmoon-betta</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://raguppies.vercel.app/product/green-platinum-guppy-pair</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://raguppies.vercel.app/product/albino-full-red-guppy-breeding-pair</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://raguppies.vercel.app/product/purple-mosaic-dumbo-ear-pair</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://raguppies.vercel.app/product/alien-green-betta-wild-hybrid</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://raguppies.vercel.app/product/duckweed-live-floating-plant</loc>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raguppies.vercel.app/product/ficus-pumila-creeping-fig</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raguppies.vercel.app/product/foxtail-ceratophyllum-demersum</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raguppies.vercel.app/product/guppy-grass-najas-guadalupensis</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raguppies.vercel.app/product/insecta-pro-growth-micro-pellets</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raguppies.vercel.app/product/moina-micrura-live-starter-culture</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Educational & Care Guides -->
   <url>
+    <loc>https://raguppies.vercel.app/blog</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://raguppies.vercel.app/page/shipping-acclimation</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raguppies.vercel.app/page/about-us</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raguppies.vercel.app/page/faq</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

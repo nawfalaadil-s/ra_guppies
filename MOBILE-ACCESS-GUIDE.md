@@ -1,7 +1,7 @@
-# Betta Aquatics — Local Mobile Access & Testing Guide
+# RA Guppy — Local Mobile Access & Testing Guide
 ## How to Run & Test on Android or iPhone from your Windows PC Without Public Hosting
 
-This guide explains how to run the live **Betta Aquatics** e-commerce website on your physical mobile device (Android or iOS) using your Windows PC as the local development host. No cloud deployment, domain registration, or external hosting fees are required.
+This guide explains how to run the live **RA Guppy** e-commerce website on your physical mobile device (Android or iOS) using your Windows PC as the local development host. No cloud deployment, domain registration, or external hosting fees are required.
 
 ---
 
@@ -54,7 +54,7 @@ If you prefer using your terminal or PowerShell directly:
 
 ```powershell
 # Open terminal in project directory
-cd "e:\betta aquatics"
+cd "e:\RA Guppy"
 
 # Start Vite with local network access
 npm run dev -- --host 0.0.0.0
@@ -103,7 +103,7 @@ By default, Windows Defender Firewall may block incoming connections from other 
 Open PowerShell as **Administrator** and run this single command:
 
 ```powershell
-New-NetFirewallRule -DisplayName "Betta Aquatics Dev Server" -Direction Inbound -LocalPort 5173 -Protocol TCP -Action Allow -Profile Private
+New-NetFirewallRule -DisplayName "RA Guppy Dev Server" -Direction Inbound -LocalPort 5173 -Protocol TCP -Action Allow -Profile Private
 ```
 
 ### Manual Setup via Windows Settings (Alternative)
@@ -114,7 +114,7 @@ New-NetFirewallRule -DisplayName "Betta Aquatics Dev Server" -Direction Inbound 
 5. Select **TCP** $\rightarrow$ Enter Specific local ports: `5173` $\rightarrow$ Click Next.
 6. Select **Allow the connection** $\rightarrow$ Click Next.
 7. **Crucial**: Check **Private** ONLY. Uncheck **Public** and **Domain** $\rightarrow$ Click Next.
-8. Name it `Betta Aquatics Dev Server` $\rightarrow$ Click **Finish**.
+8. Name it `RA Guppy Dev Server` $\rightarrow$ Click **Finish**.
 
 ---
 
@@ -127,7 +127,7 @@ New-NetFirewallRule -DisplayName "Betta Aquatics Dev Server" -Direction Inbound 
 4. **Install as PWA**:
    - Tap the three-dot menu icon ($\vdots$) in the top-right corner.
    - Select **Add to Home screen** or **Install app**.
-   - An app icon titled **Betta Aquatics** with the betta logo will appear on your phone's home screen.
+   - An app icon titled **RA Guppy** with the betta logo will appear on your phone's home screen.
 5. **Testing UPI Payment**:
    - Add a specimen to your cart $\rightarrow$ Proceed to Checkout.
    - Under Payment, tap **Pay Now via UPI App**.
@@ -144,7 +144,7 @@ New-NetFirewallRule -DisplayName "Betta Aquatics Dev Server" -Direction Inbound 
    - Tap the **Share** button (box with an upward arrow $\uparrow$) at the bottom.
    - Scroll down and tap **Add to Home Screen**.
    - Tap **Add** in the top-right corner.
-   - Launching Betta Aquatics from the home screen opens it in full-screen standalone mode without Safari address bars.
+   - Launching RA Guppy from the home screen opens it in full-screen standalone mode without Safari address bars.
 5. **Ergonomic Safe Areas**:
    - Notice that the sticky bottom bar, mobile bottom navigation, and modals respect the iPhone Home Indicator and Dynamic Island/Notch (`env(safe-area-inset-bottom)`).
 
@@ -188,7 +188,7 @@ Live ornamental fish e-commerce cannot rely on naive offline caching:
 1. **Trusted Private Networks Only**: Run this development server only on your secure home or office Wi-Fi. Do not connect to public Wi-Fi networks (airports, cafes) while `--host 0.0.0.0` is active.
 2. **Never Disable Firewall Globally**: Only allow TCP port `5173` on the `Private` profile as shown above.
 3. **No Router Port Forwarding**: You do not need to forward ports on your Wi-Fi router. Local access stays entirely inside your LAN.
-4. **Mock vs Production Data**: In local mock database mode, credentials (e.g. `admin@bettaaquatics.in` / `Admin@123456`) and customer records are stored strictly inside the browser `localStorage` and are safe for testing. Never use real banking credentials or live production payment gateways on an unauthenticated local server.
+4. **Mock vs Production Data**: In local mock database mode, credentials (e.g. `raguppies00@gmail.com` / `Admin@123456`) and customer records are stored strictly inside the browser `localStorage` and are safe for testing. Never use real banking credentials or live production payment gateways on an unauthenticated local server.
 
 ---
 

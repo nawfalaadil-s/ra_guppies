@@ -2,17 +2,17 @@
 setlocal EnableDelayedExpansion
 
 :: -----------------------------------------------------------------------------
-:: BETTA AQUATICS — LOCAL MOBILE DEVELOPMENT SERVER LAUNCHER
+:: RA GUPPY — LOCAL MOBILE DEVELOPMENT SERVER LAUNCHER
 :: Enables Android and iPhone access on your local Wi-Fi without cloud hosting
 :: -----------------------------------------------------------------------------
 
-title Betta Aquatics - Mobile Local Dev Server (Port 5173)
+title RA GUPPY - Mobile Local Dev Server (Port 5173)
 
 :: Step 1: Change to the project directory
 cd /d "%~dp0"
 
 echo ===============================================================================
-echo                BETTA AQUATICS - LOCAL MOBILE DEVELOPMENT SERVER
+echo                RA GUPPY - LOCAL MOBILE DEVELOPMENT SERVER
 echo ===============================================================================
 echo.
 
@@ -21,7 +21,7 @@ where node >nul 2>&1
 if %errorlevel% neq 0 (
     echo [ERROR] Node.js is not found on your system!
     echo.
-    echo Node.js is required to run the Betta Aquatics local development server.
+    echo Node.js is required to run the RA GUPPY local development server.
     echo Please download and install the LTS version from:
     echo   https://nodejs.org/
     echo.
@@ -111,7 +111,7 @@ echo.
 echo TROUBLESHOOTING FIREWALL (If phone shows "Site can't be reached"):
 echo   Windows Defender Firewall may block incoming connections on port 5173.
 echo   To allow local access, run PowerShell as Administrator and paste:
-echo     New-NetFirewallRule -DisplayName "Betta Aquatics Dev" -Direction Inbound -LocalPort 5173 -Protocol TCP -Action Allow -Profile Private
+echo     New-NetFirewallRule -DisplayName "RA GUPPY Dev" -Direction Inbound -LocalPort 5173 -Protocol TCP -Action Allow -Profile Private
 echo   Detailed instructions are in MOBILE-ACCESS-GUIDE.md.
 echo.
 echo ===============================================================================
