@@ -8,7 +8,7 @@ const CACHE_NAME = 'ra-guppy-v2';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/logo-fish.svg',
+  '/logo.jpeg',
   '/favicon.svg',
   '/manifest.webmanifest'
 ];

@@ -30,7 +30,7 @@ flowchart LR
 
 ## 2. Quick Start: 1-Click Windows Launcher
 
-We have provided a Windows batch script in your project root: [`start-mobile.bat`](file:///e:/betta%20aquatics/start-mobile.bat).
+We have provided a Windows batch script in your project root: [`start-mobile.bat`](file:///e:/Ra%20Guppy/start-mobile.bat).
 
 1. Double-click **`start-mobile.bat`** in File Explorer (or run `.\start-mobile.bat` from terminal).
 2. The script will automatically:
@@ -127,7 +127,7 @@ New-NetFirewallRule -DisplayName "RA Guppy Dev Server" -Direction Inbound -Local
 4. **Install as PWA**:
    - Tap the three-dot menu icon ($\vdots$) in the top-right corner.
    - Select **Add to Home screen** or **Install app**.
-   - An app icon titled **RA Guppy** with the betta logo will appear on your phone's home screen.
+   - An app icon titled **RA Guppy** with the RA Guppy logo will appear on your phone's home screen.
 5. **Testing UPI Payment**:
    - Add a specimen to your cart $\rightarrow$ Proceed to Checkout.
    - Under Payment, tap **Pay Now via UPI App**.
@@ -172,8 +172,8 @@ Verify each of the following workflows directly from your phone:
 ## 8. Progressive Web App (PWA) Architecture & Safeguards
 
 The project includes an installable PWA configuration:
-- **Manifest**: [`public/manifest.webmanifest`](file:///e:/betta%20aquatics/public/manifest.webmanifest) (Standalone display, theme color `#071326`, branding icons, shop shortcuts).
-- **Service Worker**: [`public/sw.js`](file:///e:/betta%20aquatics/public/sw.js).
+- **Manifest**: [`public/manifest.webmanifest`](file:///e:/Ra%20Guppy/public/manifest.webmanifest) (Standalone display, theme color `#071326`, branding icons, shop shortcuts).
+- **Service Worker**: [`public/sw.js`](file:///e:/Ra%20Guppy/public/sw.js).
 
 ### Critical E-Commerce Safeguards
 Live ornamental fish e-commerce cannot rely on naive offline caching:

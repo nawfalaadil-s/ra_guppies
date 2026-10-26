@@ -75,7 +75,7 @@ async function main() {
       is_active: true,
       display_order: 4,
       config: {
-        filterCategory: 'cat-betta',
+        filterCategory: 'cat-guppy',
       }
     },
     {
@@ -211,12 +211,12 @@ async function main() {
       slug: 'about-us',
       title: 'About Ra Guppy',
       meta_title: 'About Us | Ra Guppy India',
-      meta_description: 'Learn about India\'s premier specialized guppy and betta breeding sanctuary.',
+      meta_description: 'Learn about India\'s premier specialized pure strain guppy breeding sanctuary.',
       is_published: true,
       updated_at: new Date().toISOString(),
       content_html: `
         <h2>Ethical Aquaculture & Passion for Living Jewels</h2>
-        <p>Founded by passionate aquatic breeders and biological researchers, <strong>Ra Guppy</strong> was born out of a single mission: to provide the highest-grade pure strain Guppies, championship Bettas, and exotic freshwater specimens across India.</p>
+        <p>Founded by passionate aquatic breeders and biological researchers, <strong>Ra Guppy</strong> was born out of a single mission: to provide the highest-grade pure strain Guppies, championship breeding pairs, and exotic freshwater specimens across India.</p>
         <p>Unlike commercial high-density wholesale farms, our indoor biosecure facility maintains individual high-filtration barracks and softwater conditioning for every specimen. Each fish receives balanced live feeds, pristine water conditions, and daily health checks.</p>
         <h3>Our Standards:</h3>
         <ul>

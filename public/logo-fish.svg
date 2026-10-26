@@ -14,7 +14,7 @@
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
   </defs>
-  <!-- Sleek Betta Silhouette -->
+  <!-- Aquatic Fish Silhouette -->
   <path d="M78 50 C78 30, 60 16, 42 20 C28 23, 18 36, 15 48 C12 60, 20 74, 34 78 C52 83, 76 72, 78 50 Z" fill="url(#finGrad)" />
   <!-- Dynamic Flowing Fins -->
   <path d="M42 20 C36 8, 54 2, 68 8 C80 14, 88 28, 86 38 C80 32, 65 24, 42 20 Z" fill="url(#finGrad)" opacity="0.9" />

@@ -1082,7 +1082,7 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   {
     id: 'med-07',
     filename: 'royal-blue-guppy-swimming.mp4',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-bright-red-betta-fish-swimming-41712-large.mp4',
+    url: '/videos/guppy-120.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
     alt_text: 'High-definition 1080p swimming footage of pure strain show guppy actively swimming in planted biotope',
     file_size_bytes: 14200000,
@@ -1095,7 +1095,7 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   {
     id: 'med-08',
     filename: 'planted-aquarium-ambient-showcase.mp4',
-    url: 'https://assets.mixkit.co/videos/preview/mixkit-colorful-betta-fish-in-an-aquarium-41713-large.mp4',
+    url: '/videos/guppy-pair-120.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1520302630591-fd1c66edc19d?auto=format&fit=crop&w=1200&q=80',
     alt_text: 'Ambient planted aquarium tank loop with gentle water flow and schooling fish',
     file_size_bytes: 21500000,

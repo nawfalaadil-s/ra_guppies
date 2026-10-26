@@ -14,11 +14,6 @@
       "sizes": "any",
       "type": "image/jpeg",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/logo-fish.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
     }
   ],
   "shortcuts": [

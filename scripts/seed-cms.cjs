@@ -14,7 +14,7 @@ async function main() {
     {
       id: 'sec-hero-01',
       type: 'hero',
-      title: 'Championship Lineage Guppies & Show Bettas',
+      title: 'Pure Strain Guppies & Exotic Breeding Pairs',
       subtitle: 'Exclusive live specimen consignments dispatched direct from Kerala & Tamil Nadu sanctuary across India.',
       is_active: true,
       display_order: 1,
@@ -144,15 +144,15 @@ async function main() {
       slug: 'about-us',
       title: 'About Ra Guppy',
       content_html: `
-        <h2>India's Premier Sanctuary for Championship Bloodline Guppies & Bettas</h2>
-        <p>Founded by passionate aquatic hobbyists, Ra Guppy represents three generations of selective breeding excellence. Based in South India, we breed, condition, and safely dispatch pure strain Guppies, show-grade Bettas, and exotic freshwater specimens directly to hobbyists across India.</p>
+        <h2>India's Premier Sanctuary for Championship Bloodline Guppies & Breeding Pairs</h2>
+        <p>Founded by passionate aquatic hobbyists, Ra Guppy represents three generations of selective breeding excellence. Based in South India, we breed, condition, and safely dispatch pure strain Guppies, breeding pairs, and exotic freshwater specimens directly to hobbyists across India.</p>
         <h3>Our Bio-Security & Acclimation Protocol</h3>
         <p>Every specimen undergoes a stringent 21-day quarantine regimen in conditioned Indian softwater tanks before being certified fit for consignment dispatch. We guarantee vibrant finnage, voracious feeding appetite, and absolute disease freedom.</p>
         <h3>Safe Live Transit via The Professional Couriers</h3>
         <p>We pack our live fish in double-layered rounded oxygen-pressurized polythene bags, nestled in 25mm high-density thermocol insulated boxes with climate control gel packs.</p>
       `,
-      meta_title: 'About Ra Guppy | Premier Guppy & Betta Breeding Sanctuary',
-      meta_description: 'Discover the story behind Ra Guppy, India\'s trusted source for pedigree guppies and champion betta fish.',
+      meta_title: 'About Ra Guppy | Premier Pure Strain Guppy Breeding Sanctuary',
+      meta_description: 'Discover the story behind Ra Guppy, India\'s trusted source for pure strain guppies and breeding pairs.',
       is_published: true,
       updated_at: new Date().toISOString()
     },

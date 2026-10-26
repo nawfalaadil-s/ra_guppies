@@ -18,7 +18,7 @@ test.describe('RA Guppy — Production Accounting, Invoices, WhatsApp & Mobile E
     // Check title and metadata
     const title = await page.title();
     expect(title).toContain('RA Guppy');
-    expect(title).not.toContain('Betta Aquatics');
+    expect(title).not.toContain('Betta');
     expect(title).not.toContain('Sheferoy');
 
     // Check header logo and brand text
@@ -26,6 +26,7 @@ test.describe('RA Guppy — Production Accounting, Invoices, WhatsApp & Mobile E
     await expect(header).toBeVisible();
     await expect(page.locator('body')).not.toContainText('Betta Aquatics');
     await expect(page.locator('body')).not.toContainText('Sheferoy Guppy');
+    await expect(page.locator('body')).not.toContainText('Betta Fish');
 
     // Check Footer brand information
     const footer = page.locator('footer');

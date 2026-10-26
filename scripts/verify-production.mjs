@@ -1,4 +1,4 @@
-// BETTA AQUATICS: PRODUCTION VERIFICATION & TEST HARNESS
+// RA GUPPY: PRODUCTION VERIFICATION & TEST HARNESS
 // Comprehensive verification of auth isolation, 1-of-1 inventory race conditions, customer isolation, and UPI audit logs
 
 import fs from 'fs';
@@ -49,7 +49,7 @@ globalThis.CustomEvent = class CustomEvent {
 
 // 2. Load compiled mockDatabase logic or simulate strictly based on src/lib/mockDatabase.ts
 console.log('===============================================================');
-console.log('BETTA AQUATICS — PRODUCTION TEST HARNESS');
+console.log('RA GUPPY — PRODUCTION TEST HARNESS');
 console.log('Testing Authentication, Inventory Concurrency, Customer Isolation');
 console.log('===============================================================\n');
 
@@ -77,7 +77,7 @@ const STORAGE_KEYS = {
 const INITIAL_USERS = [
   {
     id: 'usr-admin-demo',
-    email: 'admin@bettaaquatics.in',
+    email: 'admin@raguppies.in',
     passwordHash: 'Admin@123',
     role: 'admin',
     full_name: 'Executive Administrator',
@@ -85,7 +85,7 @@ const INITIAL_USERS = [
   },
   {
     id: 'usr-customer-demo',
-    email: 'customer@bettaaquatics.in',
+    email: 'customer@raguppies.in',
     passwordHash: 'Customer@123',
     role: 'customer',
     full_name: 'Aathil Aquarium Hobbyist',
@@ -97,7 +97,7 @@ const INITIAL_USERS = [
 const INITIAL_PRODUCTS = [
   {
     id: 'p1',
-    name: 'Super Red Samurai Plakat Betta (Champion Grade)',
+    name: 'Electric Blue Guppy (Proven Pair)',
     slug: 'super-red-samurai-plakat',
     sku: 'BET-PLK-001',
     price: 3899,
@@ -106,7 +106,7 @@ const INITIAL_PRODUCTS = [
   },
   {
     id: 'p2',
-    name: 'Blue Rim Halfmoon Betta (Exhibition Pair)',
+    name: 'Tiger Half Moon Guppy (Show Pair)',
     slug: 'blue-rim-halfmoon-pair',
     sku: 'BET-HLF-002',
     price: 4999,
@@ -152,8 +152,8 @@ function authenticateAdmin(email, password) {
 
 // 1.1 Customer valid login
 try {
-  const cust = authenticateCustomer('customer@bettaaquatics.in', 'Customer@123');
-  assert(cust.role === 'customer' && cust.email === 'customer@bettaaquatics.in', 'Customer can authenticate successfully');
+  const cust = authenticateCustomer('customer@raguppies.in', 'Customer@123');
+  assert(cust.role === 'customer' && cust.email === 'customer@raguppies.in', 'Customer can authenticate successfully');
 } catch (e) {
   assert(false, 'Customer authentication failed', e.message);
 }
@@ -161,7 +161,7 @@ try {
 // 1.2 Customer blocked from Admin Portal
 let adminRejectionPassed = false;
 try {
-  authenticateAdmin('customer@bettaaquatics.in', 'Customer@123');
+  authenticateAdmin('customer@raguppies.in', 'Customer@123');
 } catch (e) {
   adminRejectionPassed = e.message.includes('Access Denied');
 }
@@ -169,7 +169,7 @@ assert(adminRejectionPassed, 'Customer account is explicitly rejected from admin
 
 // 1.3 Admin login succeeds
 try {
-  const admin = authenticateAdmin('admin@bettaaquatics.in', 'Admin@123');
+  const admin = authenticateAdmin('admin@raguppies.in', 'Admin@123');
   assert(admin.role === 'admin', 'Admin can authenticate at executive portal');
 } catch (e) {
   assert(false, 'Admin authentication failed', e.message);
@@ -178,7 +178,7 @@ try {
 // 1.4 Invalid credentials rejection
 let invalidCredsRejected = false;
 try {
-  authenticateCustomer('admin@bettaaquatics.in', 'WrongPassword');
+  authenticateCustomer('admin@raguppies.in', 'WrongPassword');
 } catch (e) {
   invalidCredsRejected = true;
 }
@@ -329,7 +329,7 @@ const notFoundAttempt = verifyOrderAccess('ord-non-existent-999', user1);
 assert(notFoundAttempt.status === 404, 'Non-existent order returns 404 Not Found');
 
 // 3.4 Admin can view any order
-const adminUser = { id: 'usr-admin-demo', email: 'admin@bettaaquatics.in', role: 'admin' };
+const adminUser = { id: 'usr-admin-demo', email: 'admin@raguppies.in', role: 'admin' };
 const adminAccess = verifyOrderAccess(order1.id, adminUser);
 assert(adminAccess.status === 200, 'Executive admin can view any customer order');
 
@@ -372,7 +372,7 @@ assert(verifiedOrder.payment_status === 'verified', 'Payment successfully update
 const auditLogs = JSON.parse(localStorage.getItem(STORAGE_KEYS.AUDIT_LOGS));
 const paymentLog = auditLogs.find(l => l.entity_id === order1.id && l.action === 'PAYMENT_VERIFIED');
 assert(
-  paymentLog && paymentLog.admin_email === 'admin@bettaaquatics.in',
+  paymentLog && paymentLog.admin_email === 'admin@raguppies.in',
   'Audit log recorded for payment verification with admin email'
 );
 
