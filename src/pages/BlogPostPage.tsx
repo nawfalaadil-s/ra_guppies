@@ -89,26 +89,37 @@ export const BlogPostPage: React.FC = () => {
     }],
     publisher: {
       '@type': 'Organization',
-      name: branding.site_name || 'Ra Guppy',
+      name: branding.site_name || 'RA Guppy',
       logo: {
         '@type': 'ImageObject',
-        url: branding.logo_url?.startsWith('http') ? branding.logo_url : branding.logo_url || '/logo-fish.svg',
+        url: branding.logo_url?.startsWith('http') ? branding.logo_url : `${typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app'}${branding.logo_url || '/logo.jpeg'}`,
       }
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': window.location.href,
+      '@id': typeof window !== 'undefined' ? window.location.href : `https://raguppies.vercel.app/blog/${post.slug}`,
     }
   };
+
+  const blogCanonicalUrl = typeof window !== 'undefined' 
+    ? `${window.location.origin}/blog/${post.slug}` 
+    : `https://raguppies.vercel.app/blog/${post.slug}`;
 
   return (
     <div className="bg-slate-50 min-h-screen py-8 sm:py-12">
       <SEO 
-        title={post.meta_title || `${post.title} | ${branding.site_name || 'Ra Guppy'} Care Journal`}
+        title={post.meta_title || `${post.title} | ${branding.site_name || 'RA Guppy'} Care Journal`}
         description={post.meta_description || post.excerpt}
+        canonical={blogCanonicalUrl}
         ogImage={post.featured_image}
         ogType="article"
         jsonLd={articleSchema}
+        keywords={[
+          ...post.tags,
+          'guppy care guide',
+          'pure strain guppy breeding',
+          'ra guppy journal'
+        ]}
       />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6">

@@ -69,18 +69,19 @@ export const HomePage: React.FC = () => {
   };
 
   const currentBrand = branding.site_name || 'RA Guppy';
-  const currentTagline = branding.tagline || 'Pure Strain Guppies & Aquatic Sanctuary';
+  const currentTagline = branding.tagline || 'India\'s Premier Pure Strain Guppy Store & Breeding Pairs';
 
-  // Schema.org Structured Data for WebSite & Organization
+  // Schema.org Structured Data for WebSite, Organization & OnlineStore
+  const originUrl = typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app';
   const homepageSchema = [
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: currentBrand,
-      url: typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app',
+      url: originUrl,
       potentialAction: {
         '@type': 'SearchAction',
-        target: `${typeof window !== 'undefined' ? window.location.origin : ''}/shop?q={search_term_string}`,
+        target: `${originUrl}/shop?q={search_term_string}`,
         'query-input': 'required name=search_term_string',
       },
     },
@@ -88,8 +89,8 @@ export const HomePage: React.FC = () => {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: currentBrand,
-      url: typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app',
-      logo: branding.logo_url?.startsWith('http') ? branding.logo_url : `${typeof window !== 'undefined' ? window.location.origin : ''}${branding.logo_url || '/logo.jpeg'}`,
+      url: originUrl,
+      logo: branding.logo_url?.startsWith('http') ? branding.logo_url : `${originUrl}${branding.logo_url || '/logo.jpeg'}`,
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: settings.whatsapp_number || settings.contact_phone || '+91-89211-90590',
@@ -101,6 +102,35 @@ export const HomePage: React.FC = () => {
         `https://wa.me/${(settings.whatsapp_number || settings.contact_phone || '918921190590').replace(/\D/g, '')}`,
       ],
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'OnlineStore',
+      name: `${currentBrand} — Pure Strain Guppy Sanctuary`,
+      url: originUrl,
+      description: 'India\'s premier specialized pure strain guppy breeder. Order show-grade Albino Full Red (AFR), Electric Blue, Tiger Half Moon, Green Platinum breeding pairs, planted aquarium flora, and live Moina cultures with 100% Live Arrival Guarantee.',
+      image: `${originUrl}/logo.jpeg`,
+      priceRange: '₹50 - ₹500',
+      currenciesAccepted: 'INR',
+      paymentAccepted: 'UPI, Google Pay, PhonePe, Paytm, Direct Bank Transfer',
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Pure Strain Guppy & Livebearer Catalog',
+        itemListElement: [
+          {
+            '@type': 'OfferCatalog',
+            name: 'Pure Strain Guppy Breeding Pairs',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Live Planted Tank Aquarium Plants',
+          },
+          {
+            '@type': 'OfferCatalog',
+            name: 'Live Moina Starter Cultures & High-Protein Fry Pellets',
+          },
+        ],
+      },
+    },
   ];
 
   return (
@@ -108,16 +138,23 @@ export const HomePage: React.FC = () => {
       {/* Homepage SEO Meta & JSON-LD */}
       <SEO
         title={`${currentBrand} — ${currentTagline}`}
-        description="India's premier ornamental livebearer sanctuary. Buy pure strain guppy pairs, live aquatic plants, and live food cultures with 100% Live Arrival Guarantee."
-        canonical={typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app'}
+        description="India's premier pure strain guppy breeder and online store. Buy show-grade Albino Full Red (AFR), Electric Blue, Tiger Half Moon breeding pairs, aquatic plants, and live Moina starter cultures with 100% Live Arrival Guarantee across India."
+        canonical={originUrl}
         jsonLd={homepageSchema}
         keywords={[
-          'guppy fish online india',
+          'buy guppy fish online india',
           'pure strain guppy pairs',
-          'buy guppies online india',
-          'afr guppy pairs',
+          'guppy breeding pairs india',
+          'albino full red guppy pair',
           'electric blue guppy',
-          'live aquatic plants online',
+          'tiger half moon guppy pair',
+          'green platinum dumbo guppy',
+          'purple mosaic guppy',
+          'live guppy delivery india',
+          'guppy fish price in india',
+          'live aquatic plants for guppies',
+          'live moina starter culture online',
+          'insecta pro guppy feed',
           'ra guppy'
         ]}
       />

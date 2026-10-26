@@ -139,12 +139,39 @@ export const ShopPage: React.FC = () => {
   const currentSubcategoryName = currentSubcategory?.name;
 
   const seoTitle = queryParam 
-    ? `Search "${queryParam}" | ${brandTitle}` 
+    ? `Buy "${queryParam}" Guppy Pairs & Live Fish Online | ${brandTitle}` 
     : selectedSubcategory !== 'all' && currentSubcategoryName
-    ? `${currentSubcategoryName} - ${currentCategoryName} | ${brandTitle}`
-    : `${currentCategoryName} | Buy Live Ornamental Fish Online India`;
+    ? `${currentSubcategoryName} — Pure Strain Guppies | ${brandTitle}`
+    : selectedCategory !== 'all'
+    ? `${currentCategoryName} — Buy Pure Strain Guppy Pairs Online | ${brandTitle}`
+    : `Pure Strain Guppy Pairs, Live Plants & Cultures Catalog | ${brandTitle}`;
 
-  const seoDescription = `Browse authentic ${currentCategoryName.toLowerCase()} at ${brandTitle}. Hand-conditioned specimens shipped safely via The Professional Couriers with 100% live arrival guarantee across India.`;
+  const seoDescription = `Shop verified pure strain guppy pairs, active breeding trios, aquatic plants, and live food cultures at ${brandTitle}. 100% Live Arrival Guarantee with insulated express road transport delivery across India.`;
+
+  const shopBreadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Guppy Collection',
+        item: typeof window !== 'undefined' ? `${window.location.origin}/shop` : 'https://raguppies.vercel.app/shop',
+      },
+      ...(selectedCategory !== 'all' ? [{
+        '@type': 'ListItem',
+        position: 3,
+        name: currentCategoryName,
+        item: typeof window !== 'undefined' ? `${window.location.origin}/shop?cat=${selectedCategory}` : `https://raguppies.vercel.app/shop?cat=${selectedCategory}`,
+      }] : [])
+    ]
+  };
 
   const hasActiveFilters = 
     selectedCategory !== 'all' || 
@@ -164,7 +191,18 @@ export const ShopPage: React.FC = () => {
         title={seoTitle}
         description={seoDescription}
         canonical={typeof window !== 'undefined' ? `${window.location.origin}/shop` : 'https://raguppies.vercel.app/shop'}
-        keywords={['buy guppies online', 'pure strain guppies', 'guppy pairs', 'aquarium plants', 'live fish delivery']}
+        jsonLd={shopBreadcrumbSchema}
+        keywords={[
+          'buy guppy fish online',
+          'pure strain guppies india',
+          'guppy breeding pairs',
+          'albino full red guppy price',
+          'electric blue guppy buy',
+          'tiger half moon guppy pair',
+          'aquatic plants for guppy tank',
+          'live moina culture online',
+          'live fish delivery india'
+        ]}
       />
 
       <div className="max-w-7xl mx-auto px-4">

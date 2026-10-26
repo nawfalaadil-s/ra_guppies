@@ -10,8 +10,8 @@ export const BreederStory: React.FC<BreederStoryProps> = ({ section }) => {
   const config = section?.config || {};
   const quote = config.quote || section?.title || '"We are hobbyists first, breeders second, and sellers last."';
   const tag = section?.subtitle || config.subtitle || 'Direct From Hobbyist Breeders';
-  const description = config.description || 'We started Ra Guppy to put fish care first. Every Guppy strain lives in conditioned tanks with pristine water chemistry, biological filtration, and live micro-nutrition until safely dispatched to your home.';
-  const rawWhatsapp = config.whatsapp || config.whatsapp_number || '+91 98765 43210';
+  const description = config.description || 'We started RA Guppy to put fish care first. Every pure strain Guppy lives in conditioned tanks with pristine water chemistry, biological filtration, and live micro-nutrition until safely dispatched to your home.';
+  const rawWhatsapp = config.whatsapp || config.whatsapp_number || '+91 89211 90590';
   const whatsappClean = rawWhatsapp.replace(/[^0-9]/g, '');
   const facilityImage = config.facilityImage || config.image_url || config.facility_image || "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=80";
   const experienceYears = config.experienceYears || config.experience_years || '9+ Years Experience';

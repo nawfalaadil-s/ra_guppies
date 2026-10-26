@@ -49,8 +49,19 @@ export const BlogPage: React.FC = () => {
   return (
     <div className="bg-slate-50 min-h-screen py-8 sm:py-12">
       <SEO 
-        title="Ornamental Fish Care Guides, Genetics & Breeding Journal" 
-        description="Comprehensive guides on fish acclimation, genetics, planted nano tanks, and breeding trophy lines."
+        title="Pure Strain Guppy Breeding Guides, Genetics & Care Journal" 
+        description="Comprehensive master guides on pure strain Guppy trio breeding, water chemistry parameters, live Moina and Artemia culturing, livebearer plants, and express courier acclimation."
+        canonical={typeof window !== 'undefined' ? `${window.location.origin}/blog` : 'https://raguppies.vercel.app/blog'}
+        keywords={[
+          'guppy breeding guide',
+          'pure strain guppy care',
+          'guppy trio breeding system',
+          'live moina culture guide',
+          'livebearer water chemistry ph hardness',
+          'best plants for guppies',
+          'guppy acclimation express courier',
+          'ra guppy breeding journal'
+        ]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6">

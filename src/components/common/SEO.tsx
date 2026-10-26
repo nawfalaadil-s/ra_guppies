@@ -15,17 +15,29 @@ export const SEO: React.FC<SEOProps> = ({
   title,
   description,
   canonical,
-  ogImage = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+  ogImage = '/logo.jpeg',
   ogType = 'website',
   jsonLd,
-  keywords = ['guppy fish online', 'buy guppy fish india', 'pure strain guppy pairs', 'aquarium plants india', 'live fish delivery'],
+  keywords = [
+    'buy guppy fish online india',
+    'pure strain guppies',
+    'live guppy breeding pairs',
+    'show guppies india',
+    'albino full red guppy',
+    'electric blue guppy',
+    'tiger half moon guppy',
+    'livebearer fish store',
+    'live aquatic plants for guppy fry',
+    'live moina culture india',
+    'ra guppy'
+  ],
 }) => {
   const { activeSettings, branding } = useBranding();
   const currentSettings = activeSettings || branding;
-  const brandName = currentSettings.site_name || 'Ra Guppy';
+  const brandName = currentSettings.site_name || 'RA Guppy';
   const tagline = currentSettings.tagline || 'Pure Strain Guppies & Aquatic Sanctuary';
 
-  const defaultDesc = `${brandName} is India's premier ornamental livebearer sanctuary. Hand-conditioned pure strain guppies, live plants, and starter food cultures with guaranteed 100% live arrival.`;
+  const defaultDesc = `${brandName} is India's premier pure strain guppy breeder and online store. Hand-conditioned breeding pairs, live aquatic plants, and starter live food cultures with 100% Live Arrival Guarantee across India.`;
   const sanitizeText = (txt: string) =>
     txt
       .replace(/Betta Aquatics India/gi, brandName)
@@ -61,14 +73,16 @@ export const SEO: React.FC<SEOProps> = ({
     // 2. Set Meta Descriptions & Keywords
     setMeta('name', 'description', metaDesc);
     setMeta('name', 'keywords', keywords.join(', '));
-    setMeta('name', 'robots', 'index, follow');
+    setMeta('name', 'robots', 'index, follow, max-image-preview:large');
 
     // 3. Open Graph Tags
     setMeta('property', 'og:title', fullTitle);
     setMeta('property', 'og:description', metaDesc);
-    setMeta('property', 'og:image', ogImage);
+    const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `${window.location.origin}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
+    setMeta('property', 'og:image', resolvedOgImage);
     setMeta('property', 'og:type', ogType);
     setMeta('property', 'og:site_name', brandName);
+    setMeta('property', 'og:locale', 'en_IN');
     if (canonical) {
       setMeta('property', 'og:url', canonical);
     }
@@ -77,7 +91,7 @@ export const SEO: React.FC<SEOProps> = ({
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', fullTitle);
     setMeta('name', 'twitter:description', metaDesc);
-    setMeta('name', 'twitter:image', ogImage);
+    setMeta('name', 'twitter:image', resolvedOgImage);
 
     // 5. Canonical Link
     if (canonical) {

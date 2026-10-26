@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ShieldCheck, ArrowLeft, Phone, Calendar, Clock } from 'lucide-react';
+import { ShieldCheck, ArrowLeft, Phone, Calendar } from 'lucide-react';
 import { mockDb } from '../lib/mockDatabase';
 import { formatDate } from '../lib/utils';
 import { CMSPage as CMSPageType } from '../lib/types';
 import { fetchSupabaseCMSPages } from '../lib/supabaseSync';
 import { useStoreSettings } from '../contexts/StoreSettingsContext';
+import { SEO } from '../components/common/SEO';
 
 export const CMSPage: React.FC = () => {
   const { settings } = useStoreSettings();
@@ -47,6 +48,19 @@ export const CMSPage: React.FC = () => {
 
   return (
     <div className="bg-slate-50 min-h-screen py-8 sm:py-12">
+      <SEO 
+        title={page.meta_title || `${page.title} | ${settings.brand_name || 'RA Guppy'}`}
+        description={page.meta_description || `Official documentation, acclimation guidelines, and terms for ${page.title} at ${settings.brand_name || 'RA Guppy'}.`}
+        canonical={typeof window !== 'undefined' ? `${window.location.origin}/page/${page.slug}` : `https://raguppies.vercel.app/page/${page.slug}`}
+        keywords={[
+          page.title.toLowerCase(),
+          'guppy shipping guide',
+          'guppy doa policy',
+          'guppy acclimation',
+          'ra guppy india'
+        ]}
+      />
+
       <div className="max-w-4xl mx-auto px-4">
         {/* Back Link */}
         <Link
