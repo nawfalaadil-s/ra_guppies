@@ -4,7 +4,7 @@ import {
   Clock, Truck, Package, X, Copy, ExternalLink, 
   ShieldCheck, ArrowRight, Eye, ChevronDown, 
   FileText, ZoomIn, Download, Smartphone, Check,
-  RefreshCw 
+  RefreshCw, MessageSquare 
 } from 'lucide-react';
 import { mockDb } from '../../lib/mockDatabase';
 import { useToast } from '../../contexts/ToastContext';
@@ -14,6 +14,11 @@ import { COURIER_PRESETS } from '../../lib/constants';
 import { TaxInvoiceModal } from '../../components/common/TaxInvoiceModal';
 import { fetchOrdersFromSupabase } from '../../lib/supabaseSync';
 import { supabase, isSupabaseConfigured } from '../../lib/supabase';
+import { 
+  generateOrderConfirmationMessage, 
+  generateTrackingMessage, 
+  dispatchWhatsAppHandoff 
+} from '../../lib/whatsappService';
 
 export const AdminOrdersPage: React.FC = () => {
   const { showToast } = useToast();
@@ -181,6 +186,14 @@ export const AdminOrdersPage: React.FC = () => {
       refreshOrders();
       setIsShipModalOpen(false);
       showToast(`Tracking assigned for order ${updated.order_number}!`, 'success');
+      // Send dispatch notification via WhatsApp
+      const msg = generateTrackingMessage(updated, trackingNumber.trim(), preset.name);
+      dispatchWhatsAppHandoff(updated.shipping_address.phone, msg, {
+        recipient: updated.shipping_address.phone,
+        eventType: 'shipment_dispatched',
+        orderId: updated.id,
+        metadata: { awb: trackingNumber.trim(), courier: preset.name }
+      });
     }
   };
 
@@ -814,14 +827,36 @@ export const AdminOrdersPage: React.FC = () => {
             </div>
 
             {/* Bottom Actions */}
-            <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
-              <button
-                onClick={() => setIsInvoiceOpen(true)}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-xl text-xs font-bold transition-colors shadow-2xs"
-              >
-                <FileText className="w-3.5 h-3.5 text-blue-700" />
-                <span>View GST Tax Invoice</span>
-              </button>
+            <div className="p-4 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const msg = selectedOrder.shipment_details 
+                      ? generateTrackingMessage(selectedOrder, selectedOrder.shipment_details.tracking_number, selectedOrder.shipment_details.courier_name)
+                      : generateOrderConfirmationMessage(selectedOrder);
+                    dispatchWhatsAppHandoff(selectedOrder.shipping_address.phone, msg, {
+                      recipient: selectedOrder.shipping_address.phone,
+                      eventType: selectedOrder.shipment_details ? 'shipment_dispatched' : 'order_confirmed',
+                      orderId: selectedOrder.id,
+                      metadata: { order_number: selectedOrder.order_number }
+                    });
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-colors shadow-2xs"
+                  title="Send WhatsApp update to customer"
+                >
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>WhatsApp</span>
+                </button>
+
+                <button
+                  onClick={() => setIsInvoiceOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 rounded-xl text-xs font-bold transition-colors shadow-2xs"
+                >
+                  <FileText className="w-3.5 h-3.5 text-blue-700" />
+                  <span>Tax Invoice</span>
+                </button>
+              </div>
 
               <button
                 onClick={() => setSelectedOrder(null)}

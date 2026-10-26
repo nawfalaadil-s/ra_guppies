@@ -84,7 +84,7 @@ export const AdminBulkProductsPage: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'betta-aquatics-product-template.csv');
+    link.setAttribute('download', 'ra-guppy-product-template.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -177,7 +177,7 @@ export const AdminBulkProductsPage: React.FC = () => {
         validatedRows,
         importMode,
         uploadedFileName || 'products-upload.csv',
-        user?.email || 'admin@bettaaquatics.in',
+        user?.email || 'raguppies00@gmail.com',
         (progress) => setExecutionProgress(progress)
       );
 
@@ -302,7 +302,7 @@ export const AdminBulkProductsPage: React.FC = () => {
         operation: bulkActionOperation,
         value: bulkActionValue,
       },
-      user?.email || 'admin@bettaaquatics.in'
+      user?.email || 'raguppies00@gmail.com'
     );
 
     setIsBulkEditPreviewOpen(false);

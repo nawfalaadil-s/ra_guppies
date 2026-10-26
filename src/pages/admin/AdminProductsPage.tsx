@@ -43,7 +43,7 @@ export const AdminProductsPage: React.FC = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [comparePrice, setComparePrice] = useState('');
-  const [categoryId, setCategoryId] = useState('cat-betta');
+  const [categoryId, setCategoryId] = useState('9ebb7d17-8998-46b7-8e97-46a0812f7a80');
   const [subcategoryId, setSubcategoryId] = useState('');
   const [status, setStatus] = useState<ProductStatus>('published');
   const [weight, setWeight] = useState('');
@@ -148,7 +148,7 @@ export const AdminProductsPage: React.FC = () => {
     setName('');
     setPrice('');
     setComparePrice('');
-    setCategoryId('cat-betta');
+    setCategoryId('9ebb7d17-8998-46b7-8e97-46a0812f7a80');
     setSubcategoryId('');
     setStatus('published');
     setWeight('');
@@ -355,7 +355,7 @@ export const AdminProductsPage: React.FC = () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `betta_aquatics_inventory_${Date.now()}.csv`);
+    link.setAttribute('download', `ra_guppy_inventory_${Date.now()}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -629,7 +629,7 @@ export const AdminProductsPage: React.FC = () => {
                       </div>
                     </td>
                     <td className="p-4">
-                      <span className="font-semibold text-slate-800">{product.category_name || 'Betta'}</span>
+                      <span className="font-semibold text-slate-800">{product.category_name || 'Guppies'}</span>
                       <p className="text-[11px] text-slate-500">{product.strain || 'Standard'}</p>
                     </td>
                     <td className="p-4">
@@ -793,7 +793,7 @@ export const AdminProductsPage: React.FC = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Royal Blue Halfmoon Betta (Show Class)"
+                  placeholder="e.g. Electric Blue Pure Strain Guppy (Pair)"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>

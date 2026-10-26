@@ -1199,7 +1199,7 @@ export const AdminCMSPage: React.FC = () => {
                     type="text"
                     value={announcementLink}
                     onChange={(e) => setAnnouncementLink(e.target.value)}
-                    placeholder="e.g. /shop?category=betta-fish"
+                    placeholder="e.g. /shop?category=guppies"
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
                   />
                 </div>
@@ -1808,7 +1808,7 @@ export const AdminCMSPage: React.FC = () => {
                           type="text"
                           value={sectionConfig.ctaPrimary || ''}
                           onChange={(e) => setSectionConfig({ ...sectionConfig, ctaPrimary: e.target.value })}
-                          placeholder="e.g. Shop Live Bettas"
+                          placeholder="e.g. Shop Pure Strains"
                           className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 outline-none"
                         />
                       </div>
@@ -1818,7 +1818,7 @@ export const AdminCMSPage: React.FC = () => {
                           type="text"
                           value={sectionConfig.ctaPrimaryLink || ''}
                           onChange={(e) => setSectionConfig({ ...sectionConfig, ctaPrimaryLink: e.target.value })}
-                          placeholder="e.g. /shop?category=betta-fish"
+                          placeholder="e.g. /shop?category=guppies"
                           className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 outline-none"
                         />
                       </div>
@@ -1898,7 +1898,7 @@ export const AdminCMSPage: React.FC = () => {
                         type="text"
                         value={sectionConfig.quote || ''}
                         onChange={(e) => setSectionConfig({ ...sectionConfig, quote: e.target.value })}
-                        placeholder="e.g. Every Betta is individually photographed and conditioned."
+                        placeholder="e.g. Every guppy pair is conditioned in mineral-balanced water."
                         className="w-full bg-white border border-slate-200 rounded-xl px-3 py-1.5 text-xs text-slate-900 outline-none"
                       />
                     </div>

@@ -1,5 +1,9 @@
 import { supabase, isSupabaseConfigured } from './supabase';
-import { Product, Category, HomepageSection, CMSPage, MediaAsset, StoreSettings, Order, PaymentStatus, UserRole, UserProfile, Coupon } from './types';
+import { 
+  Product, Category, HomepageSection, CMSPage, MediaAsset, StoreSettings, 
+  Order, PaymentStatus, UserRole, UserProfile, Coupon,
+  Invoice, PaymentReceipt, Expense, StockMovement, NotificationLog
+} from './types';
 import { mockDb, StoredUser } from './mockDatabase';
 
 /**
@@ -1170,5 +1174,392 @@ export async function incrementSupabaseCouponUsage(code: string): Promise<void> 
   } catch (err) {
     console.warn('Error incrementing coupon usage in Supabase:', err);
   }
+}
+
+// -------------------------------------------------------------
+// INVOICES & BILLING SYNCHRONIZATION
+// -------------------------------------------------------------
+
+export async function fetchSupabaseInvoices(): Promise<Invoice[]> {
+  const localInvoices = mockDb.getInvoices();
+  if (!isSupabaseConfigured || !supabase) return localInvoices;
+
+  try {
+    const { data, error } = await supabase
+      .from('invoices')
+      .select('*')
+      .order('issued_at', { ascending: false });
+
+    if (error || !data) {
+      console.warn('Supabase fetch invoices notice:', error?.message);
+      return localInvoices;
+    }
+
+    const map = new Map<string, Invoice>();
+    localInvoices.forEach(inv => map.set(inv.invoice_number, inv));
+
+    data.forEach((row: any) => {
+      map.set(row.invoice_number, {
+        id: row.id,
+        invoice_number: row.invoice_number,
+        order_id: row.order_id,
+        customer_name: row.customer_name,
+        customer_email: row.customer_email,
+        customer_phone: row.customer_phone,
+        billing_address: row.billing_address || {},
+        items: row.items || [],
+        subtotal: Number(row.subtotal) || 0,
+        shipping_charge: Number(row.shipping_charge) || 0,
+        packing_charge: Number(row.packing_charge) || 0,
+        discount_amount: Number(row.discount_amount) || 0,
+        tax_amount: Number(row.tax_amount) || 0,
+        total_amount: Number(row.total_amount) || 0,
+        amount_paid: Number(row.amount_paid) || 0,
+        balance_due: Number(row.balance_due) || 0,
+        status: row.status,
+        notes: row.notes,
+        issued_at: row.issued_at,
+        created_at: row.created_at,
+      });
+    });
+
+    const merged = Array.from(map.values());
+    try {
+      localStorage.setItem('rg_invoices', JSON.stringify(merged));
+    } catch {}
+    return merged;
+  } catch (err) {
+    console.error('Error fetching invoices from Supabase:', err);
+    return localInvoices;
+  }
+}
+
+export async function saveSupabaseInvoice(invoiceData: Partial<Invoice>): Promise<Invoice> {
+  const localSaved = mockDb.saveInvoice(invoiceData);
+  if (!isSupabaseConfigured || !supabase) return localSaved;
+
+  try {
+    const isUuid = localSaved.id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(localSaved.id);
+    const validId = isUuid ? localSaved.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : undefined);
+
+    const isOrderUuid = localSaved.order_id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(localSaved.order_id);
+
+    const payload: any = {
+      invoice_number: localSaved.invoice_number,
+      order_id: isOrderUuid ? localSaved.order_id : null,
+      customer_name: localSaved.customer_name,
+      customer_email: localSaved.customer_email,
+      customer_phone: localSaved.customer_phone || null,
+      billing_address: localSaved.billing_address,
+      items: localSaved.items,
+      subtotal: localSaved.subtotal,
+      shipping_charge: localSaved.shipping_charge,
+      packing_charge: localSaved.packing_charge,
+      discount_amount: localSaved.discount_amount,
+      tax_amount: localSaved.tax_amount,
+      total_amount: localSaved.total_amount,
+      amount_paid: localSaved.amount_paid,
+      balance_due: localSaved.balance_due,
+      status: localSaved.status,
+      notes: localSaved.notes || null,
+      issued_at: localSaved.issued_at,
+    };
+
+    if (validId) payload.id = validId;
+
+    const { data, error } = await supabase
+      .from('invoices')
+      .upsert(payload, { onConflict: 'invoice_number' })
+      .select()
+      .single();
+
+    if (error) {
+      console.warn('Supabase save invoice notice:', error.message);
+    } else if (data) {
+      localSaved.id = data.id;
+      mockDb.saveInvoice(localSaved);
+    }
+  } catch (err) {
+    console.warn('Error syncing invoice to Supabase:', err);
+  }
+
+  return localSaved;
+}
+
+// -------------------------------------------------------------
+// PAYMENT RECEIPTS SYNCHRONIZATION
+// -------------------------------------------------------------
+
+export async function fetchSupabaseReceipts(): Promise<PaymentReceipt[]> {
+  const localReceipts = mockDb.getReceipts();
+  if (!isSupabaseConfigured || !supabase) return localReceipts;
+
+  try {
+    const { data, error } = await supabase
+      .from('receipts')
+      .select('*')
+      .order('payment_date', { ascending: false });
+
+    if (error || !data) {
+      console.warn('Supabase fetch receipts notice:', error?.message);
+      return localReceipts;
+    }
+
+    const map = new Map<string, PaymentReceipt>();
+    localReceipts.forEach(r => map.set(r.receipt_number, r));
+
+    data.forEach((row: any) => {
+      map.set(row.receipt_number, {
+        id: row.id,
+        receipt_number: row.receipt_number,
+        invoice_id: row.invoice_id,
+        order_id: row.order_id,
+        amount_received: Number(row.amount_received) || 0,
+        payment_method: row.payment_method,
+        transaction_reference: row.transaction_reference,
+        payment_date: row.payment_date,
+        notes: row.notes,
+        created_at: row.created_at,
+      });
+    });
+
+    const merged = Array.from(map.values());
+    try {
+      localStorage.setItem('rg_receipts', JSON.stringify(merged));
+    } catch {}
+    return merged;
+  } catch (err) {
+    console.error('Error fetching receipts from Supabase:', err);
+    return localReceipts;
+  }
+}
+
+export async function saveSupabaseReceipt(receiptData: Partial<PaymentReceipt>): Promise<PaymentReceipt> {
+  const localSaved = mockDb.saveReceipt(receiptData);
+  if (!isSupabaseConfigured || !supabase) return localSaved;
+
+  try {
+    const isUuid = localSaved.id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(localSaved.id);
+    const validId = isUuid ? localSaved.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : undefined);
+
+    const isInvoiceUuid = localSaved.invoice_id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(localSaved.invoice_id);
+    const isOrderUuid = localSaved.order_id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(localSaved.order_id);
+
+    const payload: any = {
+      receipt_number: localSaved.receipt_number,
+      invoice_id: isInvoiceUuid ? localSaved.invoice_id : null,
+      order_id: isOrderUuid ? localSaved.order_id : null,
+      amount_received: localSaved.amount_received,
+      payment_method: localSaved.payment_method,
+      transaction_reference: localSaved.transaction_reference || null,
+      payment_date: localSaved.payment_date,
+      notes: localSaved.notes || null,
+    };
+
+    if (validId) payload.id = validId;
+
+    const { data, error } = await supabase
+      .from('receipts')
+      .upsert(payload, { onConflict: 'receipt_number' })
+      .select()
+      .single();
+
+    if (error) {
+      console.warn('Supabase save receipt notice:', error.message);
+    } else if (data) {
+      localSaved.id = data.id;
+      mockDb.saveReceipt(localSaved);
+    }
+  } catch (err) {
+    console.warn('Error syncing receipt to Supabase:', err);
+  }
+
+  return localSaved;
+}
+
+// -------------------------------------------------------------
+// EXPENSES & ACCOUNTING LEDGER SYNCHRONIZATION
+// -------------------------------------------------------------
+
+export async function fetchSupabaseExpenses(): Promise<Expense[]> {
+  const localExpenses = mockDb.getExpenses();
+  if (!isSupabaseConfigured || !supabase) return localExpenses;
+
+  try {
+    const { data, error } = await supabase
+      .from('expenses')
+      .select('*')
+      .order('expense_date', { ascending: false });
+
+    if (error || !data) {
+      console.warn('Supabase fetch expenses notice:', error?.message);
+      return localExpenses;
+    }
+
+    const map = new Map<string, Expense>();
+    localExpenses.forEach(e => map.set(e.id, e));
+
+    data.forEach((row: any) => {
+      map.set(row.id, {
+        id: row.id,
+        category: row.category,
+        payee_vendor: row.payee_vendor,
+        amount: Number(row.amount) || 0,
+        expense_date: row.expense_date,
+        description: row.description,
+        receipt_url: row.receipt_url,
+        created_by: row.created_by,
+        created_at: row.created_at,
+      });
+    });
+
+    const merged = Array.from(map.values());
+    try {
+      localStorage.setItem('rg_expenses', JSON.stringify(merged));
+    } catch {}
+    return merged;
+  } catch (err) {
+    console.error('Error fetching expenses from Supabase:', err);
+    return localExpenses;
+  }
+}
+
+export async function saveSupabaseExpense(expenseData: Partial<Expense>): Promise<Expense> {
+  const localSaved = mockDb.saveExpense(expenseData);
+  if (!isSupabaseConfigured || !supabase) return localSaved;
+
+  try {
+    const isUuid = localSaved.id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(localSaved.id);
+    const validId = isUuid ? localSaved.id : (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : undefined);
+
+    const payload: any = {
+      category: localSaved.category,
+      payee_vendor: localSaved.payee_vendor,
+      amount: localSaved.amount,
+      expense_date: localSaved.expense_date,
+      description: localSaved.description,
+      receipt_url: localSaved.receipt_url || null,
+      created_by: localSaved.created_by,
+    };
+
+    if (validId) payload.id = validId;
+
+    const { data, error } = await supabase
+      .from('expenses')
+      .upsert(payload)
+      .select()
+      .single();
+
+    if (error) {
+      console.warn('Supabase save expense notice:', error.message);
+    } else if (data) {
+      localSaved.id = data.id;
+      mockDb.saveExpense(localSaved);
+    }
+  } catch (err) {
+    console.warn('Error syncing expense to Supabase:', err);
+  }
+
+  return localSaved;
+}
+
+export async function deleteSupabaseExpense(expenseId: string): Promise<boolean> {
+  mockDb.deleteExpense(expenseId);
+  if (!isSupabaseConfigured || !supabase) return true;
+
+  try {
+    const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(expenseId);
+    if (!isUuid) return true;
+
+    const { error } = await supabase
+      .from('expenses')
+      .delete()
+      .eq('id', expenseId);
+
+    if (error) {
+      console.warn('Supabase delete expense notice:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Error deleting expense from Supabase:', err);
+    return false;
+  }
+}
+
+// -------------------------------------------------------------
+// STOCK MOVEMENTS AUDIT TRAIL
+// -------------------------------------------------------------
+
+export async function recordSupabaseStockMovement(
+  productId: string, 
+  quantityDelta: number, 
+  movementType: any, 
+  notes?: string, 
+  orderId?: string
+): Promise<StockMovement | null> {
+  const result = mockDb.adjustProductStock(productId, quantityDelta, movementType, notes, orderId);
+  if (!result.success || !result.movement) return null;
+
+  if (!isSupabaseConfigured || !supabase) return result.movement;
+
+  try {
+    const isProdUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(productId);
+    const isOrdUuid = orderId && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(orderId);
+
+    if (isProdUuid) {
+      // 1. Update stock in public.products
+      await supabase
+        .from('products')
+        .update({ stock_quantity: result.movement.new_stock })
+        .eq('id', productId);
+
+      // 2. Insert into stock_movements
+      await supabase
+        .from('stock_movements')
+        .insert({
+          product_id: productId,
+          movement_type: movementType,
+          quantity_delta: quantityDelta,
+          previous_stock: result.movement.previous_stock,
+          new_stock: result.movement.new_stock,
+          order_id: isOrdUuid ? orderId : null,
+          notes: notes || null,
+        });
+    }
+  } catch (err) {
+    console.warn('Error recording stock movement in Supabase:', err);
+  }
+
+  return result.movement;
+}
+
+// -------------------------------------------------------------
+// NOTIFICATION LOGS (WHATSAPP, EMAIL, SMS)
+// -------------------------------------------------------------
+
+export async function logSupabaseNotification(logData: Omit<NotificationLog, 'id' | 'created_at'>): Promise<NotificationLog> {
+  const savedLocal = mockDb.logNotification(logData);
+  if (!isSupabaseConfigured || !supabase) return savedLocal;
+
+  try {
+    const isOrderUuid = logData.order_id && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(logData.order_id);
+
+    await supabase
+      .from('notification_logs')
+      .insert({
+        channel: logData.channel,
+        recipient: logData.recipient,
+        event_type: logData.event_type,
+        order_id: isOrderUuid ? logData.order_id : null,
+        message_preview: logData.message_preview,
+        status: logData.status,
+        metadata: logData.metadata || {},
+      });
+  } catch (err) {
+    console.warn('Error recording notification log in Supabase:', err);
+  }
+
+  return savedLocal;
 }
 

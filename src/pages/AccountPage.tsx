@@ -701,7 +701,7 @@ export const AccountPage: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-slate-400 block text-[11px]">Account Email</span>
-                      <strong className="text-slate-900 font-semibold">{user?.email || 'customer@bettaaquatics.in'}</strong>
+                      <strong className="text-slate-900 font-semibold">{user?.email || 'customer@raguppy.in'}</strong>
                     </div>
                     <div>
                       <span className="text-slate-400 block text-[11px]">Membership Status</span>

@@ -5,27 +5,27 @@ import { Droplet, Thermometer, Utensils, HeartHandshake, ArrowRight } from 'luci
 const GUIDES = [
   {
     icon: Droplet,
-    title: 'Water Chemistry & pH',
-    description: 'Bettas thrive in soft, slightly acidic to neutral water (pH 6.5 - 7.5). Condition tap water with natural Catappa leaf tannins.',
-    metric: 'pH 6.5 - 7.5',
+    title: 'Water Chemistry & Hardness',
+    description: 'Guppies thrive in hard, slightly alkaline water (pH 7.2 - 8.2, GH 10-18 dGH). Buffer with trace minerals and gentle sponge filtration.',
+    metric: 'pH 7.2 - 8.2',
   },
   {
     icon: Thermometer,
     title: 'Temperature Stability',
-    description: 'Bettas need warm water between 24°C and 28°C. Use a small tank heater to keep the temperature steady year-round.',
-    metric: '24°C - 28°C',
+    description: 'Guppies thrive between 24°C and 27°C. Use a reliable thermostat heater to keep temperatures consistent.',
+    metric: '24°C - 27°C',
   },
   {
     icon: Utensils,
     title: 'Nutrition & Live Feeds',
-    description: 'Feed 3 to 4 pellets twice a day. Add bloodworms once a week as a healthy treat to help keep their colors bright.',
-    metric: '2x Small Feeds Daily',
+    description: 'Feed high-protein micro-pellets and live Moina or freshly hatched baby brine shrimp for optimal caudal fin development.',
+    metric: 'Live Foods & Pellets',
   },
   {
     icon: HeartHandshake,
-    title: 'Floating Acclimation',
-    description: 'Float the shipping bag for 15-20 minutes, gradually add tank water over 20 minutes, then gently net the fish into your tank.',
-    metric: '30-Min Safe Transition',
+    title: 'Safe Drip Acclimation',
+    description: 'Float the bag for 20 minutes, drip tank water slowly over 30 minutes, then net fish gently without transit water.',
+    metric: '40-Min Drip Protocol',
   }
 ];
 
@@ -36,7 +36,7 @@ interface CareGuideSectionProps {
 }
 
 export const CareGuideSection: React.FC<CareGuideSectionProps> = ({ section }) => {
-  const title = section?.title || 'Essential Betta Care Guide';
+  const title = section?.title || 'Essential Pure Strain Guppy Care Guide';
   const subtitle = section?.subtitle || 'Simple guidelines to ensure your new fish acclimates easily and thrives.';
 
   return (

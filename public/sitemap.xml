@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
-    <loc>https://bettaaquatics.in/</loc>
+    <loc>https://raguppies.vercel.app/</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -10,7 +10,7 @@
 
   <!-- Catalog / Shop -->
   <url>
-    <loc>https://bettaaquatics.in/shop</loc>
+    <loc>https://raguppies.vercel.app/shop</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
@@ -18,37 +18,37 @@
 
   <!-- Categories -->
   <url>
-    <loc>https://bettaaquatics.in/shop?cat=cat-betta</loc>
+    <loc>https://raguppies.vercel.app/shop?cat=cat-betta</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/shop?cat=cat-guppy</loc>
+    <loc>https://raguppies.vercel.app/shop?cat=cat-guppy</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/shop?cat=cat-pairs</loc>
+    <loc>https://raguppies.vercel.app/shop?cat=cat-pairs</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/shop?cat=cat-plants</loc>
+    <loc>https://raguppies.vercel.app/shop?cat=cat-plants</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/shop?cat=cat-food</loc>
+    <loc>https://raguppies.vercel.app/shop?cat=cat-food</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/shop?cat=cat-accessories</loc>
+    <loc>https://raguppies.vercel.app/shop?cat=cat-accessories</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -56,37 +56,37 @@
 
   <!-- Core Specimen Product URLs -->
   <url>
-    <loc>https://bettaaquatics.in/product/royal-blue-halfmoon-betta-show-class</loc>
+    <loc>https://raguppies.vercel.app/product/royal-blue-halfmoon-betta-show-class</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/product/galaxy-koi-plakat-betta-candy-marbled</loc>
+    <loc>https://raguppies.vercel.app/product/galaxy-koi-plakat-betta-candy-marbled</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/product/black-orchid-crowntail-betta</loc>
+    <loc>https://raguppies.vercel.app/product/black-orchid-crowntail-betta</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/product/super-white-dumbo-ear-halfmoon-betta</loc>
+    <loc>https://raguppies.vercel.app/product/super-white-dumbo-ear-halfmoon-betta</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/product/albino-full-red-guppy-breeding-pair</loc>
+    <loc>https://raguppies.vercel.app/product/albino-full-red-guppy-breeding-pair</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/product/alien-green-betta-wild-hybrid</loc>
+    <loc>https://raguppies.vercel.app/product/alien-green-betta-wild-hybrid</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -94,19 +94,19 @@
 
   <!-- Educational & Care Guides -->
   <url>
-    <loc>https://bettaaquatics.in/page/shipping-acclimation</loc>
+    <loc>https://raguppies.vercel.app/page/shipping-acclimation</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/page/about-us</loc>
+    <loc>https://raguppies.vercel.app/page/about-us</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://bettaaquatics.in/page/faq</loc>
+    <loc>https://raguppies.vercel.app/page/faq</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

@@ -127,7 +127,7 @@ export const AdminLoginPage: React.FC = () => {
             <p className="text-[11px] text-blue-300/80 leading-relaxed">
               Running without live Supabase cloud credentials. Authoritative local admin credentials:
               <br />
-              <code className="bg-blue-900/80 px-1.5 py-0.5 rounded text-white font-mono text-[10px]">admin@bettaaquatics.in</code> / <code className="bg-blue-900/80 px-1.5 py-0.5 rounded text-white font-mono text-[10px]">Admin@123</code>
+              <code className="bg-blue-900/80 px-1.5 py-0.5 rounded text-white font-mono text-[10px]">raguppies00@gmail.com</code> / <code className="bg-blue-900/80 px-1.5 py-0.5 rounded text-white font-mono text-[10px]">Rishan@123</code>
             </p>
           </div>
         )}
@@ -165,7 +165,7 @@ export const AdminLoginPage: React.FC = () => {
                   autoComplete="username"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@bettaaquatics.in"
+                  placeholder="raguppies00@gmail.com"
                   className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>

@@ -1,11 +1,14 @@
-// BETTA AQUATICS: LEAST-PRIVILEGE ROLE-BASED ACCESS CONTROL (RBAC)
+// RA GUPPY: LEAST-PRIVILEGE ROLE-BASED ACCESS CONTROL (RBAC)
 import { UserRole } from './types';
 
 export type AdminPermission =
   | 'view_dashboard'
   | 'manage_products'
+  | 'manage_inventory'
   | 'manage_orders'
   | 'verify_payments'
+  | 'manage_invoices'
+  | 'manage_accounting'
   | 'manage_cms'
   | 'manage_blogs'
   | 'manage_coupons'
@@ -18,8 +21,11 @@ export const ROLE_PERMISSIONS: Record<UserRole, AdminPermission[]> = {
   admin: [
     'view_dashboard',
     'manage_products',
+    'manage_inventory',
     'manage_orders',
     'verify_payments',
+    'manage_invoices',
+    'manage_accounting',
     'manage_cms',
     'manage_blogs',
     'manage_coupons',
@@ -30,15 +36,20 @@ export const ROLE_PERMISSIONS: Record<UserRole, AdminPermission[]> = {
   product_manager: [
     'view_dashboard',
     'manage_products',
+    'manage_inventory',
   ],
   order_manager: [
     'view_dashboard',
     'manage_orders',
+    'manage_inventory',
+    'manage_invoices',
   ],
   payment_reviewer: [
     'view_dashboard',
     'manage_orders',
     'verify_payments',
+    'manage_invoices',
+    'manage_accounting',
   ],
   content_manager: [
     'view_dashboard',

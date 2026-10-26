@@ -465,7 +465,7 @@ export const MediaPickerModal: React.FC<MediaPickerModalProps> = ({
                           type="text"
                           value={uploadAltText}
                           onChange={(e) => setUploadAltText(e.target.value)}
-                          placeholder="e.g. Royal Blue Halfmoon Betta swimming front profile"
+                          placeholder="e.g. Electric Blue Pure Strain Guppy pair swimming front profile"
                           className="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
                         />
                       </div>

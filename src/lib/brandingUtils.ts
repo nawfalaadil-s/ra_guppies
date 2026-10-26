@@ -1,7 +1,7 @@
 import { BrandingSettings } from './types';
 
 // ============================================================================
-// BETTA AQUATICS — BRANDING & ACCESSIBILITY COLOR CALCULATIONS
+// RA GUPPY — BRANDING & ACCESSIBILITY COLOR CALCULATIONS
 // ============================================================================
 
 export const PRIMARY_PRESETS = [
@@ -14,7 +14,7 @@ export const PRIMARY_PRESETS = [
 ];
 
 export const SECONDARY_PRESETS = [
-  { name: 'Betta Crimson (Default)', hex: '#dc2626' },
+  { name: 'RA Crimson (Default)', hex: '#dc2626' },
   { name: 'Flame Coral', hex: '#ea580c' },
   { name: 'Amber Gold', hex: '#d97706' },
   { name: 'Tropical Magenta', hex: '#db2777' },

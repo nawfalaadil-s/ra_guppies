@@ -1,9 +1,10 @@
-# Robots.txt for Betta Aquatics
+# Robots.txt for RA Guppy
 User-agent: *
 Allow: /
 Allow: /shop
 Allow: /product/
 Allow: /page/
+Allow: /blog
 
 # Disallow private user accounts and admin operations
 Disallow: /admin
@@ -12,4 +13,4 @@ Disallow: /checkout
 Disallow: /account
 Disallow: /account/
 
-Sitemap: https://bettaaquatics.in/sitemap.xml
+Sitemap: https://raguppies.vercel.app/sitemap.xml

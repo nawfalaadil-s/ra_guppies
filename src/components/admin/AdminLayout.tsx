@@ -4,7 +4,8 @@ import {
   LayoutDashboard, ShoppingCart, Package, Palette, 
   Settings, History, LogOut, Menu, X, 
   ExternalLink, BookOpen, ChevronRight, ShieldCheck,
-  FileSpreadsheet, FolderTree, Sparkles, Users, Ticket
+  FileSpreadsheet, FolderTree, Sparkles, Users, Ticket,
+  FileText, IndianRupee, Layers
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useBranding } from '../../contexts/BrandingContext';
@@ -52,7 +53,10 @@ export const AdminLayout: React.FC = () => {
       permission: 'manage_orders',
       badge: pendingPaymentsCount > 0 ? pendingPaymentsCount : undefined 
     },
-    { label: 'Products & Inventory', path: '/admin/products', icon: Package, permission: 'manage_products' },
+    { label: 'Invoices & Billing', path: '/admin/invoices', icon: FileText, permission: 'manage_invoices' },
+    { label: 'Accounting & P&L', path: '/admin/accounting', icon: IndianRupee, permission: 'manage_accounting' },
+    { label: 'Products Catalog', path: '/admin/products', icon: Package, permission: 'manage_products' },
+    { label: 'Stock & Movements', path: '/admin/inventory', icon: Layers, permission: 'manage_inventory' },
     { label: 'Bulk Products & CSV', path: '/admin/bulk-products', icon: FileSpreadsheet, permission: 'manage_products' },
     { label: 'Category Hierarchy', path: '/admin/categories', icon: FolderTree, permission: 'manage_products' },
     { label: 'Visual CMS & Pages', path: '/admin/cms', icon: Palette, permission: 'manage_cms' },
@@ -262,7 +266,7 @@ export const AdminLayout: React.FC = () => {
                       <BrandLogo variant="admin" className="w-full h-full" imgClassName="w-full h-full object-contain" />
                     </div>
                     <div>
-                      <span className="font-bold text-sm text-blue-950 block leading-tight">Betta Operations</span>
+                      <span className="font-bold text-sm text-blue-950 block leading-tight">RA Guppy Operations</span>
                       <span className="text-[10px] text-slate-500 font-mono">Control Center</span>
                     </div>
                   </div>

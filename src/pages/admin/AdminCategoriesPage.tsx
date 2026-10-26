@@ -480,7 +480,7 @@ export const AdminCategoriesPage: React.FC = () => {
                         setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
                       }
                     }}
-                    placeholder="e.g. Halfmoon Bettas"
+                    placeholder="e.g. Pure Strain Guppies"
                     className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900"
                   />
                 </div>
@@ -491,7 +491,7 @@ export const AdminCategoriesPage: React.FC = () => {
                     required
                     value={slug}
                     onChange={(e) => setSlug(e.target.value)}
-                    placeholder="e.g. halfmoon-bettas"
+                    placeholder="e.g. pure-strain-guppies"
                     className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-900 font-mono text-xs"
                   />
                 </div>
@@ -813,7 +813,7 @@ export const AdminCategoriesPage: React.FC = () => {
                   <span>/</span>
                   <span>Shop</span>
                   <span>/</span>
-                  <span className="text-blue-900 font-bold">{hierarchy[0]?.name || 'Betta Fish'}</span>
+                  <span className="text-blue-900 font-bold">{hierarchy[0]?.name || 'Guppies & Livebearers'}</span>
                   {hierarchy[0]?.children?.[0] && (
                     <>
                       <span>/</span>
@@ -821,7 +821,7 @@ export const AdminCategoriesPage: React.FC = () => {
                     </>
                   )}
                   <span>/</span>
-                  <span className="text-slate-800">Royal Blue Halfmoon Betta (Show Class Male)</span>
+                  <span className="text-slate-800">Electric Blue Pure Strain Guppy (Pair)</span>
                 </div>
               </div>
             </div>

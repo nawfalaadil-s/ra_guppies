@@ -22,7 +22,7 @@ export const WishlistPage: React.FC = () => {
             My Saved Wishlist ({wishlistedProducts.length})
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Keep track of exquisite Betta specimens and aquatic flora you intend to order.
+            Keep track of exquisite pure strain Guppy pairs and aquatic flora you intend to order.
           </p>
         </div>
 
@@ -33,7 +33,7 @@ export const WishlistPage: React.FC = () => {
             </div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Your Wishlist is Empty</h2>
             <p className="text-xs sm:text-sm text-slate-500 mb-6">
-              Tap the heart icon on any Betta fish specimen to save it here for future observation.
+              Tap the heart icon on any Guppy specimen to save it here for future observation.
             </p>
             <Link
               to="/shop"

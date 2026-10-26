@@ -714,7 +714,7 @@ export const BrandingThemeEditor: React.FC = () => {
                       <div className="font-extrabold text-slate-900 text-xs font-display">
                         {form.site_name || 'Ra Guppy'}
                       </div>
-                      <div className="text-[9px] text-slate-400">{form.tagline || 'Pure Strain Guppies & Bettas'}</div>
+                      <div className="text-[9px] text-slate-400">{form.tagline || 'Pure Strain Guppies & Aquatic Life'}</div>
                     </div>
                   </div>
 

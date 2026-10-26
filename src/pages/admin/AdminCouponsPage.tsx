@@ -809,7 +809,7 @@ export const AdminCouponsPage: React.FC = () => {
                   id="admin-coupon-code"
                   type="text"
                   required
-                  placeholder="e.g. AQUA10, BETTA20, FLASH50"
+                  placeholder="e.g. AQUA10, GUPPY20, FLASH50"
                   value={formData.code}
                   onChange={e => setFormData({ ...formData, code: e.target.value.toUpperCase().replace(/\s+/g, '') })}
                   className="w-full font-mono font-bold px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white tracking-wider"

@@ -15,10 +15,10 @@ if ('serviceWorker' in navigator && typeof window !== 'undefined') {
     navigator.serviceWorker
       .register('/sw.js')
       .then((reg) => {
-        console.info('[Betta Aquatics PWA] Service Worker registered:', reg.scope);
+        console.info('[RA Guppy PWA] Service Worker registered:', reg.scope);
       })
       .catch((err) => {
-        console.warn('[Betta Aquatics PWA] Service Worker registration skipped:', err);
+        console.warn('[RA Guppy PWA] Service Worker registration skipped:', err);
       });
   });
 }

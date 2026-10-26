@@ -18,14 +18,14 @@ export const SEO: React.FC<SEOProps> = ({
   ogImage = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
   ogType = 'website',
   jsonLd,
-  keywords = ['guppy fish online', 'buy betta fish india', 'pure strain guppy pairs', 'aquarium plants india', 'live fish delivery'],
+  keywords = ['guppy fish online', 'buy guppy fish india', 'pure strain guppy pairs', 'aquarium plants india', 'live fish delivery'],
 }) => {
   const { activeSettings, branding } = useBranding();
   const currentSettings = activeSettings || branding;
   const brandName = currentSettings.site_name || 'Ra Guppy';
-  const tagline = currentSettings.tagline || 'Pure Strain Guppies, Bettas & Aquatic Sanctuary';
+  const tagline = currentSettings.tagline || 'Pure Strain Guppies & Aquatic Sanctuary';
 
-  const defaultDesc = `${brandName} is India's premier ornamental fish sanctuary. Hand-conditioned pure strain guppies, show Bettas, and healthy live plants with guaranteed live arrival.`;
+  const defaultDesc = `${brandName} is India's premier ornamental livebearer sanctuary. Hand-conditioned pure strain guppies, live plants, and starter food cultures with guaranteed 100% live arrival.`;
   const metaDesc = (description || defaultDesc)
     .replace(/Betta Aquatics India/gi, brandName)
     .replace(/Betta Aquatics/gi, brandName);

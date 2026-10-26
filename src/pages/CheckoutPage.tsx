@@ -19,6 +19,7 @@ import { SEO } from '../components/common/SEO';
 import { TaxInvoiceModal } from '../components/common/TaxInvoiceModal';
 import { INDIAN_STATES, getStateFromPincode, lookupPincode } from '../lib/shipping';
 import { syncOrderToSupabase, incrementSupabaseCouponUsage } from '../lib/supabaseSync';
+import { generateOrderConfirmationMessage, dispatchWhatsAppHandoff } from '../lib/whatsappService';
 
 export const CheckoutPage: React.FC = () => {
   const { user, addresses, addAddress, register, login, logout } = useAuth();
@@ -543,14 +544,33 @@ export const CheckoutPage: React.FC = () => {
               </Link>
 
               {placedOrder && (
-                <button
-                  type="button"
-                  onClick={() => setIsInvoiceOpen(true)}
-                  className="px-5 py-3 bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2"
-                >
-                  <FileText className="w-4 h-4 text-blue-600" />
-                  <span>View Tax Invoice</span>
-                </button>
+                <>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const msg = generateOrderConfirmationMessage(placedOrder);
+                      dispatchWhatsAppHandoff(placedOrder.shipping_address.phone, msg, {
+                        recipient: placedOrder.shipping_address.phone,
+                        eventType: 'order_confirmed',
+                        orderId: placedOrder.id,
+                        metadata: { order_number: placedOrder.order_number }
+                      });
+                    }}
+                    className="px-5 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+                  >
+                    <MessageSquare className="w-4 h-4" />
+                    <span>WhatsApp Order Update</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setIsInvoiceOpen(true)}
+                    className="px-5 py-3 bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 font-bold text-xs rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2"
+                  >
+                    <FileText className="w-4 h-4 text-blue-600" />
+                    <span>View Tax Invoice</span>
+                  </button>
+                </>
               )}
 
               <Link

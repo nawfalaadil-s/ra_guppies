@@ -49,7 +49,7 @@ export function calculateDiscount(price: number, compareAtPrice?: number): numbe
 export function generateOrderNumber(): string {
   const year = new Date().getFullYear();
   const random = Math.floor(1000 + Math.random() * 9000);
-  return `BA-${year}-${random}`;
+  return `RG-${year}-${random}`;
 }
 
 export function buildTrackingUrl(urlTemplate: string, trackingNumber: string): string {

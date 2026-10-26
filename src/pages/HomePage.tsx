@@ -68,8 +68,8 @@ export const HomePage: React.FC = () => {
     }
   };
 
-  const currentBrand = branding.site_name || 'Ra Guppy';
-  const currentTagline = branding.tagline || 'Pure Strain Guppies, Bettas & Ornamental Fish Sanctuary';
+  const currentBrand = branding.site_name || 'RA Guppy';
+  const currentTagline = branding.tagline || 'Pure Strain Guppies & Aquatic Sanctuary';
 
   // Schema.org Structured Data for WebSite & Organization
   const homepageSchema = [
@@ -108,14 +108,15 @@ export const HomePage: React.FC = () => {
       {/* Homepage SEO Meta & JSON-LD */}
       <SEO
         title={`${currentBrand} — ${currentTagline}`}
-        description="India's premier ornamental fish sanctuary. Buy pure-strain guppy pairs, champion Bettas, and live aquatic plants with 100% Live Arrival Guarantee."
+        description="India's premier ornamental livebearer sanctuary. Buy pure strain guppy pairs, live aquatic plants, and live food cultures with 100% Live Arrival Guarantee."
         canonical={typeof window !== 'undefined' ? window.location.origin : 'https://raguppies.vercel.app'}
         jsonLd={homepageSchema}
         keywords={[
           'guppy fish online india',
           'pure strain guppy pairs',
-          'buy betta fish bangalore',
-          'halfmoon betta price',
+          'buy guppies online india',
+          'afr guppy pairs',
+          'electric blue guppy',
           'live aquatic plants online',
           'ra guppy'
         ]}

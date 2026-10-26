@@ -132,7 +132,7 @@ export const MobileHeader: React.FC = () => {
               aria-label="Search fish and supplies"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search Bettas, Guppies, Plants..."
+              placeholder="Search Pure Strain Guppies, Plants, Live Foods..."
               className="w-full text-xs text-slate-900 placeholder-slate-400 outline-none bg-transparent"
             />
             {searchQuery && (
@@ -217,7 +217,7 @@ export const MobileHeader: React.FC = () => {
                     <div className="font-display font-bold text-sm text-white uppercase tracking-tight">
                       {firstWord} {restWords && <span className="text-red-500">{restWords}</span>}
                     </div>
-                    <div className="text-xs text-slate-400">{currentSettings.tagline || 'Pure Strain Guppies & Bettas'}</div>
+                    <div className="text-xs text-slate-400">{currentSettings.tagline || 'Pure Strain Guppies & Aquatic Sanctuary'}</div>
                   </div>
                 </div>
                 <button
@@ -295,11 +295,11 @@ export const MobileHeader: React.FC = () => {
                     <ChevronRight className="w-4 h-4 text-slate-400" />
                   </Link>
                   <Link
-                    to="/shop?cat=betta-fish"
+                    to="/shop?cat=guppy-pairs"
                     onClick={() => setIsDrawerOpen(false)}
                     className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 text-slate-900"
                   >
-                    <span>Show Bettas</span>
+                    <span>Pure Strain Guppy Pairs</span>
                     <ChevronRight className="w-4 h-4 text-slate-400" />
                   </Link>
                   <Link

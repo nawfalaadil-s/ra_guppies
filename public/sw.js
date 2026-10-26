@@ -1,8 +1,8 @@
-// Betta Aquatics — Safe E-Commerce Progressive Web App Service Worker
+// RA Guppy — Safe E-Commerce Progressive Web App Service Worker
 // CAUTION: E-Commerce live inventory, unique specimens, customer orders, and admin controls
 // MUST NEVER be aggressively cached to prevent ghost stock or security leaks.
 
-const CACHE_NAME = 'betta-aquatics-v1';
+const CACHE_NAME = 'ra-guppy-v2';
 
 // Static, immutable app shell assets safe for caching
 const PRECACHE_ASSETS = [

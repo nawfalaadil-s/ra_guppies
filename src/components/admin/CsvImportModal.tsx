@@ -79,7 +79,7 @@ export const CsvImportModal: React.FC<CsvImportModalProps> = ({
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', 'betta_aquatics_products_template.csv');
+    link.setAttribute('download', 'ra_guppy_products_template.csv');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -164,7 +164,7 @@ export const CsvImportModal: React.FC<CsvImportModalProps> = ({
         validatedRows,
         importMode,
         uploadedFileName || 'products-import.csv',
-        user?.email || 'admin@bettaaquatics.in',
+        user?.email || 'raguppies00@gmail.com',
         (progress) => {
           setExecutionProgress(progress);
         }

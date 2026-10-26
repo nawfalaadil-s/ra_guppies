@@ -246,17 +246,17 @@ export const BlogPostPage: React.FC = () => {
               Pure Bloodlines In Stock
             </span>
             <h3 className="text-lg sm:text-xl font-bold font-display">
-              Ready to Welcome a Champion Show Betta?
+              Ready to Welcome Pure Strain Guppies?
             </h3>
             <p className="text-xs text-slate-300 max-w-lg">
-              Explore our current stock of 1-of-1 exact pictured specimens, acclimated and shipped safely via The Professional Couriers across India.
+              Explore our current stock of pedigree pairs and trios, acclimated and shipped safely via The Professional Couriers across India.
             </p>
           </div>
           <Link
             to="/shop"
             className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl transition-colors shadow-sm shrink-0 flex items-center gap-2"
           >
-            <span>Explore Live Bettas</span>
+            <span>Explore Pure Strains</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </Link>
         </div>

@@ -45,7 +45,7 @@ export const CartPage: React.FC = () => {
         </div>
         <h2 className="text-2xl font-bold text-slate-800 font-display mb-2">Your Shopping Cart is Empty</h2>
         <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-6">
-          Explore our collection of show-class Bettas, imported guppies, and natural aquatic flora.
+          Explore our collection of pure strain guppy pairs, live aquatic flora, and high-protein feeds.
         </p>
         <Link
           to="/shop"

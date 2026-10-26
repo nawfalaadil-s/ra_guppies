@@ -81,50 +81,6 @@ export const INITIAL_CATEGORIES: Category[] = [
     display_order: 5,
     is_active: true,
     is_featured: false,
-  },
-  {
-    id: '0fbc7845-bbcb-499a-8ad3-5c3c51c4bca4',
-    name: 'Betta Fish',
-    slug: 'betta-fish',
-    description: 'Exquisite show specimen Bettas sourced from champion bloodlines.',
-    image_url: '/product_image/purple-hm-tail-400.jpeg',
-    parent_id: null,
-    display_order: 6,
-    is_active: true,
-    is_featured: false,
-  },
-  {
-    id: 'a1e2811c-ab3d-407b-8d46-213ee3058f07',
-    name: 'Halfmoon Bettas',
-    slug: 'halfmoon-bettas',
-    description: '180-degree caudal spread show-class specimen males and females.',
-    image_url: '/product_image/tiger-halfmoon-300.jpeg',
-    parent_id: '0fbc7845-bbcb-499a-8ad3-5c3c51c4bca4',
-    display_order: 1,
-    is_active: true,
-    is_featured: false,
-  },
-  {
-    id: 'd37deeef-1d73-4bfa-854f-e556e085fced',
-    name: 'Crowntail Bettas',
-    slug: 'crowntail-bettas',
-    description: 'Dramatic ray web reductions creating crown-like finnage.',
-    image_url: '/product_image/electric-blue-300.jpeg',
-    parent_id: '0fbc7845-bbcb-499a-8ad3-5c3c51c4bca4',
-    display_order: 2,
-    is_active: true,
-    is_featured: false,
-  },
-  {
-    id: '71a4e4f4-1405-4fb7-8bd5-930700b65da8',
-    name: 'Plakat & Fighter Bettas',
-    slug: 'plakat-bettas',
-    description: 'Short-finned, muscular traditional and modern HMPK fighters.',
-    image_url: '/product_image/purple-hm-tail-400.jpeg',
-    parent_id: '0fbc7845-bbcb-499a-8ad3-5c3c51c4bca4',
-    display_order: 3,
-    is_active: true,
-    is_featured: false,
   }
 ];
 
@@ -459,7 +415,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "slug": "insecta-pro-fish-food-100g-200",
     "sku": "RG-FD-IP200",
     "description": "Specially formulated high-protein feed made from premium black soldier fly larvae meal, spirulina, and essential amino acids. Enhances natural pigmentation, fin growth, and breeding vigor.",
-    "short_description": "100g high-protein insect-based micro pellets for guppies & bettas.",
+    "short_description": "100g high-protein insect-based micro pellets for pure strain guppies & fry.",
     "price": 200,
     "compare_at_price": 280,
     "category_id": "a71581d6-2d40-4436-834e-75ffb933faaa",
@@ -491,7 +447,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     "name": "Live Moina Macrocopa Starter Culture (Live Food)",
     "slug": "moina-starter-culture-live-food-100",
     "sku": "RG-FD-MN100",
-    "description": "Live freshwater water flea (Moina Macrocopa) starter culture. Superior live food for newborn fry and adult guppies/bettas with high digestive enzyme content and rapid reproduction rate.",
+    "description": "Live freshwater water flea (Moina Macrocopa) starter culture. Superior live food for newborn fry and adult guppies with high digestive enzyme content and rapid reproduction rate.",
     "short_description": "Active live Moina starter culture pouch for rapid fry development.",
     "price": 100,
     "compare_at_price": 150,
@@ -522,17 +478,17 @@ export const INITIAL_PRODUCTS: Product[] = [
 ];
 
 export const INITIAL_STORE_SETTINGS: StoreSettings = {
-  brand_name: 'Ra Guppy',
-  tagline: 'Pure Strain Guppies, Bettas & Ornamental Fish Sanctuary',
-  contact_email: 'care@raguppy.in',
-  contact_phone: '+91 98765 43210',
-  whatsapp_number: '919876543210',
-  upi_id: 'raguppy@icici',
-  upi_payee_name: 'Ra Guppy Aquatics',
+  brand_name: 'RA Guppy',
+  tagline: 'Pure Strain Guppies & Aquatic Sanctuary',
+  contact_email: 'raguppies00@gmail.com',
+  contact_phone: '+91 89211 90590',
+  whatsapp_number: '+91 89211 90590',
+  upi_id: 'rishankc75@okicici',
+  upi_payee_name: 'RA Guppy',
   bank_name: 'ICICI Bank',
   bank_account_no: '002405009988',
   bank_ifsc: 'ICIC0000024',
-  bank_account_holder: 'Ra Guppy Aquatics',
+  bank_account_holder: 'RA Guppy',
   free_shipping_threshold: 999999,
   standard_shipping_rate: 80,
   live_packing_charge: 0,
@@ -551,8 +507,8 @@ export const INITIAL_STORE_SETTINGS: StoreSettings = {
     mobile_logo_url: '/logo.jpeg',
     footer_logo_url: '/logo.jpeg',
     favicon_url: '/favicon.svg',
-    site_name: 'Ra Guppy',
-    tagline: 'Pure Strain Guppies, Bettas & Ornamental Fish Sanctuary',
+    site_name: 'RA Guppy',
+    tagline: 'Pure Strain Guppies & Aquatic Sanctuary',
     primary_color: '#1e3a8a',
     secondary_color: '#dc2626',
     accent_color: '#0284c7',
@@ -569,8 +525,8 @@ export const DEFAULT_BRANDING_SETTINGS: BrandingSettings = {
   mobile_logo_url: '/logo.jpeg',
   footer_logo_url: '/logo.jpeg',
   favicon_url: '/favicon.svg',
-  site_name: 'Ra Guppy',
-  tagline: 'Pure Strain Guppies, Bettas & Ornamental Fish Sanctuary',
+  site_name: 'RA Guppy',
+  tagline: 'Pure Strain Guppies & Aquatic Sanctuary',
   primary_color: '#1e3a8a',
   secondary_color: '#dc2626',
   accent_color: '#0284c7',
@@ -746,12 +702,12 @@ export const INITIAL_CMS_PAGES: CMSPage[] = [
     slug: 'about-us',
     title: 'About Ra Guppy',
     meta_title: 'About Us | Ra Guppy India',
-    meta_description: 'Learn about India\'s premier specialized guppy and betta breeding sanctuary.',
+    meta_description: 'Learn about India\'s premier specialized pure strain guppy and planted aquatic life sanctuary.',
     is_published: true,
     updated_at: '2026-03-20T10:00:00Z',
     content_html: `
       <h2>Ethical Aquaculture & Passion for Living Jewels</h2>
-      <p>Founded by passionate aquatic breeders and biological researchers, <strong>Ra Guppy</strong> was born out of a single mission: to provide the highest-grade pure strain Guppies, championship Bettas, and exotic freshwater specimens across India.</p>
+      <p>Founded by passionate aquatic breeders and biological researchers, <strong>RA Guppy</strong> was born out of a single mission: to provide the highest-grade pure strain Guppies, healthy aquatic plants, and live foods across India.</p>
       <p>Unlike commercial high-density wholesale farms, our indoor biosecure facility maintains individual high-filtration barracks and softwater conditioning for every specimen. Each fish receives balanced live feeds, pristine water conditions, and daily health checks.</p>
       <h3>Our Standards:</h3>
       <ul>
@@ -843,7 +799,7 @@ export const INITIAL_COUPONS: Coupon[] = [
   },
   {
     id: 'cp-03',
-    code: 'VIPBETTA',
+    code: 'VIPGUPPY',
     description: 'Special 15% discount for orders above ₹3000',
     discount_type: 'percentage',
     discount_value: 15,
@@ -866,156 +822,188 @@ export const INITIAL_COUPONS: Coupon[] = [
 export const INITIAL_BLOG_POSTS: BlogPost[] = [
   {
     id: 'post-01',
-    slug: 'acclimating-show-grade-betta-fish',
-    title: 'The Ultimate Acclimation Protocol: Protecting High-Grade Bettas After Courier Transit',
-    excerpt: 'Step-by-step master protocol to transition sensitive show-grade Bettas from pressurized oxygen transit pouches into your home aquarium without osmotic shock or fin curl.',
-    featured_image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    category: 'Betta Care & Acclimation',
-    tags: ['Acclimation', 'Water Parameters', 'Show Bettas', 'Road Courier'],
+    slug: 'mastering-pure-strain-guppy-care',
+    title: 'Mastering Pure Strain Guppy Care: Water Chemistry, Mineral Hardness & Tank Conditions',
+    excerpt: 'A complete scientific care guide to keeping pure strain Poecilia reticulata healthy. Learn optimal GH/KH mineral balance, biofiltration, temperature stability, and salt buffering.',
+    featured_image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=80',
+    category: 'Guppy Care & Water Quality',
+    tags: ['Guppy Care', 'Water Chemistry', 'Mineral Hardness', 'Filtration'],
     author: {
-      name: 'Dr. Anand Raman',
-      role: 'Chief Marine Biologist & Founder',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      name: 'Rishan K.C.',
+      role: 'Master Line Breeder & Founder',
+      avatar: '/logo.jpeg',
     },
     read_time_minutes: 6,
     is_published: true,
-    views_count: 1420,
+    views_count: 1840,
     published_at: '2026-03-15T09:00:00Z',
     updated_at: '2026-03-20T11:30:00Z',
-    meta_title: 'Acclimating Show-Grade Ornamental Fish After Shipping | Ra Guppy',
-    meta_description: 'Prevent temperature shock and fin clamp with our veterinarian-approved drip acclimation protocol for live Betta splendens shipments.',
+    meta_title: 'Mastering Pure Strain Guppy Care & Water Chemistry | RA Guppy',
+    meta_description: 'Learn optimal water parameters for pure strain show guppies. Maintain proper GH, KH, pH, sponge filtration, and temperature stability.',
     content_html: `
-      <h2>The Critical First 120 Minutes</h2>
-      <p>When your insulated thermocol crate arrives, your specimen has traveled under high-purity medical oxygen. While our double-walled bags maintain stable dissolved oxygen, the physical chemistry inside the bag changes gradually as the fish respires.</p>
-      
-      <p>Opening the bag introduces fresh atmospheric air, which causes ammonia in the water to convert quickly into toxic free ammonia (NH3) as pH rises. <strong>Therefore, speed and precision are critical once the shipping seal is broken.</strong></p>
+      <h2>The Foundation of Pure Strain Guppy Health</h2>
+      <p>Pure strain show guppies (<em>Poecilia reticulata</em>) — such as Electric Blue, Tiger Halfmoon, and Albino Full Red — possess delicate immune systems honed by generations of selective breeding. Unlike wild-type feeder guppies, fancy pedigree strains demand stable, mineral-rich water chemistry to maintain dorsal posture, intense iridescence, and robust fry survival.</p>
 
-      <h3>Phase 1: Temperature Float (20-25 Minutes)</h3>
-      <p>Never open the shipping pouch immediately. Float the sealed bag intact in your dimmed quarantine or display tank for 20 to 25 minutes. This ensures thermal equilibrium between the shipping water (typically 24°C - 26°C) and your aquarium (ideal: 26.5°C - 27.5°C).</p>
-
-      <h3>Phase 2: Slow Drip Acclimation (45 Minutes)</h3>
-      <p>Pour the fish and transit water into a clean, dedicated 5-liter acclimation bucket. Using airline tubing with a plastic control valve, initiate a drip siphon from the destination tank into the bucket at a rate of <strong>2 to 3 drops per second</strong>.</p>
-      
+      <h3>1. General Hardness (GH) & Carbonate Hardness (KH)</h3>
+      <p>Guppies are hard-water livebearers native to mineralized streams and coastal estuaries. In soft municipal water, their osmotic regulation suffers, leading to shimmies and clamped caudal fins.</p>
       <ul>
-        <li>Double the initial water volume over 30 minutes.</li>
-        <li>Discard half the water carefully, then drip-fill again for another 15 minutes.</li>
-        <li>Add 2 drops of concentrated stress-guard or natural Indian almond leaf extract (tannins).</li>
+        <li><strong>Ideal GH:</strong> 10 to 18 dGH (180 to 320 ppm) to support bone calcification and fin-ray elasticity.</li>
+        <li><strong>Ideal KH:</strong> 5 to 10 dKH to prevent sudden nighttime pH drops caused by plant respiration.</li>
+        <li><strong>Ideal pH:</strong> 7.2 to 8.0 (slightly alkaline). Avoid water below 7.0 at all costs.</li>
+        <li><strong>Temperature:</strong> 24°C to 27°C (75°F to 80°F) maintained with reliable thermostatic heaters.</li>
       </ul>
 
-      <h3>Phase 3: The Net Transfer (Zero Transit Water)</h3>
-      <p><strong>Golden Rule: Never dump courier bag water into your established aquarium.</strong> Use a soft, knotless nylon specimen net to gently lift the Betta into the destination tank. Leave all tank lighting OFF for the first 12 hours to prevent disorientation and cortisol spikes.</p>
+      <h3>2. Biological Sponge Filtration</h3>
+      <p>High-flow powerheads tear show guppy caudal fins and exhaust breeding trios. Instead, dual-sponge air-driven bio-filters provide superior dissolved oxygenation, massive nitrifying surface area, and zero suction hazards for newborn fry.</p>
 
-      <blockquote>
-        "Patience during the first 6 hours post-arrival determines the longevity and vibrant fin flare of a champion show betta." — Dr. Anand Raman
-      </blockquote>
+      <h3>3. Natural Electrolyte & Mineral Buffering</h3>
+      <p>Adding natural rock salt (non-iodized) or trace aquarium salt at a concentration of <strong>1 tablespoon per 20 liters</strong> prevents velvet and epistylis while easing branchial gill respiration.</p>
     `
   },
   {
     id: 'post-02',
-    slug: 'betta-fish-genetics-halfmoon-vs-alien-strains',
-    title: 'Betta Genetics Breakdown: Understanding Dragon Scale, Halfmoon, and Alien Hybrid Strains',
-    excerpt: 'An enthusiast breakdown of fin morphology, iridescent guanine pigment layers, and the fascinating hybridization behind modern wild-type Alien Bettas.',
-    featured_image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=80',
-    category: 'Genetics & Strains',
-    tags: ['Betta Genetics', 'Alien Betta', 'Halfmoon', 'Morphology'],
+    slug: 'the-guppy-trio-breeding-system',
+    title: 'The Guppy Trio Breeding System: Conditioning Show Pairs & Fry Nutrition',
+    excerpt: 'Discover the 1-male-to-2-female breeding system used by championship hatcheries to preserve genetic purity, maximize brood vigor, and prevent female exhaustion.',
+    featured_image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+    category: 'Breeding & Genetics',
+    tags: ['Guppy Breeding', 'Trio System', 'Fry Nutrition', 'Genetics'],
     author: {
-      name: 'Rohan Mehra',
-      role: 'Line Breeding Geneticist',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+      name: 'Rishan K.C.',
+      role: 'Master Line Breeder & Founder',
+      avatar: '/logo.jpeg',
     },
-    read_time_minutes: 8,
+    read_time_minutes: 7,
     is_published: true,
-    views_count: 2180,
+    views_count: 2650,
     published_at: '2026-03-22T14:00:00Z',
     updated_at: '2026-03-24T08:15:00Z',
-    meta_title: 'Betta Genetics Explained: Halfmoon, Alien & Dragonscale | Ra Guppy',
-    meta_description: 'Explore the fascinating scientific genetics behind Betta splendens fin spreads, iridescent dragonscale layering, and complex Alien hybrids.',
+    meta_title: 'The Guppy Trio Breeding System & Fry Rearing | RA Guppy',
+    meta_description: 'Championship line breeding guide: Trio ratio, gestation periods, gravid spot inspection, drop boxes, and early fry nourishment.',
     content_html: `
-      <h2>The 180-Degree Halfmoon Standard</h2>
-      <p>The iconic <em>Halfmoon (HM)</em> betta is defined by a caudal fin that expands to a full 180-degree semi-circle when flaring at a mirror or rival. This trait is controlled by polygenic ray-branching genetics (primary rays branching into secondary and tertiary rays).</p>
+      <h2>Why Hatcheries Standardize on the Breeding Trio</h2>
+      <p>Championship line breeding requires precise control over pedigree lineage. While single pairs can produce fertile broods, an active, mature male will continuously chase and stress a single gravid female. The standard <strong>1 Male to 2 Females (Trio)</strong> distributes male courtship pressure evenly and ensures regular birth cycles every 28 to 32 days.</p>
 
-      <p>True show-grade halfmoons require crisp, straight outer fin edges (known as the 'D-shape'). Over-halfmoons (OHM) exceed 180 degrees, while Super Deltas typically reach 150 to 175 degrees.</p>
-
-      <h3>The Phenomenon of Alien Bettas</h3>
-      <p>Unlike standard captive domestic varieties derived solely from <em>Betta splendens</em>, <strong>Alien Bettas are complex inter-species hybrids</strong>. Modern bloodlines combine:</p>
+      <h3>Identifying the Gravid Spot & Labor Signs</h3>
+      <p>As female guppies approach parturition, the dark gravid spot near the anal vent deepens into a rich black or amber-red (in albino strains). Key physical markers include:</p>
       <ul>
-        <li><strong>Betta mahachaiensis:</strong> Contributes the tight metallic grid-scale pattern and green/copper sheen.</li>
-        <li><strong>Betta stiktos & imbellis:</strong> Provides peaceful temperament and distinctive facial mask streaks.</li>
-        <li><strong>Betta smaragdina:</strong> Adds turquoise radiance and elongated pelvic fins.</li>
+        <li>A distinct 'boxy' or squared-off silhouette in the lower abdomen.</li>
+        <li>Rapid gill movement and hovering near the heater or floating plants.</li>
+        <li>Hiding behavior away from dominant aquarium tankmates.</li>
       </ul>
 
-      <h3>Dragonscale Layering: Beauty & Caution</h3>
-      <p>The metallic opacity in Dragonscale bettas is caused by an extraordinarily thick layer of guanine crystals in the top stratum of dermal cells. While visually striking, keepers must watch for diamond-eye (growth of guanine over the lens), making clean, unblocked lineages prized by connoisseurs.</p>
+      <h3>Fry Protection: Heavy Flora vs. Breeding Traps</h3>
+      <p>Plastic confinement traps cause maternal stress and premature birthing of unhatched eggs. We advocate breeding inside dedicated 30-liter tanks densely carpeted with <strong>Guppy Grass (Najas guadalupensis)</strong> and floating <strong>Foxtail</strong>. Newborn fry instinctively swim upward into root mazes where adult fish cannot follow.</p>
     `
   },
   {
     id: 'post-03',
-    slug: 'top-aquarium-plants-for-betta-tanks',
-    title: 'Top 7 Live Aquarium Plants for Small Betta Tanks & Nano Aquascapes',
-    excerpt: 'Transform your nano tank into a biological paradise. Discover non-sharp live plants that absorb excess nitrates, provide resting hammocks, and thrive without CO2 injection.',
+    slug: 'culturing-live-moina-artemia',
+    title: 'Culturing Live Moina & Artemia: High-Protein Live Foods for Rapid Fry Growth',
+    excerpt: 'How to culture live Moina macrocopa and hatch Baby Brine Shrimp (Artemia) at home. Provide rich lipids and essential fatty acids for fry color development.',
     featured_image: 'https://images.unsplash.com/photo-1534043464124-3be32fe000c9?auto=format&fit=crop&w=1200&q=80',
-    category: 'Aquascaping & Plants',
-    tags: ['Aquascaping', 'Live Plants', 'Nano Tanks', 'Water Quality'],
+    category: 'Feeding & Live Foods',
+    tags: ['Live Foods', 'Moina Culture', 'Baby Brine Shrimp', 'Fry Growth'],
     author: {
-      name: 'Pooja Varma',
-      role: 'Aquascape Designer',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      name: 'Rishan K.C.',
+      role: 'Master Line Breeder & Founder',
+      avatar: '/logo.jpeg',
     },
-    read_time_minutes: 5,
+    read_time_minutes: 8,
     is_published: true,
-    views_count: 980,
+    views_count: 3410,
     published_at: '2026-03-28T16:30:00Z',
     updated_at: '2026-04-01T10:00:00Z',
-    meta_title: 'Best Live Plants for Betta Fish Aquariums | Ra Guppy Guide',
-    meta_description: 'Anubias, Java Fern, and Amazon Swords: Learn which aquarium plants are best for Betta splendens tanks with low light and zero CO2.',
+    meta_title: 'Culturing Live Moina & Artemia for Guppy Fry | RA Guppy',
+    meta_description: 'Step-by-step hatchery setup for Moina macrocopa and decapsulated Artemia cysts. Accelerate juvenile guppy development safely.',
     content_html: `
-      <h2>Why Real Plants Beat Artificial Decor</h2>
-      <p>Plastic plants have sharp molding seams that easily shred delicate betta finnage. Real aquatic plants, on the other hand, produce oxygen, absorb toxic nitrates, and provide resting resting leaves near the water surface where bettas breathe atmospheric oxygen through their labyrinth organ.</p>
+      <h2>The Critical First 30 Days of Growth</h2>
+      <p>A guppy's final adult fin size and metallic coloration are fundamentally established in the first 30 days post-birth. Commercial micro-pellets provide basic calories, but only live micro-crustaceans trigger the aggressive hunting instinct and deliver un-denatured enzymes, astaxanthin, and polyunsaturated fatty acids.</p>
 
-      <h3>1. Anubias Barteri var. Nana</h3>
-      <p>The ultimate betta plant. Its broad, thick horizontal leaves serve as natural sleeping hammocks near the waterline. <em>Crucial Note:</em> Never bury the rhizome in gravel or substrate; attach it to driftwood or lava rock using aquarium-safe cyanoacrylate glue or cotton thread.</p>
+      <h3>1. Live Moina macrocopa: The Freshwater Miracle</h3>
+      <p>Moina is smaller than standard Daphnia magna (approx 0.5mm to 1.2mm), making it the perfect mouth-size for 3-day-old fry. Unlike brine shrimp, Moina survives indefinitely in freshwater without polluting the tank.</p>
+      <ul>
+        <li><strong>Culture Vessel:</strong> Clean 20-liter plastic tub placed under 12 hours of indirect ambient light.</li>
+        <li><strong>Food Source:</strong> Active baker's yeast solution or Chlorella greenwater fed lightly once daily.</li>
+        <li><strong>Harvesting:</strong> Sieve through 150-micron mesh and rinse with conditioned water before feeding.</li>
+      </ul>
 
-      <h3>2. Java Fern (Microsorum Pteropus)</h3>
-      <p>Virtually indestructible, Java Fern thrives in low-to-medium ambient light. Its ruffled upright foliage creates visual depth and shelter for resting bettas without demanding CO2 supplementation.</p>
-
-      <h3>3. Amazon Frogbit & Red Root Floaters</h3>
-      <p>Floating plants with dangling root systems replicate the natural rice-paddy environments of Southeast Asia. Bettas use floating root networks as anchor points for constructing bubble nests.</p>
+      <h3>2. Hatching High-Vigor Baby Brine Shrimp (Artemia Nauplii)</h3>
+      <p>Using cone hatchers with bubbling bottom aeration at 28°C and 25 ppt salinity (25g aquarium salt per liter), freshly hatched Artemia nauplii yield the highest digestible protein of any live feed. Feed within 6 hours of hatching while yolk sacs remain full.</p>
     `
   },
   {
     id: 'post-04',
-    slug: 'conditioning-betta-breeding-pairs',
-    title: 'Conditioning Trophy Betta Breeding Pairs: Live Feed, Temperature Cycles & Bubble Nesting',
-    excerpt: 'The professional breeder schedule for conditioning male and female Bettas. Learn live culture feeding regimes, barrier introduction protocols, and water chemistry triggers.',
-    featured_image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-    category: 'Breeding & Conditioning',
-    tags: ['Breeding', 'Live Food', 'Bubble Nest', 'Egg Conditioning'],
+    slug: 'planted-tanks-for-livebearers',
+    title: 'Planted Tanks for Livebearers: Guppy Grass, Duckweed & Foxtail Benefits',
+    excerpt: 'Natural bio-protection for guppy colonies. How fast-growing submerged and floating macrophytes strip dissolved nitrates, stabilize water, and safeguard newborn fry.',
+    featured_image: 'https://images.unsplash.com/photo-1520302630591-fd1c66edc19d?auto=format&fit=crop&w=1200&q=80',
+    category: 'Aquatic Plants & Aquascaping',
+    tags: ['Guppy Grass', 'Foxtail', 'Duckweed', 'Livebearer Biotope'],
     author: {
-      name: 'Dr. Anand Raman',
-      role: 'Chief Marine Biologist & Founder',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      name: 'Rishan K.C.',
+      role: 'Master Line Breeder & Founder',
+      avatar: '/logo.jpeg',
     },
-    read_time_minutes: 7,
+    read_time_minutes: 5,
     is_published: true,
-    views_count: 1750,
+    views_count: 2190,
     published_at: '2026-04-02T11:00:00Z',
     updated_at: '2026-04-04T12:00:00Z',
-    meta_title: 'How to Condition Betta Breeding Pairs | Professional Breeder Guide',
-    meta_description: 'Step-by-step master conditioning guide: live mosquito larvae feeding, Indian almond leaf conditioning, bubble nest triggers, and safe pair introduction.',
+    meta_title: 'Planted Tanks for Livebearers: Guppy Grass & Floating Plants | RA Guppy',
+    meta_description: 'Discover how Guppy Grass (Najas guadalupensis), Foxtail, and Duckweed create self-sustaining fry sanctuaries and absorb aquarium waste.',
     content_html: `
-      <h2>The 14-Day Conditioning Countdown</h2>
-      <p>Successful Betta breeding is 80% conditioning and 20% spawning mechanics. A female without mature egg clutches will fail to trigger the male, while an undernourished male will exhaust his energy reserves before the fry become free-swimming.</p>
+      <h2>The Nitrogen Sponge Strategy</h2>
+      <p>Guppy colonies reproduce continuously, placing steady demands on biological nitrogen assimilation. While canister and sponge filters convert toxic ammonia to nitrate, fast-growing floating and columnar aquatic plants absorb ammonium and nitrates directly from the water column, preventing algae blooms and organ stress.</p>
 
-      <h3>Dietary Energy: Live Foods Only</h3>
-      <p>During the two-week conditioning phase, suspend dry commercial pellets. Feed 3 to 4 micro-meals daily of:</p>
-      <ul>
-        <li>Freshly hatched Baby Brine Shrimp (Artemia nauplii) rich in unsaturated fatty acids.</li>
-        <li>Live cultured white worms or blackworms for high lipid content.</li>
-        <li>Frozen bloodworms supplemented with liquid marine multivitamins.</li>
-      </ul>
+      <h3>1. Guppy Grass (Najas guadalupensis)</h3>
+      <p>The definitive livebearer plant. It requires no substrate planting — it can float freely in midwater, branching out rapidly under modest LED lighting. Its delicate interlocking stems create infinite micro-territories that shelter newborn fry while hosting microscopic infusoria for first-stage feeding.</p>
 
-      <h3>The Chimney Barrier Technique</h3>
-      <p>Introduce the female inside a clear glass cylinder (the 'chimney') placed inside the male's shallow (15cm depth) breeding tank. The male will flare intensely, develop deep coloration, and begin constructing a foam bubble nest under floating styrofoam or almond leaves without physically harming the female.</p>
+      <h3>2. Foxtail / Hornwort (Ceratophyllum demersum)</h3>
+      <p>Densely arranged needle-whorls trap suspended particulates and release natural allelopathic compounds that suppress green water and hair algae. Foxtail is highly tolerant of moderate salt dosing (up to 3 tsp/gal).</p>
+
+      <h3>3. Duckweed (Lemna minor)</h3>
+      <p>A hyper-efficient surface macrophyte. Duckweed roots absorb heavy metals and excess phosphates while dimming intense light to reduce behavioral stress among mature breeding trios.</p>
+    `
+  },
+  {
+    id: 'post-05',
+    slug: 'express-courier-guppy-acclimation',
+    title: 'Express Courier Acclimation: Safe Drip Protocol for Live Shipments',
+    excerpt: 'Protect your investment upon delivery. Our proven multi-stage drip acclimation procedure to prevent osmotic shock and pH swing after courier transit.',
+    featured_image: 'https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=1200&q=80',
+    category: 'Acclimation & Fish Health',
+    tags: ['Acclimation', 'Live Arrival Guarantee', 'Drip Method', 'Transit Recovery'],
+    author: {
+      name: 'Rishan K.C.',
+      role: 'Master Line Breeder & Founder',
+      avatar: '/logo.jpeg',
+    },
+    read_time_minutes: 6,
+    is_published: true,
+    views_count: 2890,
+    published_at: '2026-04-05T10:00:00Z',
+    updated_at: '2026-04-08T14:00:00Z',
+    meta_title: 'Express Courier Live Guppy Drip Acclimation Guide | RA Guppy',
+    meta_description: 'Follow our step-by-step acclimation protocol for live fish shipments. Minimize transit stress, protect delicate finnage, and ensure 100% survival.',
+    content_html: `
+      <h2>The Critical 60 Minutes After Unboxing</h2>
+      <p>At RA Guppy, all consignments are packed in heavy-duty double polythene pouches pressurized with medical-grade 99.5% oxygen inside high-density insulated thermocol containers. During transit, carbon dioxide accumulates in the bag water, driving the pH down and rendering waste ammonia into non-toxic ammonium (NH4+).</p>
+
+      <p><strong>The Danger Window:</strong> Once you open the pouch, dissolved CO2 immediately escapes into the air, raising the pH. As pH rises above 7.0, non-toxic ammonium rapidly converts into toxic free ammonia (NH3). Fast, systematic acclimation is vital.</p>
+
+      <h3>Step 1: Thermal Float (20 Minutes)</h3>
+      <p>Float the unopened pouch in your quarantine or destination aquarium for 20 minutes to equalize water temperature gradually.</p>
+
+      <h3>Step 2: Drip Siphon Transition (30-40 Minutes)</h3>
+      <p>Gently pour the fish and transit water into a clean 5-liter bucket. Using airline tubing with a flow control regulator, initiate a drip from the main tank at <strong>2 to 4 drops per second</strong>. Allow the volume in the bucket to double, then discard half the water and drip-fill again.</p>
+
+      <h3>Step 3: Transfer Without Transit Water</h3>
+      <p>Using a soft nylon net, gently lift the guppies from the bucket and place them into the aquarium. <strong>Never pour courier transit water into your aquarium.</strong> Keep lighting dimmed for the initial 8 hours to minimize stress.</p>
+
+      <blockquote>
+        "Our 100% Live Arrival Guarantee ensures your fish reach you in prime vitality. Proper drip acclimation guarantees they flourish for years in your home aquarium." — Rishan K.C.
+      </blockquote>
     `
   }
 ];
@@ -1023,9 +1011,9 @@ export const INITIAL_BLOG_POSTS: BlogPost[] = [
 export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   {
     id: 'med-01',
-    filename: 'hero-halfmoon-specimen.jpg',
+    filename: 'hero-guppy-specimen.jpg',
     url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=85',
-    alt_text: 'Show-class Royal Blue Halfmoon Betta swimming in planted display aquarium',
+    alt_text: 'Show-class Pure Strain Guppy pair swimming in planted display aquarium',
     file_size_bytes: 342100,
     mime_type: 'image/jpeg',
     category: 'banner',
@@ -1033,9 +1021,9 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-02',
-    filename: 'bengaluru-facility-tanks.jpg',
+    filename: 'facility-breeding-tanks.jpg',
     url: 'https://images.unsplash.com/photo-1534043464124-3be32fe000c9?auto=format&fit=crop&w=1200&q=80',
-    alt_text: 'Indoor climate-controlled individual Betta barrack system in Bengaluru facility',
+    alt_text: 'Indoor climate-controlled pure strain Guppy breeding tank system in RA Guppy facility',
     file_size_bytes: 412800,
     mime_type: 'image/jpeg',
     category: 'breeder',
@@ -1043,9 +1031,9 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-03',
-    filename: 'galaxy-koi-plakat-detail.jpg',
+    filename: 'electric-blue-guppy-detail.jpg',
     url: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=80',
-    alt_text: 'Candy marbled Galaxy Koi Plakat Betta with cyan iridescent dragon scales',
+    alt_text: 'Electric Blue Pure Strain Guppy with intense cyan metallic iridescence',
     file_size_bytes: 289400,
     mime_type: 'image/jpeg',
     category: 'specimen',
@@ -1083,9 +1071,9 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-06',
-    filename: 'alien-green-wild-hybrid.jpg',
+    filename: 'green-platinum-guppy.jpg',
     url: 'https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=1200&q=80',
-    alt_text: 'Alien Green wild hybrid Betta with full-body emerald metallic sheen',
+    alt_text: 'Green Platinum pure strain show guppy with full-body emerald metallic sheen',
     file_size_bytes: 312500,
     mime_type: 'image/jpeg',
     category: 'specimen',
@@ -1093,10 +1081,10 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-07',
-    filename: 'royal-blue-halfmoon-swimming.mp4',
+    filename: 'royal-blue-guppy-swimming.mp4',
     url: 'https://assets.mixkit.co/videos/preview/mixkit-bright-red-betta-fish-swimming-41712-large.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
-    alt_text: 'High-definition 1080p swimming footage of Royal Blue Halfmoon Betta actively flaring in planted biotope',
+    alt_text: 'High-definition 1080p swimming footage of pure strain show guppy actively swimming in planted biotope',
     file_size_bytes: 14200000,
     mime_type: 'video/mp4',
     category: 'video',
@@ -1109,7 +1097,7 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
     filename: 'planted-aquarium-ambient-showcase.mp4',
     url: 'https://assets.mixkit.co/videos/preview/mixkit-colorful-betta-fish-in-an-aquarium-41713-large.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1520302630591-fd1c66edc19d?auto=format&fit=crop&w=1200&q=80',
-    alt_text: 'Ambient planted aquarium tank loop with gentle water flow and schooling rasboras',
+    alt_text: 'Ambient planted aquarium tank loop with gentle water flow and schooling fish',
     file_size_bytes: 21500000,
     mime_type: 'video/mp4',
     category: 'video',
@@ -1119,10 +1107,10 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-vid-01',
-    filename: 'betta-male-100.mp4',
-    url: '/videos/betta-male-100.mp4',
+    filename: 'guppy-strain-100.mp4',
+    url: '/videos/green-tail-100.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
-    alt_text: 'Active Male Fighter Betta Swimming Video',
+    alt_text: 'Active Pure Strain Show Guppy Swimming Video',
     file_size_bytes: 4706838,
     mime_type: 'video/mp4',
     category: 'video',
@@ -1131,10 +1119,10 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-vid-02',
-    filename: 'betta-250.mp4',
-    url: '/videos/betta-250.mp4',
+    filename: 'guppy-pair-250.mp4',
+    url: '/videos/guppy-pair-120.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1534043464124-3be32fe000c9?auto=format&fit=crop&w=800&q=80',
-    alt_text: 'Selected Crown & Plakat Betta Swimming Video',
+    alt_text: 'Selected Show Guppy Pair Swimming Video',
     file_size_bytes: 915905,
     mime_type: 'video/mp4',
     category: 'video',
@@ -1143,10 +1131,10 @@ export const INITIAL_MEDIA_ASSETS: MediaAsset[] = [
   },
   {
     id: 'med-vid-03',
-    filename: 'betta-350.mp4',
-    url: '/videos/betta-350.mp4',
+    filename: 'guppy-trio-350.mp4',
+    url: '/videos/guppy-800.mp4',
     thumbnail_url: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80',
-    alt_text: 'Show Halfmoon Flaring Demonstration',
+    alt_text: 'Show Guppy Trio Demonstration Video',
     file_size_bytes: 2446150,
     mime_type: 'video/mp4',
     category: 'video',

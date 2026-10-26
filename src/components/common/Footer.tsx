@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
   const whatsappDisplay = settings.whatsapp_number || settings.contact_phone || '+91 89211 90590';
   const whatsappClean = (settings.whatsapp_number || settings.contact_phone || '918921190590').replace(/\D/g, '');
   const supportEmail = settings.contact_email || 'raguppies00@gmail.com';
-  const tagline = settings.tagline || currentSettings.tagline || "Bengaluru’s trusted online fish store. We deliver healthy show Bettas, exotic guppies, and live plants safely across India.";
+  const tagline = settings.tagline || currentSettings.tagline || "India's trusted online live fish sanctuary. We deliver healthy pure strain guppies, live aquarium plants, and live food cultures safely across India.";
 
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -101,12 +101,12 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-sm font-bold text-white mb-3 font-display">Livestock</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/shop?cat=cat-betta" className="hover:text-white transition-colors">Halfmoon & Plakat Bettas</Link></li>
-              <li><Link to="/shop?cat=cat-guppy" className="hover:text-white transition-colors">Imported Guppy Pairs</Link></li>
-              <li><Link to="/shop?cat=cat-pairs" className="hover:text-white transition-colors">Breeding Pairs</Link></li>
+              <li><Link to="/shop?cat=cat-guppy" className="hover:text-white transition-colors">Pure Strain Guppies</Link></li>
+              <li><Link to="/shop?cat=cat-guppy" className="hover:text-white transition-colors">Imported Show Pairs</Link></li>
+              <li><Link to="/shop?cat=cat-pairs" className="hover:text-white transition-colors">Breeding Pairs & Trios</Link></li>
               <li><Link to="/shop?cat=cat-plants" className="hover:text-white transition-colors">Live Aquarium Plants</Link></li>
-              <li><Link to="/shop?cat=cat-food" className="hover:text-white transition-colors">Fish Food & Pellets</Link></li>
-              <li><Link to="/shop?cat=cat-accessories" className="hover:text-white transition-colors">Indian Almond Leaves</Link></li>
+              <li><Link to="/shop?cat=cat-food" className="hover:text-white transition-colors">Fish Food & Starter Cultures</Link></li>
+              <li><Link to="/shop?cat=cat-accessories" className="hover:text-white transition-colors">Water Conditioners & Supplies</Link></li>
             </ul>
           </div>
 
@@ -114,7 +114,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-sm font-bold text-white mb-3 font-display">Customer Support</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/blog" className="hover:text-white transition-colors font-semibold text-white">Care Guides & Research Journal</Link></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors font-semibold text-white">Care Guides & Breeding Journal</Link></li>
               <li><Link to="/page/shipping-acclimation" className="hover:text-white transition-colors">Acclimation & DOA Policy</Link></li>
               <li><Link to="/page/faq" className="hover:text-white transition-colors">Frequently Asked Questions</Link></li>
               <li><Link to="/account/orders" className="hover:text-white transition-colors">Track Consignment</Link></li>
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-sm font-bold text-white mb-2 font-display">Livestock Alerts</h4>
             <p className="text-xs text-slate-400 mb-3 font-normal">
-              Receive updates when new show-class Bettas and rare imports arrive.
+              Receive updates when new pure strain Guppy pairs, live plants, and starter cultures arrive.
             </p>
             <form onSubmit={handleSubscribe} className="space-y-2">
               <input

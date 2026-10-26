@@ -163,8 +163,8 @@ export const ShopPage: React.FC = () => {
       <SEO
         title={seoTitle}
         description={seoDescription}
-        canonical="https://bettaaquatics.in/shop"
-        keywords={['buy betta fish', 'show class bettas', 'halfmoon betta', 'guppy pairs', 'aquarium plants']}
+        canonical={typeof window !== 'undefined' ? `${window.location.origin}/shop` : 'https://raguppies.vercel.app/shop'}
+        keywords={['buy guppies online', 'pure strain guppies', 'guppy pairs', 'aquarium plants', 'live fish delivery']}
       />
 
       <div className="max-w-7xl mx-auto px-4">
@@ -420,7 +420,7 @@ export const ShopPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Betta Strains */}
+              {/* Guppy Strains */}
               {availableStrains.length > 0 && (
                 <div className="pt-4 border-t border-slate-100">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 font-mono">
@@ -492,7 +492,7 @@ export const ShopPage: React.FC = () => {
                 <Search className="w-12 h-12 text-slate-300 mx-auto mb-4" />
                 <h3 className="text-lg font-bold text-slate-800 mb-2">No Matching Specimens Right Now</h3>
                 <p className="text-xs sm:text-sm text-slate-500 max-w-sm mx-auto mb-6">
-                  Looking for a specific Betta strain or rare imported pair? Message our breeder on WhatsApp.
+                  Looking for a specific Guppy strain or rare imported pair? Message our breeder on WhatsApp.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                   <button

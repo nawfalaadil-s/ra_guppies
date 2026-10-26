@@ -8,11 +8,12 @@ import { formatDate } from '../lib/utils';
 
 const CATEGORIES: ('All' | BlogCategory)[] = [
   'All',
-  'Betta Care & Acclimation',
-  'Genetics & Strains',
-  'Breeding & Conditioning',
-  'Aquascaping & Plants',
-  'Fish Health & Nutrition',
+  'Guppy Care & Water Quality',
+  'Breeding & Genetics',
+  'Feeding & Live Foods',
+  'Aquatic Plants & Aquascaping',
+  'Acclimation & Fish Health',
+  'Aquarium Setup & Supplies',
 ];
 
 export const BlogPage: React.FC = () => {
@@ -67,10 +68,10 @@ export const BlogPage: React.FC = () => {
             <span>Aquatic Knowledge Base</span>
           </span>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 font-display tracking-tight leading-tight">
-            The Connoisseur's <span className="text-blue-900">Betta Journal</span>
+            The Connoisseur's <span className="text-blue-900">Guppy & Plant Journal</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 mt-3 leading-relaxed">
-            In-depth guides on acclimation, ray morphology, live feeding regimes, and natural biotopes. Authored by veteran breeders and biologists.
+            In-depth guides on mineral hardness, line breeding, live feeds, and planted biotope systems. Authored by veteran breeders.
           </p>
         </div>
 
@@ -83,10 +84,10 @@ export const BlogPage: React.FC = () => {
               <input
                 id="blog-search-input"
                 type="text"
-                aria-label="Search care guides, water chemistry, alien bettas"
+                aria-label="Search care guides, water chemistry, live foods"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search care guides, water chemistry, alien bettas..."
+                placeholder="Search care guides, water chemistry, live foods..."
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl pl-9 pr-3.5 py-2.5 text-xs text-slate-900 placeholder:text-slate-400 outline-none focus:border-blue-600 focus:bg-white transition-all"
               />
             </div>
@@ -284,7 +285,7 @@ export const BlogPage: React.FC = () => {
               Subscribe to Breeder Bulletins & Care Tips
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Get notified when new Alien Bettas, Halfmoon pairs, or acclimation scientific whitepapers are published. No spam, ever.
+              Get notified when new Pure Strain Guppy pairs, live plant guides, or breeding whitepapers are published. No spam, ever.
             </p>
 
             {subscribed ? (

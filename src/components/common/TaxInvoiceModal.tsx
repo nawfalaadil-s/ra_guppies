@@ -29,8 +29,13 @@ export const TaxInvoiceModal: React.FC<TaxInvoiceModalProps> = ({ order, isOpen,
 
   if (!isOpen || !order) return null;
 
-  const invoiceNumber = `INV-${order.order_number.replace('BA-', '')}`;
+  const invoiceNumber = `INV-${order.order_number.replace(/^BA-|^RG-/, '')}`;
   const invoiceDate = formatDate(order.payment_details?.verified_at || order.created_at);
+
+  const businessAddress = settings.business_address || 'Bengaluru, Karnataka, India';
+  const contactEmail = settings.contact_email || 'raguppies00@gmail.com';
+  const contactPhone = settings.whatsapp_number || settings.contact_phone || '+91 89211 90590';
+  const gstin = (settings as any).gstin || '';
 
   const handlePrint = () => {
     window.print();
@@ -87,9 +92,9 @@ export const TaxInvoiceModal: React.FC<TaxInvoiceModalProps> = ({ order, isOpen,
                 </h1>
               </div>
               <p className="text-[11px] text-slate-500 leading-snug">
-                Unit 402, 100ft Road, Indiranagar, Bengaluru, Karnataka, PIN: 560038<br />
-                <strong>GSTIN:</strong> 29AABCB1234F1Z5 &bull; <strong>State Code:</strong> 29 (Karnataka)<br />
-                <strong>Email:</strong> {settings.contact_email || 'orders@raguppy.com'} &bull; <strong>WhatsApp:</strong> {settings.whatsapp_number || settings.contact_phone || '+91 98450 12345'}
+                {businessAddress}<br />
+                {gstin && (<><strong>GSTIN:</strong> {gstin} &bull; </>)}
+                <strong>Email:</strong> {contactEmail} &bull; <strong>WhatsApp:</strong> {contactPhone}
               </p>
             </div>
 

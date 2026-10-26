@@ -36,7 +36,10 @@ import { AdminRoute } from './components/admin/AdminRoute';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
 import { AdminOrdersPage } from './pages/admin/AdminOrdersPage';
+import { AdminInvoicesPage } from './pages/admin/AdminInvoicesPage';
+import { AdminAccountingPage } from './pages/admin/AdminAccountingPage';
 import { AdminProductsPage } from './pages/admin/AdminProductsPage';
+import { AdminInventoryPage } from './pages/admin/AdminInventoryPage';
 import { AdminBulkProductsPage } from './pages/admin/AdminBulkProductsPage';
 import { AdminCategoriesPage } from './pages/admin/AdminCategoriesPage';
 import { AdminCMSPage } from './pages/admin/AdminCMSPage';
@@ -130,8 +133,15 @@ export const App: React.FC = () => {
                           <Route element={<AdminRoute requiredPermission="manage_orders" />}>
                             <Route path="orders" element={<AdminOrdersPage />} />
                           </Route>
+                          <Route element={<AdminRoute requiredPermission="manage_invoices" />}>
+                            <Route path="invoices" element={<AdminInvoicesPage />} />
+                          </Route>
+                          <Route element={<AdminRoute requiredPermission="manage_accounting" />}>
+                            <Route path="accounting" element={<AdminAccountingPage />} />
+                          </Route>
                           <Route element={<AdminRoute requiredPermission="manage_products" />}>
                             <Route path="products" element={<AdminProductsPage />} />
+                            <Route path="inventory" element={<AdminInventoryPage />} />
                             <Route path="bulk-products" element={<AdminBulkProductsPage />} />
                             <Route path="categories" element={<AdminCategoriesPage />} />
                           </Route>

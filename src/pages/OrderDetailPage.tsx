@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { 
   Package, Truck, ArrowLeft, Copy, ExternalLink, 
   CheckCircle2, Clock, AlertCircle, ShieldCheck, 
-  Upload, Check, Printer, FileText 
+  Upload, Check, Printer, FileText, MessageSquare 
 } from 'lucide-react';
 import { mockDb } from '../lib/mockDatabase';
 import { formatCurrency, formatDate } from '../lib/utils';
@@ -12,6 +12,11 @@ import { useAuth } from '../contexts/AuthContext';
 import { TaxInvoiceModal } from '../components/common/TaxInvoiceModal';
 import { SEO } from '../components/common/SEO';
 import { fetchOrdersFromSupabase } from '../lib/supabaseSync';
+import { 
+  generateOrderConfirmationMessage, 
+  generateTrackingMessage, 
+  dispatchWhatsAppHandoff 
+} from '../lib/whatsappService';
 
 export const OrderDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -172,6 +177,24 @@ export const OrderDetailPage: React.FC = () => {
             <span className="text-xs font-bold px-3 py-1 rounded-full border bg-blue-950 text-white border-blue-900">
               Fulfillment: {order.fulfillment_status.toUpperCase()}
             </span>
+            <button
+              onClick={() => {
+                const msg = order.shipment_details 
+                  ? generateTrackingMessage(order, order.shipment_details.tracking_number, order.shipment_details.courier_name)
+                  : generateOrderConfirmationMessage(order);
+                dispatchWhatsAppHandoff(order.shipping_address.phone, msg, {
+                  recipient: order.shipping_address.phone,
+                  eventType: order.shipment_details ? 'shipment_dispatched' : 'order_confirmed',
+                  orderId: order.id,
+                  metadata: { order_number: order.order_number }
+                });
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-sm"
+              title="Share or request update via WhatsApp"
+            >
+              <MessageSquare className="w-3.5 h-3.5" />
+              <span>WhatsApp Update</span>
+            </button>
             <button
               onClick={() => setIsInvoiceOpen(true)}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold transition-colors shadow-sm ml-auto sm:ml-0"

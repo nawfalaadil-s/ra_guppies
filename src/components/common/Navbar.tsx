@@ -152,7 +152,7 @@ export const Navbar: React.FC = () => {
               {firstWord} {restWords && <span className="text-red-600">{restWords}</span>}
             </span>
             <span className="block text-xs tracking-wide text-slate-600 font-medium">
-              {currentSettings.tagline || 'Pure Strain Guppies & Bettas'}
+              {currentSettings.tagline || 'Pure Strain Guppies & Aquatic Life'}
             </span>
           </div>
         </Link>
@@ -174,7 +174,7 @@ export const Navbar: React.FC = () => {
                 setIsSearchOpen(true);
               }}
               onFocus={() => setIsSearchOpen(true)}
-              placeholder="Search Bettas, Guppies, Live Plants, Tank Supplies..."
+              placeholder="Search Pure Strain Guppies, Live Plants, Starter Cultures..."
               className="flex-1 px-3 py-2 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none bg-transparent"
             />
 

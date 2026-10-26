@@ -46,7 +46,7 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
   const [statusValue, setStatusValue] = useState<ProductStatus>('published');
 
   // Category & Subcategory
-  const [selectedCatId, setSelectedCatId] = useState<string>(rootCategories[0]?.id || 'cat-betta');
+  const [selectedCatId, setSelectedCatId] = useState<string>(rootCategories[0]?.id || 'cat-guppy');
   const [selectedSubcatId, setSelectedSubcatId] = useState<string>('');
 
   // Tags
@@ -89,7 +89,7 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
           field: 'price',
           operation: priceOp,
           value: val,
-        }, user?.email || 'admin@bettaaquatics.in');
+        }, user?.email || 'raguppies00@gmail.com');
         showToast(`Updated selling price on ${selectedProductIds.length} products`, 'success');
       } else if (field === 'compare_at_price') {
         if (compareOp === 'clear') {
@@ -97,7 +97,7 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
             field: 'compare_at_price',
             operation: 'set',
             value: undefined,
-          }, user?.email || 'admin@bettaaquatics.in');
+          }, user?.email || 'raguppies00@gmail.com');
           showToast(`Cleared compare price on ${selectedProductIds.length} products`, 'success');
         } else {
           const val = Number(compareValue);
@@ -109,7 +109,7 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
             field: 'compare_at_price',
             operation: compareOp,
             value: val,
-          }, user?.email || 'admin@bettaaquatics.in');
+          }, user?.email || 'raguppies00@gmail.com');
           showToast(`Updated compare price on ${selectedProductIds.length} products`, 'success');
         }
       } else if (field === 'stock_quantity') {
@@ -122,14 +122,14 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
           field: 'stock_quantity',
           operation: stockOp,
           value: val,
-        }, user?.email || 'admin@bettaaquatics.in');
+        }, user?.email || 'raguppies00@gmail.com');
         showToast(`Updated stock quantity on ${selectedProductIds.length} products`, 'success');
       } else if (field === 'status') {
         applyBulkEdit(selectedProductIds, {
           field: 'status',
           operation: 'set',
           value: statusValue,
-        }, user?.email || 'admin@bettaaquatics.in');
+        }, user?.email || 'raguppies00@gmail.com');
         showToast(`Updated publishing status to "${statusValue}" on ${selectedProductIds.length} products`, 'success');
       } else if (field === 'category') {
         const cat = categories.find(c => c.id === selectedCatId);
@@ -138,14 +138,14 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
           field: 'category_id',
           operation: 'set',
           value: selectedCatId,
-        }, user?.email || 'admin@bettaaquatics.in');
+        }, user?.email || 'raguppies00@gmail.com');
 
         if (selectedSubcatId) {
           applyBulkEdit(selectedProductIds, {
             field: 'subcategory_id',
             operation: 'set',
             value: selectedSubcatId,
-          }, user?.email || 'admin@bettaaquatics.in');
+          }, user?.email || 'raguppies00@gmail.com');
         }
         showToast(`Assigned ${cat?.name || 'Category'} to ${selectedProductIds.length} products`, 'success');
       } else if (field === 'tags') {
@@ -157,14 +157,14 @@ export const BulkEditModal: React.FC<BulkEditModalProps> = ({
           field: 'tags',
           operation: tagOp,
           value: tagValue,
-        }, user?.email || 'admin@bettaaquatics.in');
+        }, user?.email || 'raguppies00@gmail.com');
         showToast(`Updated tags on ${selectedProductIds.length} products`, 'success');
       } else if (field === 'featured') {
         applyBulkEdit(selectedProductIds, {
           field: 'is_featured',
           operation: 'set',
           value: featuredValue,
-        }, user?.email || 'admin@bettaaquatics.in');
+        }, user?.email || 'raguppies00@gmail.com');
         showToast(`Updated spotlight featured status on ${selectedProductIds.length} products`, 'success');
       }
 

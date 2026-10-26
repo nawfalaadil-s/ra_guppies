@@ -170,7 +170,7 @@ export const OrdersPage: React.FC = () => {
             <h2 className="text-base font-bold text-slate-800 mb-1">No Orders Found</h2>
             <p className="text-xs text-slate-500 mb-6">You have no consignments matching this filter status.</p>
             <Link to="/catalogue" className="px-5 py-2.5 bg-blue-900 hover:bg-blue-800 text-white rounded-xl text-xs font-bold transition-colors">
-              Shop Bettas & Guppies
+              Shop Pure Strain Guppies
             </Link>
           </div>
         ) : (

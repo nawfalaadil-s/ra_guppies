@@ -1,7 +1,7 @@
 import { 
   Product, Category, Order, StoreSettings, HomepageSection, 
   CMSPage, ProductReview, Coupon, AdminAuditLog, PaymentStatus, FulfillmentStatus, BlogPost, MediaAsset, UserProfile, UserRole,
-  ImportHistoryItem, BrandingSettings
+  ImportHistoryItem, BrandingSettings, Invoice, PaymentReceipt, Expense, StockMovement, StockMovementType, NotificationLog
 } from './types';
 import { 
   INITIAL_PRODUCTS, INITIAL_CATEGORIES, INITIAL_STORE_SETTINGS, 
@@ -27,6 +27,11 @@ const STORAGE_KEYS = {
   USERS: 'ba_users',
   IMPORT_HISTORY: 'ba_import_history',
   BRANDING_SETTINGS: 'ba_branding_settings',
+  INVOICES: 'rg_invoices',
+  RECEIPTS: 'rg_receipts',
+  EXPENSES: 'rg_expenses',
+  STOCK_MOVEMENTS: 'rg_stock_movements',
+  NOTIFICATION_LOGS: 'rg_notification_logs',
 };
 
 // Helper to safely read from localStorage
@@ -62,15 +67,6 @@ export interface StoredUser {
 
 const INITIAL_USERS: StoredUser[] = [
   {
-    id: 'usr-admin-primary',
-    email: 'admin@bettaaquatics.in',
-    full_name: 'Aathil (Store Admin)',
-    phone: '+91 98765 43210',
-    role: 'admin',
-    password_hash: 'Admin@123',
-    created_at: '2026-01-01T00:00:00Z',
-  },
-  {
     id: 'usr-admin-raguppies00',
     email: 'raguppies00@gmail.com',
     full_name: 'Ra Guppy Primary Admin',
@@ -99,7 +95,7 @@ const INITIAL_USERS: StoredUser[] = [
   },
   {
     id: 'usr-staff-products',
-    email: 'products@bettaaquatics.in',
+    email: 'products@raguppy.in',
     full_name: 'Priya Sharma (Product Manager)',
     phone: '+91 98765 11111',
     role: 'product_manager',
@@ -108,7 +104,7 @@ const INITIAL_USERS: StoredUser[] = [
   },
   {
     id: 'usr-staff-orders',
-    email: 'orders@bettaaquatics.in',
+    email: 'orders@raguppy.in',
     full_name: 'Vikram Rao (Order & Logistics Manager)',
     phone: '+91 98765 22222',
     role: 'order_manager',
@@ -117,7 +113,7 @@ const INITIAL_USERS: StoredUser[] = [
   },
   {
     id: 'usr-staff-reviewer',
-    email: 'reviewer@bettaaquatics.in',
+    email: 'reviewer@raguppy.in',
     full_name: 'Suresh Nair (Payment Reviewer)',
     phone: '+91 98765 33333',
     role: 'payment_reviewer',
@@ -126,7 +122,7 @@ const INITIAL_USERS: StoredUser[] = [
   },
   {
     id: 'usr-staff-content',
-    email: 'content@bettaaquatics.in',
+    email: 'content@raguppy.in',
     full_name: 'Ananya Das (CMS & Content Specialist)',
     phone: '+91 98765 44444',
     role: 'content_manager',
@@ -144,7 +140,7 @@ const INITIAL_USERS: StoredUser[] = [
   },
   {
     id: 'usr-customer-demo',
-    email: 'customer@bettaaquatics.in',
+    email: 'customer@raguppy.in',
     full_name: 'Rahul Sharma',
     phone: '+91 98450 12345',
     role: 'customer',
@@ -157,10 +153,10 @@ const INITIAL_USERS: StoredUser[] = [
 const INITIAL_ORDERS: Order[] = [
   {
     id: 'ord-1001',
-    order_number: 'BA-2026-8812',
+    order_number: 'RG-2026-8812',
     user_id: 'usr-customer-demo',
     customer_name: 'Rahul Sharma',
-    customer_email: 'customer@bettaaquatics.in',
+    customer_email: 'customer@raguppy.in',
     customer_phone: '+91 98450 12345',
     shipping_address: {
       id: 'addr-01',
@@ -176,21 +172,21 @@ const INITIAL_ORDERS: Order[] = [
     items: [
       {
         id: 'item-01',
-        product_id: 'prod-001',
-        product_name: 'Royal Blue Halfmoon Betta (Show Class Male)',
-        product_sku: 'BA-HM-001',
-        product_image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
-        unit_price: 1499,
+        product_id: 'e5a60024-4911-4373-84d2-440993672137',
+        product_name: 'Albino Full Red (AFR) Flower Dorsal Guppy (Breeding Pair)',
+        product_sku: 'RG-AFR-400',
+        product_image: '/product_image/afr-flower-dorsal-400.jpeg',
+        unit_price: 400,
         quantity: 1,
-        total_price: 1499,
+        total_price: 400,
       }
     ],
-    subtotal: 1499,
-    delivery_fee: 199,
-    packing_charge: 149,
-    discount_amount: 150,
-    coupon_code: 'AQUA10',
-    total_amount: 1697,
+    subtotal: 400,
+    delivery_fee: 80,
+    packing_charge: 0,
+    discount_amount: 0,
+    coupon_code: undefined,
+    total_amount: 480,
     payment_status: 'verified',
     fulfillment_status: 'shipped',
     payment_details: {
@@ -274,24 +270,24 @@ export const mockDb = {
         id: product.id || 'prod-' + Date.now(),
         name: product.name,
         slug: product.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-        sku: product.sku || 'BA-' + Math.floor(1000 + Math.random() * 9000),
+        sku: product.sku || 'RG-' + Math.floor(1000 + Math.random() * 9000),
         description: product.description || '',
         short_description: product.short_description || '',
         price: Number(product.price),
         compare_at_price: product.compare_at_price ? Number(product.compare_at_price) : undefined,
-        category_id: product.category_id || 'cat-betta',
-        category_name: product.category_name,
+        category_id: product.category_id || '9ebb7d17-8998-46b7-8e97-46a0812f7a80',
+        category_name: product.category_name || 'Guppies & Livebearers',
         stock_quantity: Number(product.stock_quantity ?? 1),
         is_unique_specimen: Boolean(product.is_unique_specimen),
         is_featured: Boolean(product.is_featured),
         is_active: product.is_active !== undefined ? product.is_active : true,
-        strain: product.strain || 'Halfmoon',
-        gender: product.gender || 'Male',
+        strain: product.strain || 'Pure Strain Guppy',
+        gender: product.gender || 'Breeding Pair',
         size: product.size || '3.5 - 4.5 cm',
         water_type: product.water_type || 'Freshwater (Tropical)',
         temperature_range: product.temperature_range || '24°C - 28°C',
-        ph_range: product.ph_range || '6.5 - 7.5',
-        care_level: product.care_level || 'Moderate',
+        ph_range: product.ph_range || '7.0 - 8.0',
+        care_level: product.care_level || 'Easy',
         diet: product.diet || 'High-protein pellets & frozen worms',
         shipping_restriction: product.shipping_restriction,
         images: product.images && product.images.length > 0 
@@ -423,7 +419,7 @@ export const mockDb = {
         cats = JSON.parse(raw);
         // If localStorage has old template category IDs or legacy unsplash images, upgrade to INITIAL_CATEGORIES
         let upgraded = false;
-        if (cats.some(c => c.id === 'cat-betta' || c.id === 'cat-sub-halfmoon')) {
+        if (cats.some(c => c.id === 'cat-betta' || c.id === 'cat-sub-halfmoon' || c.name === 'Betta Fish')) {
           cats = INITIAL_CATEGORIES.filter(c => !deletedIds.has(c.id));
           upgraded = true;
         } else {
@@ -878,8 +874,8 @@ export const mockDb = {
       needsSave = true;
     }
 
-    if (!migrated.site_name || migrated.site_name === 'Betta Aquatics') {
-      migrated.site_name = 'Ra Guppy';
+    if (!migrated.site_name || migrated.site_name === 'Betta Aquatics' || migrated.site_name === 'Ra Guppy') {
+      migrated.site_name = 'RA Guppy';
       needsSave = true;
     }
 
@@ -1188,12 +1184,12 @@ export const mockDb = {
     return getStoredItem<AdminAuditLog[]>(STORAGE_KEYS.AUDIT_LOGS, [
       {
         id: 'log-01',
-        admin_id: 'admin-primary',
-        admin_email: 'admin@bettaaquatics.in',
+        admin_id: 'admin-raguppies00',
+        admin_email: 'raguppies00@gmail.com',
         action: 'System Initialized',
         entity_type: 'system',
         entity_id: 'init',
-        details: 'Store database loaded with high-grade Betta specimen inventory.',
+        details: 'Store database loaded with pure strain RA Guppy specimen inventory.',
         created_at: new Date(Date.now() - 3600000).toISOString(),
       }
     ]);
@@ -1203,8 +1199,8 @@ export const mockDb = {
     const logs = mockDb.getAuditLogs();
     const newLog: AdminAuditLog = {
       id: 'log-' + Date.now(),
-      admin_id: 'admin-primary',
-      admin_email: 'admin@bettaaquatics.in',
+      admin_id: 'admin-raguppies00',
+      admin_email: 'raguppies00@gmail.com',
       action,
       entity_type: entityType,
       entity_id: entityId,
@@ -1256,12 +1252,12 @@ export const mockDb = {
       excerpt: postData.excerpt || '',
       content_html: postData.content_html || '',
       featured_image: postData.featured_image || 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
-      category: postData.category || 'Betta Care & Acclimation',
-      tags: postData.tags || ['Betta Care'],
+      category: postData.category || 'Guppy Care & Water Quality',
+      tags: postData.tags || ['Guppy Care', 'Water Quality'],
       author: postData.author || {
-        name: 'Dr. Anand Raman',
-        role: 'Chief Marine Biologist & Founder',
-        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+        name: 'Rishan K.C.',
+        role: 'Master Line Breeder & Founder',
+        avatar: '/logo.jpeg',
       },
       read_time_minutes: postData.read_time_minutes || 5,
       is_published: postData.is_published ?? true,
@@ -1529,5 +1525,209 @@ export const mockDb = {
       success: true, 
       message: 'If an account exists with this email address, password reset instructions have been dispatched.' 
     };
+  },
+
+  // -------------------------------------------------------------
+  // INVOICES & BILLING
+  // -------------------------------------------------------------
+  getInvoices: (): Invoice[] => {
+    return getStoredItem<Invoice[]>(STORAGE_KEYS.INVOICES, []);
+  },
+
+  getInvoiceById: (id: string): Invoice | undefined => {
+    return mockDb.getInvoices().find(inv => inv.id === id || inv.invoice_number === id);
+  },
+
+  getInvoiceByOrder: (orderIdOrNumber: string): Invoice | undefined => {
+    return mockDb.getInvoices().find(inv => inv.order_id === orderIdOrNumber || inv.invoice_number.includes(orderIdOrNumber));
+  },
+
+  saveInvoice: (invoiceData: Partial<Invoice>): Invoice => {
+    const invoices = mockDb.getInvoices();
+    const id = invoiceData.id || `inv-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+    const invoiceNumber = invoiceData.invoice_number || `INV-RG-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    const existingIndex = invoices.findIndex(i => i.id === id || i.invoice_number === invoiceNumber);
+    const updated: Invoice = {
+      id,
+      invoice_number: invoiceNumber,
+      order_id: invoiceData.order_id,
+      customer_name: invoiceData.customer_name || 'Customer',
+      customer_email: invoiceData.customer_email || '',
+      customer_phone: invoiceData.customer_phone || '',
+      billing_address: invoiceData.billing_address || {},
+      items: invoiceData.items || [],
+      subtotal: Number(invoiceData.subtotal || 0),
+      shipping_charge: Number(invoiceData.shipping_charge || 0),
+      packing_charge: Number(invoiceData.packing_charge || 0),
+      discount_amount: Number(invoiceData.discount_amount || 0),
+      tax_amount: Number(invoiceData.tax_amount || 0),
+      total_amount: Number(invoiceData.total_amount || 0),
+      amount_paid: Number(invoiceData.amount_paid || 0),
+      balance_due: Number(invoiceData.balance_due ?? Math.max(0, Number(invoiceData.total_amount || 0) - Number(invoiceData.amount_paid || 0))),
+      status: invoiceData.status || (Number(invoiceData.amount_paid || 0) >= Number(invoiceData.total_amount || 0) && Number(invoiceData.total_amount || 0) > 0 ? 'paid' : 'issued'),
+      notes: invoiceData.notes || '',
+      issued_at: invoiceData.issued_at || new Date().toISOString(),
+      created_at: invoiceData.created_at || new Date().toISOString(),
+    };
+
+    if (existingIndex >= 0) {
+      invoices[existingIndex] = updated;
+    } else {
+      invoices.unshift(updated);
+    }
+
+    setStoredItem(STORAGE_KEYS.INVOICES, invoices);
+    return updated;
+  },
+
+  deleteInvoice: (id: string): boolean => {
+    const invoices = mockDb.getInvoices().filter(i => i.id !== id && i.invoice_number !== id);
+    setStoredItem(STORAGE_KEYS.INVOICES, invoices);
+    return true;
+  },
+
+  // -------------------------------------------------------------
+  // PAYMENT RECEIPTS
+  // -------------------------------------------------------------
+  getReceipts: (): PaymentReceipt[] => {
+    return getStoredItem<PaymentReceipt[]>(STORAGE_KEYS.RECEIPTS, []);
+  },
+
+  saveReceipt: (receiptData: Partial<PaymentReceipt>): PaymentReceipt => {
+    const receipts = mockDb.getReceipts();
+    const id = receiptData.id || `rec-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+    const receiptNumber = receiptData.receipt_number || `REC-RG-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+
+    const existingIndex = receipts.findIndex(r => r.id === id || r.receipt_number === receiptNumber);
+    const updated: PaymentReceipt = {
+      id,
+      receipt_number: receiptNumber,
+      invoice_id: receiptData.invoice_id,
+      order_id: receiptData.order_id,
+      amount_received: Number(receiptData.amount_received || 0),
+      payment_method: receiptData.payment_method || 'UPI Transfer',
+      transaction_reference: receiptData.transaction_reference || '',
+      payment_date: receiptData.payment_date || new Date().toISOString(),
+      notes: receiptData.notes || '',
+      created_at: receiptData.created_at || new Date().toISOString(),
+    };
+
+    if (existingIndex >= 0) {
+      receipts[existingIndex] = updated;
+    } else {
+      receipts.unshift(updated);
+    }
+
+    setStoredItem(STORAGE_KEYS.RECEIPTS, receipts);
+    return updated;
+  },
+
+  // -------------------------------------------------------------
+  // EXPENSES & ACCOUNTING LEDGER
+  // -------------------------------------------------------------
+  getExpenses: (): Expense[] => {
+    return getStoredItem<Expense[]>(STORAGE_KEYS.EXPENSES, []);
+  },
+
+  saveExpense: (expenseData: Partial<Expense>): Expense => {
+    const expenses = mockDb.getExpenses();
+    const id = expenseData.id || `exp-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+    const existingIndex = expenses.findIndex(e => e.id === id);
+
+    const updated: Expense = {
+      id,
+      category: expenseData.category || 'General & Admin',
+      payee_vendor: expenseData.payee_vendor || 'Local Vendor',
+      amount: Number(expenseData.amount || 0),
+      expense_date: expenseData.expense_date || new Date().toISOString().split('T')[0],
+      description: expenseData.description || '',
+      receipt_url: expenseData.receipt_url || undefined,
+      created_by: expenseData.created_by || 'raguppies00@gmail.com',
+      created_at: expenseData.created_at || new Date().toISOString(),
+    };
+
+    if (existingIndex >= 0) {
+      expenses[existingIndex] = updated;
+    } else {
+      expenses.unshift(updated);
+    }
+
+    setStoredItem(STORAGE_KEYS.EXPENSES, expenses);
+    return updated;
+  },
+
+  deleteExpense: (id: string): boolean => {
+    const expenses = mockDb.getExpenses().filter(e => e.id !== id);
+    setStoredItem(STORAGE_KEYS.EXPENSES, expenses);
+    return true;
+  },
+
+  // -------------------------------------------------------------
+  // STOCK MOVEMENTS & INVENTORY AUDIT
+  // -------------------------------------------------------------
+  getStockMovements: (): StockMovement[] => {
+    return getStoredItem<StockMovement[]>(STORAGE_KEYS.STOCK_MOVEMENTS, []);
+  },
+
+  adjustProductStock: (
+    productId: string, 
+    quantityDelta: number, 
+    movementType: StockMovementType, 
+    notes?: string, 
+    orderId?: string
+  ): { success: boolean; product: Product | null; movement: StockMovement | null } => {
+    const products = mockDb.getProducts();
+    const product = products.find(p => p.id === productId);
+    if (!product) {
+      return { success: false, product: null, movement: null };
+    }
+
+    const previousStock = product.stock_quantity;
+    const newStock = Math.max(0, previousStock + quantityDelta);
+    product.stock_quantity = newStock;
+    if (newStock <= 0) {
+      product.status = 'out_of_stock';
+    } else if (product.status === 'out_of_stock') {
+      product.status = 'published';
+    }
+    mockDb.saveProduct(product);
+
+    const movement: StockMovement = {
+      id: `mov-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      product_id: productId,
+      movement_type: movementType,
+      quantity_delta: quantityDelta,
+      previous_stock: previousStock,
+      new_stock: newStock,
+      order_id: orderId,
+      notes: notes || `Stock updated via ${movementType}`,
+      created_at: new Date().toISOString(),
+    };
+
+    const movements = mockDb.getStockMovements();
+    movements.unshift(movement);
+    setStoredItem(STORAGE_KEYS.STOCK_MOVEMENTS, movements.slice(0, 500));
+
+    return { success: true, product, movement };
+  },
+
+  // -------------------------------------------------------------
+  // NOTIFICATION LOGS (WHATSAPP, EMAIL, SMS)
+  // -------------------------------------------------------------
+  getNotificationLogs: (): NotificationLog[] => {
+    return getStoredItem<NotificationLog[]>(STORAGE_KEYS.NOTIFICATION_LOGS, []);
+  },
+
+  logNotification: (logData: Omit<NotificationLog, 'id' | 'created_at'>): NotificationLog => {
+    const logs = mockDb.getNotificationLogs();
+    const newLog: NotificationLog = {
+      ...logData,
+      id: `notif-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      created_at: new Date().toISOString(),
+    };
+    logs.unshift(newLog);
+    setStoredItem(STORAGE_KEYS.NOTIFICATION_LOGS, logs.slice(0, 200));
+    return newLog;
   }
 };

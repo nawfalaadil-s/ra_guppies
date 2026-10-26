@@ -9,9 +9,9 @@ interface HeroCarouselProps {
 
 export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
   const config = section?.config || {};
-  const badge = config.badge || config.badge_text || 'Bangalore Quarantine Facility • Pan-India Delivery';
-  const title = section?.title || 'Hand-Raised Bettas & Ornamental Fish, Delivered Safely to Your Door.';
-  const subtitle = section?.subtitle || 'You get the exact fish shown in our photos. Each Betta is raised in clean planted tanks and shipped safely overnight in warm oxygen bags.';
+  const badge = config.badge || config.badge_text || 'RA Guppy Breeding Facility • 100% Live Arrival Guarantee';
+  const title = section?.title || 'Hand-Conditioned Pure Strain Guppies, Delivered Safely to Your Door.';
+  const subtitle = section?.subtitle || 'You get healthy, high-grade pure strain show guppy pairs. Raised in mineralized planted systems and shipped safely in pressurized oxygen packaging.';
   const ctaPrimary = config.ctaPrimary || config.cta_text || 'Explore Rare Strains';
   const ctaPrimaryLink = config.ctaPrimaryLink || config.cta_link || '/shop';
   const ctaSecondary = config.ctaSecondary || config.secondary_cta_text || 'Live Stock Video';
@@ -141,11 +141,11 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
                     WYSIWYG Specimen
                   </span>
                   <span className="font-bold text-xs text-slate-900 block truncate">
-                    Royal Blue Halfmoon Betta
+                    Electric Blue Pure Strain Pair
                   </span>
                 </div>
                 <Link
-                  to="/product/royal-blue-halfmoon-betta"
+                  to="/product/electric-blue-guppy-pair"
                   className="btn-accent"
                 >
                   View

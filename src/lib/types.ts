@@ -66,12 +66,12 @@ export interface Product {
   subcategory_id?: string;
   subcategory_name?: string;
   stock_quantity: number;
-  is_unique_specimen: boolean; // True for 1-of-a-kind exact betta fish
+  is_unique_specimen: boolean; // True for 1-of-a-kind exact specimen / show fish
   is_featured: boolean;
   is_active: boolean;
   status?: ProductStatus;
   weight?: number; // In grams
-  strain?: string; // e.g. "Halfmoon", "Crowntail", "Plakat", "Koi Galaxy"
+  strain?: string; // e.g. "Electric Blue", "Albino Full Red", "Tiger Halfmoon"
   gender?: FishGender;
   size?: string;
   water_type?: string;
@@ -228,6 +228,8 @@ export interface Order {
 export interface StoreSettings {
   brand_name: string;
   tagline: string;
+  business_address?: string;
+  gstin?: string;
   contact_email: string;
   contact_phone: string;
   whatsapp_number: string;
@@ -363,11 +365,12 @@ export interface AdminAuditLog {
 }
 
 export type BlogCategory = 
-  | 'Betta Care & Acclimation'
-  | 'Genetics & Strains'
-  | 'Breeding & Conditioning'
-  | 'Aquascaping & Plants'
-  | 'Fish Health & Nutrition';
+  | 'Guppy Care & Water Quality'
+  | 'Breeding & Genetics'
+  | 'Feeding & Live Foods'
+  | 'Aquatic Plants & Aquascaping'
+  | 'Acclimation & Fish Health'
+  | 'Aquarium Setup & Supplies';
 
 export interface BlogPost {
   id: string;
@@ -390,4 +393,112 @@ export interface BlogPost {
   updated_at: string;
   meta_title?: string;
   meta_description?: string;
+}
+
+// -------------------------------------------------------------
+// ACCOUNTING, BILLING & FINANCIAL REPORTING TYPES
+// -------------------------------------------------------------
+
+export interface InvoiceItem {
+  product_id?: string;
+  product_name: string;
+  product_sku?: string;
+  unit_price: number;
+  quantity: number;
+  total_price: number;
+}
+
+export interface Invoice {
+  id: string;
+  invoice_number: string;
+  order_id?: string;
+  customer_name: string;
+  customer_email: string;
+  customer_phone?: string;
+  billing_address: any;
+  items: InvoiceItem[];
+  subtotal: number;
+  shipping_charge: number;
+  packing_charge: number;
+  discount_amount: number;
+  tax_amount: number;
+  total_amount: number;
+  amount_paid: number;
+  balance_due: number;
+  status: 'draft' | 'issued' | 'paid' | 'cancelled';
+  notes?: string;
+  issued_at: string;
+  created_at?: string;
+}
+
+export interface PaymentReceipt {
+  id: string;
+  receipt_number: string;
+  invoice_id?: string;
+  order_id?: string;
+  amount_received: number;
+  payment_method: string;
+  transaction_reference?: string;
+  payment_date: string;
+  notes?: string;
+  created_at?: string;
+}
+
+export type ExpenseCategory = 
+  | 'Feed & Live Foods'
+  | 'Packaging & Oxygen Supplies'
+  | 'Breeding Tanks & Equipment'
+  | 'Electricity & Utilities'
+  | 'Farm Logistics & Delivery'
+  | 'Medications & Water Conditioners'
+  | 'Marketing & Promotion'
+  | 'General & Admin';
+
+export interface Expense {
+  id: string;
+  category: ExpenseCategory;
+  payee_vendor: string;
+  amount: number;
+  expense_date: string;
+  description: string;
+  receipt_url?: string;
+  created_by: string;
+  created_at?: string;
+}
+
+export type StockMovementType = 'purchase' | 'sale' | 'adjustment' | 'cancellation' | 'reservation';
+
+export interface StockMovement {
+  id: string;
+  product_id: string;
+  movement_type: StockMovementType;
+  quantity_delta: number;
+  previous_stock: number;
+  new_stock: number;
+  order_id?: string;
+  notes?: string;
+  created_at: string;
+}
+
+export type NotificationChannel = 'whatsapp' | 'email' | 'sms';
+export type NotificationEventType = 
+  | 'order_confirmation' 
+  | 'order_confirmed'
+  | 'invoice' 
+  | 'payment_receipt' 
+  | 'order_status' 
+  | 'tracking'
+  | 'shipment_dispatched';
+export type NotificationStatus = 'delivered' | 'sent' | 'failed' | 'handoff_opened';
+
+export interface NotificationLog {
+  id: string;
+  channel: NotificationChannel;
+  recipient: string;
+  event_type: NotificationEventType;
+  order_id?: string;
+  message_preview: string;
+  status: NotificationStatus;
+  metadata?: Record<string, any>;
+  created_at: string;
 }

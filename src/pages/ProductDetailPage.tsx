@@ -89,7 +89,7 @@ export const ProductDetailPage: React.FC = () => {
         <h2 className="text-xl font-bold text-slate-800 mb-2">Specimen Not Found</h2>
         <p className="text-sm text-slate-500 mb-6">This unique fish has either been adopted or moved to a breeding project.</p>
         <Link to="/shop" className="px-5 py-2.5 bg-blue-900 hover:bg-blue-800 text-white rounded-xl text-xs font-bold transition-colors">
-          Explore Available Bettas
+          Explore Available Guppy Strains
         </Link>
       </div>
     );
@@ -205,16 +205,16 @@ export const ProductDetailPage: React.FC = () => {
       <SEO
         title={product.name}
         description={product.short_description || product.description}
-        canonical={`https://bettaaquatics.in/product/${product.slug}`}
+        canonical={typeof window !== 'undefined' ? `${window.location.origin}/product/${product.slug}` : `https://raguppies.vercel.app/product/${product.slug}`}
         ogImage={product.images[0]}
         ogType="product"
         jsonLd={productSchema}
         keywords={[
           product.name.toLowerCase(),
-          product.strain?.toLowerCase() || 'betta fish',
-          'buy betta fish india',
+          product.strain?.toLowerCase() || 'guppy fish',
+          'buy guppy pairs india',
           'live ornamental fish',
-          'betta splendens show class'
+          'pure strain guppies'
         ]}
       />
 
@@ -760,7 +760,7 @@ export const ProductDetailPage: React.FC = () => {
                 <br />
                 2. Add 1/4 cup of aquarium water every 5 minutes for 20 minutes.
                 <br />
-                3. Gently net your Betta into his new home. Do not dump the transit bag water.
+                3. Gently net your fish into their new home. Do not dump the courier bag water.
               </p>
               <div className="p-3 bg-blue-50 rounded-2xl border border-blue-200 text-blue-900 text-xs">
                 <strong>100% Live Arrival Guarantee:</strong> If anything happens in transit, simply record a 30-second video of the unopened shipping bag within 2 hours of delivery for an instant replacement or refund.

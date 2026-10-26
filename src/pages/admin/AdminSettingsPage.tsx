@@ -194,7 +194,7 @@ export const AdminSettingsPage: React.FC = () => {
                 name="announcement_link"
                 value={form.announcement_link || ''}
                 onChange={handleChange}
-                placeholder="/shop?cat=cat-betta"
+                placeholder="/shop?cat=guppies"
                 className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
               />
             </div>

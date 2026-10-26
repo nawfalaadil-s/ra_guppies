@@ -1,4 +1,4 @@
-// BETTA AQUATICS: SECURE MEDIA UPLOAD & STORAGE ENGINE
+// RA GUPPY: SECURE MEDIA UPLOAD & STORAGE ENGINE
 // Handles image & video validation, client-side thumbnail generation,
 // metadata extraction, Supabase Storage integration, and local persistence.
 

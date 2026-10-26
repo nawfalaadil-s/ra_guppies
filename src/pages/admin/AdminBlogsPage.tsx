@@ -13,11 +13,12 @@ import { ConfirmDialog } from '../../components/common/ConfirmDialog';
 import { MediaPickerModal, SelectedMedia } from '../../components/common/MediaPickerModal';
 
 const BLOG_CATEGORIES: BlogCategory[] = [
-  'Betta Care & Acclimation',
-  'Genetics & Strains',
-  'Breeding & Conditioning',
-  'Aquascaping & Plants',
-  'Fish Health & Nutrition',
+  'Guppy Care & Water Quality',
+  'Breeding & Genetics',
+  'Feeding & Live Foods',
+  'Aquatic Plants & Aquascaping',
+  'Acclimation & Fish Health',
+  'Aquarium Setup & Supplies',
 ];
 
 export const AdminBlogsPage: React.FC = () => {
@@ -42,15 +43,15 @@ export const AdminBlogsPage: React.FC = () => {
   // Form State
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
-  const [category, setCategory] = useState<BlogCategory>('Betta Care & Acclimation');
+  const [category, setCategory] = useState<BlogCategory>('Guppy Care & Water Quality');
   const [excerpt, setExcerpt] = useState('');
   const [contentHtml, setContentHtml] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [readTime, setReadTime] = useState(5);
-  const [authorName, setAuthorName] = useState('Dr. Anand Raman');
-  const [authorRole, setAuthorRole] = useState('Chief Marine Biologist & Founder');
-  const [authorAvatar, setAuthorAvatar] = useState('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80');
-  const [tagsString, setTagsString] = useState('Betta Care, Water Parameters');
+  const [authorName, setAuthorName] = useState('Rishan K.C.');
+  const [authorRole, setAuthorRole] = useState('Master Line Breeder & Founder');
+  const [authorAvatar, setAuthorAvatar] = useState('/logo.jpeg');
+  const [tagsString, setTagsString] = useState('Guppy Care, Water Chemistry');
   const [isPublished, setIsPublished] = useState(true);
 
   // Escape key handler
@@ -74,15 +75,15 @@ export const AdminBlogsPage: React.FC = () => {
     setEditingPost(null);
     setTitle('');
     setSlug('');
-    setCategory('Betta Care & Acclimation');
+    setCategory('Guppy Care & Water Quality');
     setExcerpt('');
-    setContentHtml('<h2>Introduction</h2>\n<p>Write your detailed article body here...</p>\n\n<h3>Key Care Steps</h3>\n<ul>\n  <li>Step 1: Check water temperature (26-28°C)</li>\n  <li>Step 2: Condition with Indian almond leaves</li>\n</ul>');
-    setImageUrl('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80');
+    setContentHtml('<h2>Introduction</h2>\n<p>Write your detailed guppy care article body here...</p>\n\n<h3>Key Care Steps</h3>\n<ul>\n  <li>Step 1: Check mineral hardness (GH 10-18 dGH) and temperature (24-27°C)</li>\n  <li>Step 2: Buffer with sponge bio-filtration and clean aerated water</li>\n</ul>');
+    setImageUrl('https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=1200&q=80');
     setReadTime(5);
-    setAuthorName('Dr. Anand Raman');
-    setAuthorRole('Chief Marine Biologist & Founder');
-    setAuthorAvatar('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80');
-    setTagsString('Betta Care, Water Parameters');
+    setAuthorName('Rishan K.C.');
+    setAuthorRole('Master Line Breeder & Founder');
+    setAuthorAvatar('/logo.jpeg');
+    setTagsString('Guppy Care, Water Chemistry');
     setIsPublished(true);
     setIsModalOpen(true);
   };
@@ -512,7 +513,7 @@ export const AdminBlogsPage: React.FC = () => {
                   required
                   value={title}
                   onChange={(e) => handleTitleChange(e.target.value)}
-                  placeholder="e.g. The Science of Drip Acclimation for High-Grade Bettas"
+                  placeholder="e.g. The Science of Drip Acclimation for High-Grade Guppies"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>
@@ -528,7 +529,7 @@ export const AdminBlogsPage: React.FC = () => {
                       required
                       value={slug}
                       onChange={(e) => setSlug(e.target.value)}
-                      placeholder="acclimating-show-bettas"
+                      placeholder="acclimating-show-guppies"
                       className="w-full bg-transparent text-xs text-blue-900 font-mono outline-none"
                     />
                   </div>
@@ -666,7 +667,7 @@ export const AdminBlogsPage: React.FC = () => {
                   type="text"
                   value={tagsString}
                   onChange={(e) => setTagsString(e.target.value)}
-                  placeholder="Acclimation, Water Parameters, Show Bettas"
+                  placeholder="Acclimation, Water Chemistry, Show Guppies"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
                 />
               </div>

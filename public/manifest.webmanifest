@@ -1,7 +1,7 @@
 {
-  "name": "Betta Aquatics — Pure Strain Ornamental Fish",
-  "short_name": "Betta Aquatics",
-  "description": "India's Premier Online Store for Pure Strain Betta Fish, Rare Guppies, Exotic Breeding Pairs, Aquatic Plants & Aquarium Supplies.",
+  "name": "RA Guppy — Pure Strain Guppies & Aquarium Supplies",
+  "short_name": "RA Guppy",
+  "description": "India's Premier Online Store for Pure Strain Guppies, Exotic Breeding Pairs, Aquatic Plants & Premium Aquarium Supplies.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
@@ -10,22 +10,22 @@
   "categories": ["shopping", "lifestyle"],
   "icons": [
     {
-      "src": "/logo-fish.svg",
+      "src": "/logo.jpeg",
       "sizes": "any",
-      "type": "image/svg+xml",
+      "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "/favicon.svg",
+      "src": "/logo-fish.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
   ],
   "shortcuts": [
     {
-      "name": "Live Specimen Shop",
+      "name": "Guppy Collection",
       "url": "/shop",
-      "description": "Browse live champion bettas and rare aquatic specimens"
+      "description": "Browse live pure strain guppies, pairs and aquatic plants"
     },
     {
       "name": "My Orders & Tracking",
