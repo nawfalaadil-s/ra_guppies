@@ -141,28 +141,28 @@ export const OrderDetailPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-6 sm:py-10">
+    <div className="bg-[#F8FAFC] min-h-screen py-6 sm:py-10">
       <SEO 
         title={`Order #${order.order_number} Consignment & Invoice`} 
         description={`Track live shipment status and view official GST tax invoice for order #${order.order_number}.`} 
       />
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Back Link */}
         <Link
           to="/account/orders"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-blue-950 mb-6"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-ocean-950 mb-6 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to All Orders</span>
         </Link>
 
         {/* Top Header Card */}
-        <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="card-aquatic rounded-3xl p-6 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1">
+            <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1 font-mono">
               Consignment Invoice
             </span>
-            <h1 className="text-2xl font-black text-blue-950 font-display">
+            <h1 className="text-2xl font-black text-ocean-950 font-display">
               Order #{order.order_number}
             </h1>
             <p className="text-xs text-slate-500 mt-1">
@@ -174,7 +174,7 @@ export const OrderDetailPage: React.FC = () => {
             <span className="text-xs font-bold px-3 py-1 rounded-full border bg-slate-100 text-slate-800">
               Payment: {order.payment_status.toUpperCase()}
             </span>
-            <span className="text-xs font-bold px-3 py-1 rounded-full border bg-blue-950 text-white border-blue-900">
+            <span className="text-xs font-bold px-3 py-1 rounded-full border bg-ocean-950 text-white border-ocean-900">
               Fulfillment: {order.fulfillment_status.toUpperCase()}
             </span>
             <button
@@ -189,7 +189,7 @@ export const OrderDetailPage: React.FC = () => {
                   metadata: { order_number: order.order_number }
                 });
               }}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-sm"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-colors shadow-2xs"
               title="Share or request update via WhatsApp"
             >
               <MessageSquare className="w-3.5 h-3.5" />
@@ -197,9 +197,9 @@ export const OrderDetailPage: React.FC = () => {
             </button>
             <button
               onClick={() => setIsInvoiceOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-900 hover:bg-blue-800 text-white text-xs font-bold transition-colors shadow-sm ml-auto sm:ml-0"
+              className="btn-primary flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-xs ml-auto sm:ml-0"
             >
-              <Printer className="w-3.5 h-3.5 text-red-400" />
+              <Printer className="w-3.5 h-3.5 text-cyan-200" />
               <span>Tax Invoice</span>
             </button>
           </div>
@@ -207,13 +207,13 @@ export const OrderDetailPage: React.FC = () => {
 
         {/* Courier Tracking Status (If Shipped) */}
         {order.shipment_details && (
-          <div className="bg-blue-50/70 rounded-3xl p-6 border border-blue-200 shadow-sm mb-6">
-            <div className="flex items-center justify-between pb-3 border-b border-blue-200/80 mb-4">
-              <div className="flex items-center gap-2 font-bold text-sm text-blue-950">
-                <Truck className="w-5 h-5 text-blue-600" />
+          <div className="card-aquatic rounded-3xl p-6 mb-6">
+            <div className="flex items-center justify-between pb-3 border-b border-aquatic-100 mb-4">
+              <div className="flex items-center gap-2 font-bold text-sm text-ocean-950">
+                <Truck className="w-5 h-5 text-aquatic-600" />
                 <span>Consignment Air Transit Details</span>
               </div>
-              <span className="text-xs font-bold text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-full">
+              <span className="text-xs font-bold text-aquatic-800 bg-aquatic-50 px-2.5 py-0.5 rounded-full border border-aquatic-200">
                 Active Airway Bill
               </span>
             </div>
@@ -221,20 +221,20 @@ export const OrderDetailPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs mb-4">
               <div>
                 <span className="text-slate-500 block">Courier Partner:</span>
-                <strong className="text-slate-900">{order.shipment_details.courier_name}</strong>
+                <strong className="text-ocean-950 font-semibold">{order.shipment_details.courier_name}</strong>
               </div>
               <div>
                 <span className="text-slate-500 block">AWB / Tracking Number:</span>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <strong className="font-mono text-slate-900">{order.shipment_details.tracking_number}</strong>
-                  <button onClick={handleCopyAWB} className="text-blue-700 hover:text-blue-900 p-0.5">
+                  <strong className="font-mono text-ocean-950">{order.shipment_details.tracking_number}</strong>
+                  <button onClick={handleCopyAWB} className="text-aquatic-700 hover:text-aquatic-900 p-0.5">
                     <Copy className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
               <div>
                 <span className="text-slate-500 block">Dispatch Date:</span>
-                <strong className="text-slate-900">{formatDate(order.shipment_details.shipped_at)}</strong>
+                <strong className="text-ocean-950 font-semibold">{formatDate(order.shipment_details.shipped_at)}</strong>
               </div>
             </div>
 

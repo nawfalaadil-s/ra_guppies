@@ -171,15 +171,15 @@ export const AdminAccountingPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
-              <IndianRupee className="w-5 h-5" />
+          <div className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold border border-emerald-100">
+              <IndianRupee className="w-5 h-5 text-emerald-700" />
             </div>
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-bold text-ocean-950 font-display tracking-tight">
                 Accounting, Expenses & P&L Telemetry
               </h1>
-              <p className="text-sm text-slate-500">
+              <p className="text-xs sm:text-sm text-slate-500">
                 Live operating profit reconciliation, expense accounting, and verifiable financial ledgers.
               </p>
             </div>
@@ -190,7 +190,7 @@ export const AdminAccountingPage: React.FC = () => {
           <button
             onClick={loadData}
             disabled={isLoading}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-sm hover:bg-slate-50 active:bg-slate-100 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl shadow-2xs hover:bg-slate-50 active:bg-slate-100 transition-colors"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-emerald-600' : ''}`} />
             <span>Sync</span>
@@ -198,7 +198,7 @@ export const AdminAccountingPage: React.FC = () => {
 
           <button
             onClick={handleExportLedger}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-sm hover:bg-slate-50 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl shadow-2xs hover:bg-slate-50 transition-colors"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Export CSV Ledger</span>
@@ -206,9 +206,9 @@ export const AdminAccountingPage: React.FC = () => {
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-emerald-600 rounded-lg shadow hover:bg-emerald-700 active:bg-emerald-800 transition-colors"
+            className="btn-primary inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl shadow-glow-cyan"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-cyan-200" />
             <span>Record New Expense</span>
           </button>
         </div>
@@ -216,30 +216,30 @@ export const AdminAccountingPage: React.FC = () => {
 
       {/* P&L Financial KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div className="card-aquatic p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-xs font-medium uppercase tracking-wider">Gross Verified Revenue</span>
+            <span className="text-xs font-semibold uppercase tracking-wider font-mono">Gross Verified Revenue</span>
             <ArrowUpRight className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="text-2xl font-bold text-slate-900">{formatCurrency(grossSalesRevenue)}</div>
+          <div className="text-2xl font-bold text-ocean-950 font-mono">{formatCurrency(grossSalesRevenue)}</div>
           <p className="text-xs text-slate-500 mt-1">{verifiedOrders.length} verified consignments</p>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div className="card-aquatic p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-xs font-medium uppercase tracking-wider">Total Recorded Expenses</span>
-            <ArrowDownRight className="w-4 h-4 text-red-600" />
+            <span className="text-xs font-semibold uppercase tracking-wider font-mono">Total Recorded Expenses</span>
+            <ArrowDownRight className="w-4 h-4 text-rose-600" />
           </div>
-          <div className="text-2xl font-bold text-red-600">{formatCurrency(totalOperatingExpenses)}</div>
+          <div className="text-2xl font-bold text-rose-600 font-mono">{formatCurrency(totalOperatingExpenses)}</div>
           <p className="text-xs text-slate-500 mt-1">{expenses.length} operating expenses logged</p>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div className="card-aquatic p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-xs font-medium uppercase tracking-wider">Net Operating Profit</span>
-            <TrendingUp className="w-4 h-4 text-blue-600" />
+            <span className="text-xs font-semibold uppercase tracking-wider font-mono">Net Operating Profit</span>
+            <TrendingUp className="w-4 h-4 text-aquatic-600" />
           </div>
-          <div className={`text-2xl font-bold ${netOperatingProfit >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+          <div className={`text-2xl font-bold font-mono ${netOperatingProfit >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
             {formatCurrency(netOperatingProfit)}
           </div>
           <p className="text-xs text-slate-500 mt-1">
@@ -247,12 +247,12 @@ export const AdminAccountingPage: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div className="card-aquatic p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-xs font-medium uppercase tracking-wider">Pending UPI Verification</span>
+            <span className="text-xs font-semibold uppercase tracking-wider font-mono">Pending UPI Verification</span>
             <Clock className="w-4 h-4 text-amber-600" />
           </div>
-          <div className="text-2xl font-bold text-amber-600">{formatCurrency(pendingCollection)}</div>
+          <div className="text-2xl font-bold text-amber-600 font-mono">{formatCurrency(pendingCollection)}</div>
           <p className="text-xs text-slate-500 mt-1">Awaiting bank statement match</p>
         </div>
       </div>

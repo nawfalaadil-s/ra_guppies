@@ -98,18 +98,18 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="hidden md:block sticky top-0 z-40 bg-white text-slate-900 border-b border-slate-200 shadow-xs">
+    <header className="hidden md:block sticky top-0 z-40 bg-white/95 backdrop-blur-md text-slate-900 border-b border-slate-200/80 shadow-xs">
       {/* Top Notification & Trust Bar */}
-      <div className="bg-slate-50 border-b border-slate-200 px-4 py-1.5 text-xs text-slate-600 hidden md:block">
+      <div className="bg-ocean-950 text-slate-300 border-b border-ocean-800/60 px-4 py-1.5 text-xs hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 font-medium text-slate-600">
-              <span className="w-2 h-2 rounded-full bg-blue-900" />
-              <span>Bengaluru Quarantine Facility • Daily Live Dispatches</span>
+            <span className="flex items-center gap-1.5 font-medium text-slate-200">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>South India Quarantine Facility • Daily Live Dispatches</span>
             </span>
-            <span className="text-slate-400">•</span>
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-blue-900" />
+            <span className="text-ocean-700">•</span>
+            <span className="flex items-center gap-1 text-slate-300">
+              <ShieldCheck className="w-3.5 h-3.5 text-teal-400" />
               <span>The Professional Couriers • Express Road Transport with 100% Live Arrival Guarantee</span>
             </span>
           </div>
@@ -119,17 +119,17 @@ export const Navbar: React.FC = () => {
               href={`https://wa.me/${whatsappClean}`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-1.5 text-slate-600 hover:text-blue-900 transition-colors font-medium"
+              className="flex items-center gap-1.5 text-teal-300 hover:text-white transition-colors font-medium"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-blue-900" />
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
               <span>WhatsApp: {whatsappDisplay}</span>
             </a>
             {isAdmin && (
               <>
-                <span className="text-slate-400">•</span>
+                <span className="text-ocean-700">•</span>
                 <Link
                   to="/admin"
-                  className="font-medium text-blue-900 hover:text-blue-950 flex items-center gap-1 font-mono"
+                  className="font-medium text-amber-300 hover:text-white flex items-center gap-1 font-mono transition-colors"
                 >
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>Admin Console</span>
@@ -144,14 +144,14 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-6">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
-          <div className="w-10 h-10 rounded-xl bg-black flex items-center justify-center shadow-xs overflow-hidden shrink-0">
+          <div className="w-10 h-10 rounded-2xl bg-black flex items-center justify-center shadow-xs overflow-hidden shrink-0 border border-slate-200/60 group-hover:scale-105 transition-transform duration-200">
             <BrandLogo variant="header" className="w-full h-full" imgClassName="w-full h-full object-contain" />
           </div>
           <div>
-            <span className="font-display font-extrabold text-xl tracking-tight text-slate-900 uppercase">
-              {firstWord} {restWords && <span className="text-red-600">{restWords}</span>}
+            <span className="font-display font-extrabold text-xl tracking-tight text-ocean-950 uppercase">
+              {firstWord} {restWords && <span className="text-teal-600">{restWords}</span>}
             </span>
-            <span className="block text-xs tracking-wide text-slate-600 font-medium">
+            <span className="block text-xs tracking-wide text-slate-500 font-medium">
               {currentSettings.tagline || 'Pure Strain Guppies & Aquatic Life'}
             </span>
           </div>
@@ -159,9 +159,9 @@ export const Navbar: React.FC = () => {
 
         {/* Global Search Bar */}
         <div ref={searchRef} className="flex-1 max-w-xl relative hidden md:block">
-          <form onSubmit={handleSearchSubmit} className="flex items-center rounded-xl overflow-hidden border border-slate-300 bg-slate-50/50 hover:bg-white focus-within:bg-white focus-within:border-slate-800 transition-all p-0.5">
+          <form onSubmit={handleSearchSubmit} className="flex items-center rounded-2xl overflow-hidden border border-slate-200 bg-slate-50/70 hover:bg-white focus-within:bg-white focus-within:border-teal-600 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all p-1 shadow-2xs">
             <div className="pl-3.5 flex items-center text-slate-400">
-              <Search className="w-4 h-4" />
+              <Search className="w-4 h-4 text-teal-600" />
             </div>
 
             <input
@@ -175,7 +175,7 @@ export const Navbar: React.FC = () => {
               }}
               onFocus={() => setIsSearchOpen(true)}
               placeholder="Search Pure Strain Guppies, Live Plants, Starter Cultures..."
-              className="flex-1 px-3 py-2 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none bg-transparent"
+              className="flex-1 px-3 py-1.5 text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none bg-transparent"
             />
 
             {searchQuery && (
@@ -185,7 +185,7 @@ export const Navbar: React.FC = () => {
                   setSearchQuery('');
                   setSuggestions([]);
                 }}
-                className="btn-icon"
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-600 mr-1"
                 aria-label="Clear search query"
               >
                 <X className="w-4 h-4" />
@@ -194,7 +194,7 @@ export const Navbar: React.FC = () => {
 
             <button
               type="submit"
-              className="btn-primary"
+              className="btn-primary shrink-0"
             >
               Search
             </button>
@@ -361,14 +361,14 @@ export const Navbar: React.FC = () => {
             aria-label={`Cart with ${itemCount} items`}
           >
             <div className="relative">
-              <ShoppingCart className="w-4 h-4" />
+              <ShoppingCart className="w-4 h-4 text-teal-300" />
               {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2.5 -right-2.5 bg-emerald-500 text-slate-950 text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
                   {itemCount}
                 </span>
               )}
             </div>
-            <span className="text-xs hidden sm:inline">
+            <span className="text-xs font-bold hidden sm:inline">
               {itemCount === 0 ? 'Cart' : formatCurrency(subtotal)}
             </span>
           </Link>
@@ -376,11 +376,11 @@ export const Navbar: React.FC = () => {
       </div>
 
       {/* Dynamic Category Navigation Strip */}
-      <nav aria-label="Category navigation" className="border-t border-slate-100 bg-white hidden md:block relative z-30">
-        <div className="max-w-7xl mx-auto px-4 flex items-center gap-1 text-xs font-semibold text-slate-700 py-1.5 overflow-x-visible">
+      <nav aria-label="Category navigation" className="border-t border-slate-100 bg-white/80 backdrop-blur-xs hidden md:block relative z-30">
+        <div className="max-w-7xl mx-auto px-4 flex items-center gap-1.5 text-xs font-semibold text-slate-700 py-1.5 overflow-x-visible">
           <Link
             to="/shop"
-            className="px-3 py-1.5 rounded-lg hover:text-blue-900 hover:bg-slate-50 transition-colors shrink-0"
+            className="px-3 py-1.5 rounded-xl hover:text-teal-700 hover:bg-teal-50/60 transition-colors shrink-0"
           >
             All Fish & Supplies
           </Link>
@@ -391,36 +391,36 @@ export const Navbar: React.FC = () => {
               <div key={cat.id} className="relative group shrink-0">
                 <Link
                   to={`/shop?cat=${cat.id}`}
-                  className={`px-3 py-1.5 rounded-lg hover:text-blue-900 hover:bg-slate-50 transition-colors flex items-center gap-1.5 ${
-                    cat.is_featured ? 'text-blue-900 font-bold' : ''
+                  className={`px-3 py-1.5 rounded-xl hover:text-teal-700 hover:bg-teal-50/60 transition-colors flex items-center gap-1.5 ${
+                    cat.is_featured ? 'text-teal-800 font-bold bg-teal-50/50' : ''
                   }`}
                 >
-                  {cat.is_featured && <span className="w-1.5 h-1.5 rounded-full bg-red-600 inline-block" />}
+                  {cat.is_featured && <span className="w-1.5 h-1.5 rounded-full bg-teal-500 inline-block" />}
                   <span>{cat.name}</span>
                   {hasChildren && (
-                    <ChevronDown className="w-3 h-3 text-slate-400 group-hover:text-blue-900 group-hover:rotate-180 transition-transform duration-200" />
+                    <ChevronDown className="w-3 h-3 text-slate-400 group-hover:text-teal-700 group-hover:rotate-180 transition-transform duration-200" />
                   )}
                 </Link>
 
                 {/* Subcategory Dropdown */}
                 {hasChildren && (
-                  <div className="absolute left-0 top-full pt-1 hidden group-hover:block z-50">
-                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200 py-2 min-w-56 text-xs text-slate-700">
-                      <div className="px-3.5 py-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 mb-1">
-                        {cat.name} Types
+                  <div className="absolute left-0 top-full pt-1.5 hidden group-hover:block z-50 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div className="bg-white rounded-2xl shadow-xl border border-slate-200/90 py-2 min-w-60 text-xs text-slate-700">
+                      <div className="px-3.5 py-1 text-[10px] font-bold text-teal-800 uppercase tracking-wider border-b border-slate-100 mb-1">
+                        {cat.name} Catalog
                       </div>
                       <Link
                         to={`/shop?cat=${cat.id}`}
-                        className="px-3.5 py-1.5 hover:bg-blue-50 hover:text-blue-900 flex items-center justify-between font-bold text-blue-900 transition-colors"
+                        className="px-3.5 py-1.5 hover:bg-teal-50 hover:text-teal-900 flex items-center justify-between font-bold text-teal-800 transition-colors"
                       >
                         <span>View All {cat.name}</span>
-                        <span className="text-[10px] bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded-full">{cat.product_count}</span>
+                        <span className="text-[10px] bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded-full">{cat.product_count}</span>
                       </Link>
                       {cat.children!.map((sub) => (
                         <Link
                           key={sub.id}
                           to={`/shop?cat=${cat.id}&subcat=${sub.id}`}
-                          className="px-3.5 py-1.5 hover:bg-slate-50 hover:text-blue-900 flex items-center justify-between transition-colors"
+                          className="px-3.5 py-1.5 hover:bg-slate-50 hover:text-teal-700 flex items-center justify-between transition-colors"
                         >
                           <span>{sub.name}</span>
                           <span className="text-[10px] text-slate-400">{sub.product_count}</span>
@@ -435,18 +435,19 @@ export const Navbar: React.FC = () => {
 
           <Link
             to="/blog"
-            className="px-3 py-1.5 rounded-lg hover:text-blue-900 hover:bg-slate-50 transition-colors flex items-center gap-1.5 font-bold text-blue-900 shrink-0"
+            className="px-3 py-1.5 rounded-xl hover:text-teal-700 hover:bg-teal-50/60 transition-colors flex items-center gap-1.5 font-bold text-teal-800 shrink-0"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-900 inline-block" />
+            <span className="w-1.5 h-1.5 rounded-full bg-teal-500 inline-block" />
             <span>Care Guides</span>
           </Link>
 
           <div className="ml-auto shrink-0">
             <Link
               to="/page/shipping-acclimation"
-              className="text-blue-900 hover:underline flex items-center gap-1 text-xs font-medium"
+              className="text-slate-600 hover:text-teal-800 flex items-center gap-1.5 text-xs font-semibold transition-colors"
             >
-              <span>Live Arrival Guarantee Details</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+              <span>100% Live Arrival Policy</span>
             </Link>
           </div>
         </div>

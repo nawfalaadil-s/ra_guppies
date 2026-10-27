@@ -44,29 +44,33 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
   };
 
   return (
-    <section className="relative bg-white border-b border-slate-200 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 py-8 sm:py-14 lg:py-16">
+    <section className="relative bg-gradient-to-b from-ocean-950 via-ocean-900 to-ocean-950 text-white border-b border-ocean-800/80 overflow-hidden">
+      {/* Subtle Aquatic Ambient Glows */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 py-10 sm:py-16 lg:py-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Hero Content */}
-          <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-900 text-xs font-semibold border border-slate-200">
-              <span className="w-2 h-2 rounded-full bg-red-600" />
+          <div className="lg:col-span-7 space-y-5 sm:space-y-6 text-left">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/70 text-teal-200 text-xs font-bold border border-teal-500/30 shadow-xs backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>{badge}</span>
             </div>
 
-            <h1 className="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl text-blue-900 tracking-tight leading-[1.15]">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-[1.12]">
               {title}
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl font-normal">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl font-normal">
               {subtitle}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
               <Link
                 to={ctaPrimaryLink}
-                className="btn-primary"
+                className="btn-accent px-6 text-sm font-bold shadow-glow-blue"
               >
                 <span>{ctaPrimary}</span>
                 <ArrowRight className="w-4 h-4 text-white" />
@@ -74,24 +78,25 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
 
               <Link
                 to={ctaSecondaryLink}
-                className="btn-secondary"
+                className="inline-flex items-center justify-center gap-2 min-h-[42px] px-5 py-2 rounded-xl text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-md transition-all active:scale-95"
               >
+                <Play className="w-4 h-4 text-teal-300 fill-teal-300/40" />
                 <span>{ctaSecondary}</span>
               </Link>
             </div>
 
             {/* Trust Highlights Mini Strip */}
-            <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-slate-600">
-              <div className="flex items-center gap-1.5 font-medium">
-                <ShieldCheck className="w-4 h-4 text-blue-900" />
+            <div className="pt-6 border-t border-ocean-800/80 flex flex-wrap items-center gap-4 sm:gap-6 text-xs text-slate-300">
+              <div className="flex items-center gap-2 font-medium">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>100% Live Arrival Guarantee</span>
               </div>
-              <div className="flex items-center gap-1.5 font-medium">
-                <Truck className="w-4 h-4 text-blue-900" />
+              <div className="flex items-center gap-2 font-medium">
+                <Truck className="w-4 h-4 text-teal-400" />
                 <span>The Professional Couriers</span>
               </div>
-              <div className="flex items-center gap-1.5 font-medium">
-                <MessageCircle className="w-4 h-4 text-blue-900" />
+              <div className="flex items-center gap-2 font-medium">
+                <MessageCircle className="w-4 h-4 text-emerald-400" />
                 <span>Breeder WhatsApp Support</span>
               </div>
             </div>
@@ -99,7 +104,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
 
           {/* Right Hero Media Card (Supports Image & Ambient Showcase Video) */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm aspect-[4/3] sm:aspect-[16/11]">
+            <div className="relative rounded-3xl overflow-hidden bg-ocean-950 border border-teal-500/30 shadow-elevated aspect-[4/3] sm:aspect-[16/11]">
               {video ? (
                 <>
                   <video
@@ -117,12 +122,12 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
                   <button
                     type="button"
                     onClick={toggleVideoPlayback}
-                    className="absolute top-3 right-3 p-2 rounded-full bg-black/60 hover:bg-black/80 text-white backdrop-blur-md transition-all shadow-md focus-visible:ring-2 focus-visible:ring-white"
+                    className="absolute top-3 right-3 p-2 rounded-full bg-ocean-950/80 hover:bg-ocean-900 text-white backdrop-blur-md transition-all shadow-md focus-visible:ring-2 focus-visible:ring-teal-400"
                     aria-label={isPlaying ? 'Pause background video' : 'Play background video'}
                   >
                     {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current" />}
                   </button>
-                  <span className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-red-600/90 text-white text-[10px] font-bold tracking-wider uppercase backdrop-blur-xs flex items-center gap-1">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-teal-500/90 text-slate-950 text-[10px] font-black tracking-wider uppercase backdrop-blur-xs flex items-center gap-1 shadow-xs">
                     <Play className="w-2.5 h-2.5 fill-current" />
                     HD Footage
                   </span>
@@ -135,20 +140,20 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
                   className="w-full h-full object-cover"
                 />
               )}
-              <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-slate-200 shadow-sm flex items-center justify-between">
+              <div className="absolute bottom-3 left-3 right-3 bg-ocean-950/90 backdrop-blur-md rounded-2xl p-3.5 border border-ocean-700/60 shadow-lg flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-bold text-blue-900 block">
-                    WYSIWYG Specimen
+                  <span className="text-[11px] font-bold text-teal-300 uppercase tracking-wider block">
+                    WYSIWYG Proven Stock
                   </span>
-                  <span className="font-bold text-xs text-slate-900 block truncate">
+                  <span className="font-bold text-xs sm:text-sm text-white block truncate">
                     Electric Blue Pure Strain Pair
                   </span>
                 </div>
                 <Link
-                  to="/product/electric-blue-guppy-pair"
-                  className="btn-accent"
+                  to="/product/electric-blue-guppy-pair-300"
+                  className="btn-accent px-3.5 py-1.5 text-xs min-h-[36px]"
                 >
-                  View
+                  Adopt
                 </Link>
               </div>
             </div>

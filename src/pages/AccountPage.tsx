@@ -141,29 +141,29 @@ export const AccountPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-slate-50 min-h-screen py-6 sm:py-10 pb-24 md:pb-12">
+    <div className="bg-[#F8FAFC] min-h-screen py-6 sm:py-10 pb-24 md:pb-12">
       <SEO 
         title="My Account & Billing" 
         description="Manage your profile, saved addresses, consignment orders, and GST tax invoices." 
       />
 
-      <div className="max-w-5xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Profile Card Header */}
-        <div className="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div className="card-aquatic rounded-3xl p-5 sm:p-8 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-950 text-white border border-blue-900 flex items-center justify-center text-xl sm:text-2xl font-bold font-display shadow-xs shrink-0">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-ocean-950 text-white border border-ocean-900 flex items-center justify-center text-xl sm:text-2xl font-bold font-display shadow-xs shrink-0">
               {profileName.charAt(0) || 'U'}
             </div>
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-lg sm:text-2xl font-bold text-blue-950 font-display">
+                <h1 className="text-lg sm:text-2xl font-bold text-ocean-950 font-display">
                   {profileName}
                 </h1>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-aquatic-50 text-aquatic-800 border border-aquatic-200/60">
                   {user?.role === 'admin' ? 'Store Administrator' : 'Verified Hobbyist'}
                 </span>
               </div>
-              <p className="text-xs text-slate-500 mt-0.5">{user?.email}</p>
+              <p className="text-xs text-slate-500 mt-0.5 font-mono">{user?.email}</p>
               <p className="text-xs text-slate-400 mt-0.5">{profilePhone}</p>
             </div>
           </div>
@@ -172,15 +172,15 @@ export const AccountPage: React.FC = () => {
             {isAdmin && (
               <Link
                 to="/admin"
-                className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-blue-900 text-white border border-blue-800 hover:bg-blue-800 transition-colors inline-flex items-center gap-1.5"
+                className="btn-primary text-xs font-semibold py-2 px-3.5 rounded-xl shadow-xs inline-flex items-center gap-1.5"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-300" />
+                <ShieldCheck className="w-3.5 h-3.5 text-cyan-200" />
                 Admin Console
               </Link>
             )}
             <button
               onClick={logout}
-              className="p-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors"
+              className="p-2 text-rose-600 hover:bg-rose-50 rounded-xl transition-colors"
               title="Sign Out"
               aria-label="Sign Out"
             >
@@ -191,35 +191,35 @@ export const AccountPage: React.FC = () => {
 
         {/* Account Stat Strip */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-          <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs">
+          <div className="card-aquatic p-4 rounded-2xl">
             <span className="text-[11px] text-slate-400 block font-medium">Consignments</span>
-            <strong className="text-lg sm:text-xl text-slate-900 font-display">{allOrders.length} Orders</strong>
+            <strong className="text-lg sm:text-xl text-ocean-950 font-display font-bold">{allOrders.length} Orders</strong>
           </div>
-          <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs">
+          <div className="card-aquatic p-4 rounded-2xl">
             <span className="text-[11px] text-slate-400 block font-medium">Total Billed</span>
-            <strong className="text-lg sm:text-xl text-blue-950 font-display">{formatCurrency(totalSpent)}</strong>
+            <strong className="text-lg sm:text-xl text-ocean-950 font-display font-bold font-mono">{formatCurrency(totalSpent)}</strong>
           </div>
-          <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs">
+          <div className="card-aquatic p-4 rounded-2xl">
             <span className="text-[11px] text-slate-400 block font-medium">Saved Addresses</span>
-            <strong className="text-lg sm:text-xl text-slate-900 font-display">{addresses.length} Locations</strong>
+            <strong className="text-lg sm:text-xl text-ocean-950 font-display font-bold">{addresses.length} Locations</strong>
           </div>
-          <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-xs">
+          <div className="card-aquatic p-4 rounded-2xl">
             <span className="text-[11px] text-slate-400 block font-medium">Live Guarantee</span>
-            <strong className="text-lg sm:text-xl text-blue-700 font-display">100% Covered</strong>
+            <strong className="text-lg sm:text-xl text-aquatic-700 font-display font-bold">100% Covered</strong>
           </div>
         </div>
 
-        {/* Tab Navigation Pill Bar (Mobile-first horizontal scroll) */}
+        {/* Tab Navigation Pill Bar */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 mb-6 scrollbar-none">
           <button
             onClick={() => setActiveTab('orders')}
             className={`min-h-[44px] px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 ${
               activeTab === 'orders'
-                ? 'bg-blue-900 text-white shadow-md'
+                ? 'bg-ocean-950 text-white shadow-glow-cyan'
                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <Package className="w-4 h-4 text-red-400" />
+            <Package className="w-4 h-4 text-cyan-300" />
             <span>Consignments & Orders ({allOrders.length})</span>
           </button>
 
@@ -227,11 +227,11 @@ export const AccountPage: React.FC = () => {
             onClick={() => setActiveTab('billing')}
             className={`min-h-[44px] px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 ${
               activeTab === 'billing'
-                ? 'bg-blue-900 text-white shadow-md'
+                ? 'bg-ocean-950 text-white shadow-glow-cyan'
                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <FileText className="w-4 h-4 text-red-400" />
+            <FileText className="w-4 h-4 text-cyan-300" />
             <span>Bills & Tax Invoices</span>
           </button>
 
@@ -239,11 +239,11 @@ export const AccountPage: React.FC = () => {
             onClick={() => setActiveTab('addresses')}
             className={`min-h-[44px] px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 ${
               activeTab === 'addresses'
-                ? 'bg-blue-900 text-white shadow-md'
+                ? 'bg-ocean-950 text-white shadow-glow-cyan'
                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <MapPin className="w-4 h-4 text-red-400" />
+            <MapPin className="w-4 h-4 text-cyan-300" />
             <span>Saved Addresses ({addresses.length})</span>
           </button>
 
@@ -251,11 +251,11 @@ export const AccountPage: React.FC = () => {
             onClick={() => setActiveTab('profile')}
             className={`min-h-[44px] px-4 py-2.5 rounded-2xl text-xs font-bold whitespace-nowrap transition-all flex items-center gap-2 ${
               activeTab === 'profile'
-                ? 'bg-blue-900 text-white shadow-md'
+                ? 'bg-ocean-950 text-white shadow-glow-cyan'
                 : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'
             }`}
           >
-            <User className="w-4 h-4 text-red-400" />
+            <User className="w-4 h-4 text-cyan-300" />
             <span>Profile & Care Notes</span>
           </button>
         </div>

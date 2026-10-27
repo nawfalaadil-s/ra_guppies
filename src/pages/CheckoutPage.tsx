@@ -484,46 +484,46 @@ export const CheckoutPage: React.FC = () => {
   // SUCCESS SCREEN
   if (placedOrderNumber) {
     return (
-      <div className="bg-slate-50 min-h-screen py-12 sm:py-16">
+      <div className="bg-[#F8FAFC] min-h-screen py-12 sm:py-16">
         <SEO title={`Order ${placedOrderNumber} Confirmed`} description="Thank you for your order. Our team will verify your payment and prepare your insulated live fish consignment." />
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-xl">
-            <div className="w-16 h-16 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="w-10 h-10" />
+          <div className="card-aquatic rounded-3xl p-8 sm:p-12 shadow-elevated">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-50 to-aquatic-50 text-emerald-600 border border-emerald-100 flex items-center justify-center mx-auto mb-4 shadow-xs">
+              <CheckCircle2 className="w-10 h-10 text-emerald-600" />
             </div>
 
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-200 inline-block mb-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-aquatic-800 bg-aquatic-50 px-3 py-1 rounded-full border border-aquatic-200 inline-block mb-3">
               Order Placed Successfully
             </span>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-950 font-display mb-2">
+            <h1 className="text-2xl sm:text-3.5xl font-extrabold text-ocean-950 font-display mb-2 tracking-tight">
               Thank You For Your Order!
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-600 mb-6">
-              Order Number: <strong className="text-blue-950 font-mono text-base">{placedOrderNumber}</strong>
+              Order Number: <strong className="text-ocean-950 font-mono text-base">{placedOrderNumber}</strong>
             </p>
 
             {/* Uploaded Screenshot & UTR Summary */}
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 text-left text-xs space-y-3 mb-8">
-              <div className="flex items-center gap-2 text-slate-800 font-bold">
-                <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
+            <div className="p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 text-left text-xs space-y-3 mb-8">
+              <div className="flex items-center gap-2 text-ocean-950 font-bold">
+                <ShieldCheck className="w-4 h-4 text-aquatic-600 shrink-0" />
                 <span>Next Step: Admin Payment Verification</span>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Your payment submission (UTR: <strong className="font-mono text-blue-950">{upiReference}</strong>) has been routed to our verification desk. Once credited, our team will prepare your insulated live oxygen crate.
+                Your payment submission (UTR: <strong className="font-mono text-ocean-950">{upiReference}</strong>) has been routed to our verification desk. Once credited, our team will prepare your insulated live oxygen crate.
               </p>
 
               {proofImage && (
-                <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 mt-2">
+                <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 mt-2 shadow-2xs">
                   <img
                     src={proofImage}
                     alt="Payment Proof"
                     className="w-14 h-14 object-cover rounded-lg border border-slate-200 shrink-0"
                   />
                   <div className="text-xs">
-                    <span className="font-bold text-blue-700 flex items-center gap-1">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                    <span className="font-bold text-aquatic-700 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-aquatic-600" />
                       <span>Payment Screenshot Attached</span>
                     </span>
                     <span className="text-[11px] text-slate-500 font-mono block mt-0.5">
@@ -594,21 +594,21 @@ export const CheckoutPage: React.FC = () => {
   }
 
   return (
-    <div className="bg-slate-50 min-h-screen py-6 sm:py-10">
+    <div className="bg-[#F8FAFC] min-h-screen py-6 sm:py-10">
       <SEO 
         title="Secure Checkout & Payment" 
         description="Finalize your live fish order. Safe insulated packaging, verified manual UPI payment, and live arrival guarantee." 
       />
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-6 flex items-center justify-between">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-blue-700">Safe & Insulated Checkout</span>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-950 font-display">
+            <span className="text-xs font-bold uppercase tracking-wider text-aquatic-700">Safe & Insulated Checkout</span>
+            <h1 className="text-2xl sm:text-3.5xl font-extrabold text-ocean-950 font-display tracking-tight">
               Finalize Your Consignment
             </h1>
           </div>
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-blue-800 bg-blue-50 border border-blue-200 px-3 py-1 rounded-full">
-            <Lock className="w-3.5 h-3.5 text-blue-600" />
+          <div className="hidden sm:flex items-center gap-1.5 text-xs text-aquatic-800 bg-aquatic-50 border border-aquatic-200/80 px-3 py-1 rounded-full shadow-2xs">
+            <Lock className="w-3.5 h-3.5 text-aquatic-600" />
             <span>Encrypted Order Processing</span>
           </div>
         </div>
@@ -618,17 +618,17 @@ export const CheckoutPage: React.FC = () => {
             {/* Left Steps Column (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               {/* Step 1: Customer Account Gate */}
-              <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+              <div className="card-aquatic rounded-3xl p-6">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-                  <div className="flex items-center gap-2 font-bold text-sm text-blue-950">
-                    <span className={`w-6 h-6 rounded-full text-white text-xs flex items-center justify-center font-bold ${user ? 'bg-blue-950' : 'bg-blue-600'}`}>
+                  <div className="flex items-center gap-2.5 font-bold text-sm text-ocean-950">
+                    <span className={`w-6 h-6 rounded-full text-white text-xs flex items-center justify-center font-bold ${user ? 'bg-ocean-950' : 'bg-aquatic-600'}`}>
                       {user ? <Check className="w-3.5 h-3.5" /> : '1'}
                     </span>
                     <span>{user ? 'Customer Account' : 'Account Required to Place Order'}</span>
                   </div>
                   {user ? (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">
-                      <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-aquatic-800 bg-aquatic-50 border border-aquatic-200/70 px-2.5 py-0.5 rounded-full">
+                      <ShieldCheck className="w-3.5 h-3.5 text-aquatic-600" />
                       <span>Verified Customer</span>
                     </span>
                   ) : (
@@ -641,7 +641,7 @@ export const CheckoutPage: React.FC = () => {
 
                 {user ? (
                   <div className="space-y-2 text-xs">
-                    <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="p-3.5 bg-slate-50/80 rounded-2xl border border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-blue-900 text-white font-bold flex items-center justify-center shrink-0">
                           {user.full_name?.charAt(0).toUpperCase() || <User className="w-5 h-5" />}
@@ -817,10 +817,10 @@ export const CheckoutPage: React.FC = () => {
               </div>
 
               {/* Step 2: Shipping Address */}
-              <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+              <div className="card-aquatic rounded-3xl p-6">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-                  <div className="flex items-center gap-2 font-bold text-sm text-blue-950">
-                    <span className="w-6 h-6 rounded-full bg-blue-950 text-white text-xs flex items-center justify-center font-bold">2</span>
+                  <div className="flex items-center gap-2.5 font-bold text-sm text-ocean-950">
+                    <span className="w-6 h-6 rounded-full bg-ocean-950 text-white text-xs flex items-center justify-center font-bold">2</span>
                     <span>Delivery Address</span>
                   </div>
                   {user && addresses.length > 0 && (
@@ -846,7 +846,7 @@ export const CheckoutPage: React.FC = () => {
                           }
                         }
                       }}
-                      className="text-xs text-blue-700 hover:underline font-semibold"
+                      className="text-xs text-aquatic-700 hover:underline font-semibold"
                     >
                       {isAddingNewAddress ? 'Choose Saved Address' : '+ Add New Address'}
                     </button>
@@ -1098,19 +1098,19 @@ export const CheckoutPage: React.FC = () => {
               </div>
 
                 {/* Step 3: Manual Payment Verification Instructions */}
-              <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+              <div className="card-aquatic rounded-3xl p-6">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-                  <div className="flex items-center gap-2 font-bold text-sm text-blue-950">
-                    <span className="w-6 h-6 rounded-full bg-blue-950 text-white text-xs flex items-center justify-center font-bold">3</span>
+                  <div className="flex items-center gap-2.5 font-bold text-sm text-ocean-950">
+                    <span className="w-6 h-6 rounded-full bg-ocean-950 text-white text-xs flex items-center justify-center font-bold">3</span>
                     <span>Manual Payment Verification</span>
                   </div>
-                  <span className="text-[11px] font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
+                  <span className="text-[11px] font-bold text-aquatic-800 bg-aquatic-50 px-2.5 py-0.5 rounded-full border border-aquatic-200">
                     Zero Gateway Fees
                   </span>
                 </div>
 
                 {!user ? (
-                  <div className="p-6 bg-slate-50 border border-slate-200 rounded-2xl text-center space-y-2">
+                  <div className="p-6 bg-slate-50/80 border border-slate-200/80 rounded-2xl text-center space-y-2">
                     <div className="w-10 h-10 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mx-auto">
                       <Lock className="w-5 h-5" />
                     </div>
@@ -1122,21 +1122,21 @@ export const CheckoutPage: React.FC = () => {
                 ) : (
                   <>
                 {/* Payment Method Badge */}
-                <div className="flex items-center gap-2 p-3 bg-blue-50/70 rounded-2xl border border-blue-200 text-xs font-bold text-blue-950 mb-6">
-                  <QrCode className="w-4 h-4 text-blue-600 shrink-0" />
+                <div className="flex items-center gap-2 p-3.5 bg-aquatic-50/70 rounded-2xl border border-aquatic-200 text-xs font-bold text-ocean-950 mb-6">
+                  <QrCode className="w-4 h-4 text-aquatic-600 shrink-0" />
                   <span>Instant UPI / QR Code Payment</span>
                 </div>
 
                 {/* Payment Details Container */}
                 <div className="space-y-4 mb-6">
                     {/* Step A: Direct Pay with UPI App */}
-                    <div className="p-4 sm:p-5 bg-blue-50/60 rounded-2xl border border-blue-200 text-xs space-y-3.5">
+                    <div className="p-4 sm:p-5 bg-gradient-to-br from-aquatic-50/40 to-cyan-50/40 rounded-2xl border border-aquatic-200/80 text-xs space-y-3.5">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                        <div className="flex items-center gap-2 font-bold text-sm text-blue-950">
-                          <Smartphone className="w-4 h-4 text-blue-600 shrink-0" />
+                        <div className="flex items-center gap-2 font-bold text-sm text-ocean-950">
+                          <Smartphone className="w-4 h-4 text-aquatic-600 shrink-0" />
                           <span>Step 1: Open UPI App & Pay</span>
                         </div>
-                        <span className="font-mono text-xs font-bold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-200 self-start sm:self-auto">
+                        <span className="font-mono text-xs font-bold text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-200 self-start sm:self-auto">
                           Exact Amount: {formatCurrency(total)}
                         </span>
                       </div>
@@ -1150,11 +1150,11 @@ export const CheckoutPage: React.FC = () => {
                         <button
                           type="button"
                           onClick={handleOpenUPIApp}
-                          className="w-full py-3.5 px-4 bg-red-600 hover:bg-red-700 text-white font-bold text-sm rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2 active:scale-98"
+                          className="btn-accent w-full py-3.5 px-4 font-bold text-sm rounded-xl shadow-glow-cyan flex items-center justify-center gap-2 active:scale-98"
                         >
-                          <Smartphone className="w-5 h-5 text-red-100" />
+                          <Smartphone className="w-5 h-5 text-cyan-100" />
                           <span>Pay Now via UPI App ({formatCurrency(total)})</span>
-                          <ExternalLink className="w-4 h-4 text-red-100" />
+                          <ExternalLink className="w-4 h-4 text-cyan-100" />
                         </button>
                       </div>
 
@@ -1317,8 +1317,8 @@ export const CheckoutPage: React.FC = () => {
 
             {/* Right Summary Column (5 cols) */}
             <div className="lg:col-span-5 space-y-4">
-              <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
-                <h2 className="text-sm font-bold uppercase tracking-wider text-slate-500 pb-2 border-b border-slate-100">
+              <div className="card-aquatic rounded-3xl p-6 space-y-4">
+                <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 font-mono pb-2 border-b border-slate-100">
                   Consignment Items ({items.length})
                 </h2>
 
@@ -1329,14 +1329,14 @@ export const CheckoutPage: React.FC = () => {
                         <img
                           src={item.product.images[0]}
                           alt={item.product.name}
-                          className="w-10 h-10 rounded-lg object-cover bg-slate-100 shrink-0"
+                          className="w-10 h-10 rounded-lg object-cover bg-slate-100 shrink-0 border border-slate-200/80"
                         />
                         <div>
-                          <div className="font-semibold text-slate-800 line-clamp-1">{item.product.name}</div>
+                          <div className="font-semibold text-ocean-950 line-clamp-1">{item.product.name}</div>
                           <div className="text-[10px] text-slate-400">Qty: {item.quantity}</div>
                         </div>
                       </div>
-                      <span className="font-bold text-slate-900 shrink-0">
+                      <span className="font-bold text-ocean-950 font-mono shrink-0">
                         {formatCurrency(item.product.price * item.quantity)}
                       </span>
                     </div>
@@ -1346,26 +1346,26 @@ export const CheckoutPage: React.FC = () => {
                 <div className="pt-4 border-t border-slate-100 space-y-2 text-xs">
                   <div className="flex justify-between text-slate-600">
                     <span>Subtotal</span>
-                    <span className="font-semibold text-slate-900">{formatCurrency(subtotal)}</span>
+                    <span className="font-semibold text-ocean-950 font-mono">{formatCurrency(subtotal)}</span>
                   </div>
 
                   {packingCharge > 0 && (
                     <div className="flex justify-between text-slate-600">
                       <span>Medical Oxygen Packing</span>
-                      <span className="font-semibold text-slate-900">{formatCurrency(packingCharge)}</span>
+                      <span className="font-semibold text-ocean-950 font-mono">{formatCurrency(packingCharge)}</span>
                     </div>
                   )}
 
                   <div className="flex justify-between text-slate-600">
                     <div>
-                      <span className="font-semibold text-slate-800 block">The Professional Couriers</span>
+                      <span className="font-semibold text-ocean-950 block">The Professional Couriers</span>
                       <span className="text-[11px] text-slate-500">
                         {isShippingCalculated 
                           ? `Road Courier (${shippingDetails.state}) ${shippingDetails.isBulkOrder ? '• 2X Bulk Rate applied' : ''}`
                           : 'Express Road Transport'}
                       </span>
                     </div>
-                    <span className="font-semibold text-slate-900 font-mono">
+                    <span className="font-semibold text-ocean-950 font-mono">
                       {isCalculatingShipping ? (
                         <span className="text-slate-400 font-normal italic">Calculating...</span>
                       ) : isShippingCalculated ? (
@@ -1377,15 +1377,15 @@ export const CheckoutPage: React.FC = () => {
                   </div>
 
                   {discountAmount > 0 && (
-                    <div className="flex justify-between text-red-600 font-semibold">
+                    <div className="flex justify-between text-rose-600 font-semibold">
                       <span>Discount ({appliedCoupon?.code})</span>
-                      <span>-{formatCurrency(discountAmount)}</span>
+                      <span className="font-mono">-{formatCurrency(discountAmount)}</span>
                     </div>
                   )}
 
-                  <div className="pt-3 border-t border-slate-200 flex justify-between items-baseline">
-                    <span className="font-bold text-sm text-slate-900">Total Payable</span>
-                    <span className="font-extrabold text-2xl text-blue-950 font-display">
+                  <div className="pt-3 border-t border-slate-200/80 flex justify-between items-baseline">
+                    <span className="font-bold text-sm text-ocean-950">Total Payable</span>
+                    <span className="font-extrabold text-2xl text-ocean-950 font-display">
                       {formatCurrency(total)}
                     </span>
                   </div>
@@ -1394,11 +1394,11 @@ export const CheckoutPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={!user || isPlacingOrder || isCalculatingShipping || !isShippingCalculated || !!shippingError}
-                  className="w-full py-4 bg-blue-900 hover:bg-blue-800 disabled:bg-slate-300 disabled:text-slate-500 disabled:cursor-not-allowed text-white font-bold text-sm rounded-xl transition-all shadow-xs active:scale-98 flex items-center justify-center gap-2 mt-4"
+                  className="btn-primary w-full py-4 text-sm font-bold rounded-xl shadow-glow-cyan flex items-center justify-center gap-2 mt-4"
                 >
                   {!user ? (
                     <span className="flex items-center gap-1.5">
-                      <Lock className="w-4 h-4 text-slate-500" />
+                      <Lock className="w-4 h-4 text-cyan-200" />
                       <span>Create Account in Step 1 to Proceed</span>
                     </span>
                   ) : isPlacingOrder ? (
@@ -1410,7 +1410,7 @@ export const CheckoutPage: React.FC = () => {
                   ) : (
                     <>
                       <span>Submit Payment Proof & Confirm Order</span>
-                      <ArrowRight className="w-4 h-4 text-red-400" />
+                      <ArrowRight className="w-4 h-4 text-cyan-200" />
                     </>
                   )}
                 </button>
@@ -1419,28 +1419,28 @@ export const CheckoutPage: React.FC = () => {
                   Payment screenshot & 12-digit UPI UTR reference required for order approval
                 </p>
 
-                <div className="p-4 bg-blue-50 border border-blue-200 text-xs text-blue-950 space-y-1.5 rounded-2xl">
-                  <div className="flex items-center gap-1.5 font-bold text-blue-900">
-                    <ShieldCheck className="w-4 h-4 text-blue-600 shrink-0" />
+                <div className="p-4 bg-aquatic-50/70 border border-aquatic-200/70 text-xs text-aquatic-950 space-y-1.5 rounded-2xl">
+                  <div className="flex items-center gap-1.5 font-bold text-aquatic-900">
+                    <ShieldCheck className="w-4 h-4 text-aquatic-700 shrink-0" />
                     <span>Why Manual Verification?</span>
                   </div>
-                  <p className="text-blue-800 text-[11px] leading-relaxed">
+                  <p className="text-aquatic-800 text-[11px] leading-relaxed">
                     Every ornamental fish in your order is a living 1-of-1 specimen. Our head breeder personally inspects fin integrity and health before approving dispatch via The Professional Couriers road transport.
                   </p>
                 </div>
 
-                <div className="p-3.5 bg-slate-50 rounded-2xl border border-slate-200 text-xs flex items-center justify-between gap-3">
+                <div className="p-3.5 bg-slate-50/80 rounded-2xl border border-slate-200/80 text-xs flex items-center justify-between gap-3">
                   <div>
-                    <div className="font-bold text-slate-800">Need help with payment?</div>
+                    <div className="font-bold text-ocean-950">Need help with payment?</div>
                     <div className="text-[11px] text-slate-500">Chat directly with {settings.upi_payee_name || 'support'} on WhatsApp</div>
                   </div>
                   <a
                     href={`https://wa.me/${(settings.whatsapp_number || settings.contact_phone || '918921190590').replace(/\D/g, '')}?text=${encodeURIComponent(`Hi, I am at checkout on ${settings.brand_name || 'RA Guppy'} and need assistance with payment.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3 py-1.5 bg-blue-900 hover:bg-blue-800 text-white rounded-xl text-xs font-bold transition-colors inline-flex items-center gap-1.5 shrink-0"
+                    className="btn-primary text-xs font-bold py-1.5 px-3 rounded-xl transition-all inline-flex items-center gap-1.5 shrink-0 shadow-xs"
                   >
-                    <MessageSquare className="w-3.5 h-3.5 text-red-400" />
+                    <MessageSquare className="w-3.5 h-3.5 text-cyan-200" />
                     <span>WhatsApp</span>
                   </a>
                 </div>

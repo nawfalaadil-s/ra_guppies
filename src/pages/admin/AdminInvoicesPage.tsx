@@ -183,15 +183,15 @@ export const AdminInvoicesPage: React.FC = () => {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center font-bold">
-              <FileText className="w-5 h-5" />
+          <div className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-xl bg-aquatic-50 text-aquatic-700 flex items-center justify-center font-bold border border-aquatic-100">
+              <FileText className="w-5 h-5 text-aquatic-700" />
             </div>
             <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              <h1 className="text-xl sm:text-2xl font-bold text-ocean-950 font-display tracking-tight">
                 Billing, Invoices & Payment Receipts
               </h1>
-              <p className="text-sm text-slate-500">
+              <p className="text-xs sm:text-sm text-slate-500">
                 Generate official tax invoices, record verified payment receipts, and dispatch via WhatsApp.
               </p>
             </div>
@@ -202,17 +202,17 @@ export const AdminInvoicesPage: React.FC = () => {
           <button
             onClick={loadData}
             disabled={isLoading}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-lg shadow-sm hover:bg-slate-50 active:bg-slate-100 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl shadow-2xs hover:bg-slate-50 active:bg-slate-100 transition-colors"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-blue-600' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-aquatic-600' : ''}`} />
             <span>Sync</span>
           </button>
 
           <button
             onClick={() => setIsCreateModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 active:bg-blue-800 transition-colors"
+            className="btn-primary inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl shadow-glow-cyan"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-4 h-4 text-cyan-200" />
             <span>Generate Invoice from Order</span>
           </button>
         </div>
@@ -220,21 +220,21 @@ export const AdminInvoicesPage: React.FC = () => {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div className="card-aquatic p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-xs font-medium uppercase tracking-wider">Total Invoiced</span>
-            <FileText className="w-4 h-4 text-slate-400" />
+            <span className="text-xs font-semibold uppercase tracking-wider font-mono">Total Invoiced</span>
+            <FileText className="w-4 h-4 text-aquatic-600" />
           </div>
-          <div className="text-2xl font-bold text-slate-900">{formatCurrency(totalInvoicedAmount)}</div>
+          <div className="text-2xl font-bold text-ocean-950 font-mono">{formatCurrency(totalInvoicedAmount)}</div>
           <p className="text-xs text-slate-500 mt-1">{invoices.length} invoices generated</p>
         </div>
 
-        <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+        <div className="card-aquatic p-5 rounded-2xl">
           <div className="flex items-center justify-between text-slate-500 mb-1">
-            <span className="text-xs font-medium uppercase tracking-wider">Payments Collected</span>
+            <span className="text-xs font-semibold uppercase tracking-wider font-mono">Payments Collected</span>
             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="text-2xl font-bold text-emerald-600">{formatCurrency(totalCollectedAmount)}</div>
+          <div className="text-2xl font-bold text-emerald-600 font-mono">{formatCurrency(totalCollectedAmount)}</div>
           <p className="text-xs text-slate-500 mt-1">{totalPaidInvoicesCount} fully settled</p>
         </div>
 

@@ -14,16 +14,17 @@ export const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ section }) => {
   const subtitle = section?.subtitle || 'Read honest reviews from fish lovers across India on our safe packaging and healthy fish.';
 
   return (
-    <section className="py-12 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-bold text-blue-900 block mb-1">
-            Customer Feedback
-          </span>
-          <h2 className="text-xl sm:text-3xl font-bold text-slate-900 font-display mb-2">
+    <section className="py-14 bg-gradient-to-b from-white via-slate-50/60 to-white border-b border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-aquatic-50 border border-aquatic-200/60 text-aquatic-800 text-[11px] font-bold tracking-wider uppercase mb-3 shadow-2xs">
+            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <span>Customer Feedback</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-ocean-950 font-display tracking-tight mb-2.5">
             {title}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600">
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
             {subtitle}
           </p>
         </div>
@@ -32,32 +33,32 @@ export const ReviewCarousel: React.FC<ReviewCarouselProps> = ({ section }) => {
           {reviews.map((rev) => (
             <div
               key={rev.id}
-              className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs flex flex-col justify-between"
+              className="card-aquatic rounded-2xl p-5 sm:p-7 flex flex-col justify-between hover:-translate-y-0.5 transition-all duration-300"
             >
               <div>
-                <div className="flex items-center justify-between mb-2.5">
-                  <div className="flex items-center text-red-600 gap-0.5">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center text-amber-400 gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-red-600 text-red-600" />
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-blue-900 font-medium bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">
-                    <ShieldCheck className="w-3.5 h-3.5 text-blue-900" />
+                  <div className="flex items-center gap-1 text-[11px] text-aquatic-800 font-semibold bg-aquatic-50 px-2.5 py-1 rounded-full border border-aquatic-200/60">
+                    <ShieldCheck className="w-3.5 h-3.5 text-aquatic-600" />
                     <span>Verified Fishkeeper</span>
                   </div>
                 </div>
 
-                <h3 className="font-bold text-slate-900 text-sm mb-1.5">
+                <h3 className="font-bold text-ocean-950 text-sm sm:text-base mb-2">
                   "{rev.title}"
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-5">
                   {rev.comment}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-900">{rev.user_name}</span>
-                <span className="text-slate-600 text-xs">The Professional Couriers Delivery</span>
+              <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span className="font-bold text-ocean-950">{rev.user_name}</span>
+                <span className="text-slate-500 text-[11px] bg-slate-100/80 px-2.5 py-0.5 rounded-md font-medium">The Professional Couriers Delivery</span>
               </div>
             </div>
           ))}

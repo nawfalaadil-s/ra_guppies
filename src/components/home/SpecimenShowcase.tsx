@@ -52,18 +52,18 @@ export const SpecimenShowcase: React.FC<SpecimenShowcaseProps> = ({ section, onQ
   const displayed = filtered.length > 0 ? filtered : pool;
 
   return (
-    <section className="py-12 bg-slate-50 border-b border-slate-200">
+    <section className="py-14 bg-slate-50/70 border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
           <div>
-            <span className="text-xs font-bold text-blue-900 block mb-1">
+            <span className="text-[11px] font-bold text-teal-700 block mb-1 uppercase tracking-wider">
               Live Stock Catalog
             </span>
-            <h2 className="text-xl sm:text-3xl font-bold text-slate-900 font-display">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-ocean-950 font-display tracking-tight">
               {title}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl">
               {subtitle}
             </p>
           </div>
@@ -74,8 +74,10 @@ export const SpecimenShowcase: React.FC<SpecimenShowcaseProps> = ({ section, onQ
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`whitespace-nowrap ${
-                  activeTab === tab.id ? 'btn-primary' : 'btn-secondary'
+                className={`whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold transition-all active:scale-95 cursor-pointer ${
+                  activeTab === tab.id 
+                    ? 'bg-ocean-950 text-white shadow-xs' 
+                    : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/80'
                 }`}
               >
                 {tab.label}
@@ -85,20 +87,20 @@ export const SpecimenShowcase: React.FC<SpecimenShowcaseProps> = ({ section, onQ
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
           {displayed.slice(0, 8).map((product) => (
             <ProductCard key={product.id} product={product} onQuickView={onQuickView} />
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-10 flex justify-center">
           <Link
             to={ctaLink}
-            className="btn-primary"
+            className="btn-primary px-6 text-xs sm:text-sm shadow-xs"
           >
-            <span>Explore All {pool.length} Specimens</span>
-            <ArrowRight className="w-4 h-4 text-white" />
+            <span>Explore All {pool.length} Living Specimens</span>
+            <ArrowRight className="w-4 h-4 text-teal-300 ml-1" />
           </Link>
         </div>
       </div>

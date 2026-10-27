@@ -61,10 +61,10 @@ export const AdminDashboardPage: React.FC = () => {
       {/* Welcome Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700 font-mono">
+          <span className="text-xs font-bold uppercase tracking-wider text-aquatic-700 font-mono">
             Control Center
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">
+          <h1 className="text-2xl sm:text-3.5xl font-extrabold text-ocean-950 font-display tracking-tight">
             Operations & Orders Dashboard
           </h1>
           <p className="text-xs text-slate-500 mt-0.5">
@@ -74,65 +74,65 @@ export const AdminDashboardPage: React.FC = () => {
 
         <Link
           to="/admin/orders"
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-900 hover:bg-blue-800 text-white font-bold text-xs shadow-sm transition-all active:scale-95"
+          className="btn-primary shadow-glow-cyan inline-flex items-center gap-2 text-xs font-bold py-2.5 px-4 rounded-xl"
         >
           <span>Manage Orders Queue</span>
-          <ArrowRight className="w-4 h-4 text-red-400" />
+          <ArrowRight className="w-4 h-4 text-cyan-200" />
         </Link>
       </div>
 
-      {/* KPI Cards (Clean White Theme) */}
+      {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+        <div className="card-aquatic rounded-2xl p-5">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold">Verified UPI Revenue</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
-              <DollarSign className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-aquatic-50 text-aquatic-700 flex items-center justify-center border border-aquatic-100">
+              <DollarSign className="w-4 h-4 text-aquatic-700" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 font-display">
+          <div className="text-2xl font-black text-ocean-950 font-display font-mono">
             {formatCurrency(totalRevenue)}
           </div>
-          <span className="text-[11px] text-blue-700 font-medium mt-1 block">Live Verified Payments</span>
+          <span className="text-[11px] text-aquatic-700 font-medium mt-1 block">Live Verified Payments</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+        <div className="card-aquatic rounded-2xl p-5">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold">Total Consignments</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
-              <ShoppingBag className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-cyan-50 text-cyan-700 flex items-center justify-center border border-cyan-100">
+              <ShoppingBag className="w-4 h-4 text-cyan-700" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 font-display">
+          <div className="text-2xl font-black text-ocean-950 font-display font-mono">
             {orders.length}
           </div>
           <span className="text-[11px] text-slate-500 mt-1 block">Lifetime Customer Orders</span>
         </div>
 
-        <div className="bg-red-50/70 rounded-2xl p-5 border border-red-200 shadow-xs">
-          <div className="flex items-center justify-between text-red-900 mb-2">
-            <span className="text-xs font-bold uppercase tracking-wider">Pending Verification</span>
-            <div className="w-8 h-8 rounded-lg bg-red-100 text-red-700 flex items-center justify-center">
+        <div className="bg-rose-50/70 rounded-2xl p-5 border border-rose-200 shadow-2xs">
+          <div className="flex items-center justify-between text-rose-900 mb-2">
+            <span className="text-xs font-bold uppercase tracking-wider font-mono">Pending Verification</span>
+            <div className="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center">
               <Clock className="w-4 h-4 animate-pulse" />
             </div>
           </div>
-          <div className="text-2xl font-black text-red-950 font-display">
+          <div className="text-2xl font-black text-rose-950 font-display font-mono">
             {pendingPayments.length}
           </div>
-          <span className="text-[11px] text-red-800 font-medium mt-1 block">Requires UTR verification</span>
+          <span className="text-[11px] text-rose-800 font-medium mt-1 block">Requires UTR verification</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+        <div className="card-aquatic rounded-2xl p-5">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-semibold">Live Specimen Catalog</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center">
-              <Package className="w-4 h-4" />
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center border border-emerald-100">
+              <Package className="w-4 h-4 text-emerald-700" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 font-display">
+          <div className="text-2xl font-black text-ocean-950 font-display font-mono">
             {products.length}
           </div>
-          <span className="text-[11px] text-blue-700 font-medium mt-1 block">{lowStockProducts.length} 1-of-1 Specimens</span>
+          <span className="text-[11px] text-aquatic-700 font-medium mt-1 block">{lowStockProducts.length} 1-of-1 Specimens</span>
         </div>
       </div>
 

@@ -30,21 +30,21 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({ section }) => {
   const viewAllLink = section?.config?.viewAllLink || '/shop';
 
   return (
-    <section className="py-10 bg-slate-50 border-b border-slate-200/80">
+    <section className="py-12 bg-white border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-6">
+        <div className="flex items-end justify-between mb-8">
           <div>
-            <span className="text-xs font-bold text-blue-900 block mb-1">
+            <span className="text-[11px] font-bold text-teal-700 block mb-1 uppercase tracking-wider">
               {subtitle}
             </span>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 font-display">
+            <h2 className="text-xl sm:text-3xl font-extrabold text-ocean-950 font-display">
               {title}
             </h2>
           </div>
           <Link
             to={viewAllLink}
-            className="text-xs sm:text-sm font-semibold text-blue-900 hover:underline flex items-center gap-1 group"
+            className="text-xs sm:text-sm font-bold text-teal-700 hover:text-teal-900 hover:underline flex items-center gap-1 group transition-colors"
           >
             <span>View All</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -59,9 +59,9 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({ section }) => {
               <Link
                 key={cat.id}
                 to={`/shop?cat=${cat.id}`}
-                className="w-32 shrink-0 snap-start sm:w-auto group relative bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-blue-400 shadow-sm hover:shadow-card-hover transition-all duration-300 flex flex-col p-2 text-center"
+                className="w-32 shrink-0 snap-start sm:w-auto group relative bg-slate-50/80 hover:bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 hover:border-teal-500/50 shadow-2xs hover:shadow-card-hover transition-all duration-300 flex flex-col p-2.5 text-center"
               >
-                <div className="aspect-square rounded-xl overflow-hidden bg-slate-100 mb-2 relative">
+                <div className="aspect-square rounded-xl sm:rounded-2xl overflow-hidden bg-slate-100 mb-2 relative">
                   <img
                     src={cat.image_url || '/product_image/afr-flower-dorsal-400.jpeg'}
                     alt={cat.name}
@@ -70,12 +70,12 @@ export const CategoryBar: React.FC<CategoryBarProps> = ({ section }) => {
                       (e.target as HTMLImageElement).src = '/product_image/afr-flower-dorsal-400.jpeg';
                     }}
                   />
-                  <div className="absolute inset-0 bg-blue-950/20 group-hover:bg-blue-950/10 transition-colors" />
+                  <div className="absolute inset-0 bg-ocean-950/20 group-hover:bg-ocean-950/5 transition-colors" />
                 </div>
-                <h3 className="font-semibold text-xs sm:text-sm text-slate-900 group-hover:text-blue-900 transition-colors line-clamp-1">
+                <h3 className="font-bold text-xs sm:text-sm text-ocean-950 group-hover:text-teal-700 transition-colors line-clamp-1 font-display">
                   {cat.name}
                 </h3>
-                <span className="text-xs text-slate-600 mt-0.5">
+                <span className="text-[11px] text-slate-500 mt-0.5 font-medium">
                   {count} {count === 1 ? 'Variety' : 'Varieties'}
                 </span>
               </Link>

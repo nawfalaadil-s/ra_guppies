@@ -118,7 +118,7 @@ export const AuthPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 sm:py-16 flex items-center justify-center px-4">
+    <div className="bg-[#F8FAFC] min-h-screen py-10 sm:py-16 flex items-center justify-center px-4 sm:px-6">
       <SEO 
         title={`Customer Sign In & Account Registration | ${brandTitle}`} 
         description={`Access your ${brandTitle} customer account, view live fish consignments, and manage delivery addresses.`} 
@@ -127,11 +127,11 @@ export const AuthPage: React.FC = () => {
       <div className="max-w-md w-full">
         {/* Brand Header */}
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-black mx-auto flex items-center justify-center shadow-md mb-3 overflow-hidden shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-black mx-auto flex items-center justify-center shadow-sm mb-3 overflow-hidden shrink-0 border border-slate-200">
             <BrandLogo variant="auth" className="w-full h-full" imgClassName="w-full h-full object-contain" />
           </div>
-          <h1 className="text-2xl font-black text-slate-900 font-display uppercase tracking-wide">
-            {firstWord} {restWords && <span className="text-red-600">{restWords}</span>}
+          <h1 className="text-2xl font-black text-ocean-950 font-display uppercase tracking-wide">
+            {firstWord} {restWords && <span className="text-aquatic-600">{restWords}</span>}
           </h1>
           <p className="text-xs text-slate-500 mt-0.5">
             Customer Sanctuary & Account Access
@@ -139,31 +139,31 @@ export const AuthPage: React.FC = () => {
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-5">
+        <div className="card-aquatic rounded-3xl p-6 sm:p-8 space-y-5">
           {/* Mode Switcher */}
           <div className="flex border-b border-slate-100">
             <button
               type="button"
               onClick={() => { setMode('login'); setErrorMessage(''); }}
               className={`flex-1 pb-3 text-xs sm:text-sm font-bold transition-colors relative ${
-                mode === 'login' ? 'text-blue-900' : 'text-slate-400 hover:text-slate-600'
+                mode === 'login' ? 'text-ocean-950' : 'text-slate-400 hover:text-slate-600'
               }`}
             >
               Customer Sign In
               {mode === 'login' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-900 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-aquatic-600 rounded-full" />
               )}
             </button>
             <button
               type="button"
               onClick={() => { setMode('register'); setErrorMessage(''); }}
               className={`flex-1 pb-3 text-xs sm:text-sm font-bold transition-colors relative ${
-                mode === 'register' ? 'text-blue-900' : 'text-slate-400 hover:text-slate-600'
+                mode === 'register' ? 'text-ocean-950' : 'text-slate-400 hover:text-slate-600'
               }`}
             >
               Create Account
               {mode === 'register' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-900 rounded-full" />
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-aquatic-600 rounded-full" />
               )}
             </button>
           </div>
@@ -190,7 +190,7 @@ export const AuthPage: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Rahul Sharma"
-                    className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-ocean-950 outline-none focus:border-aquatic-500 focus:ring-1 focus:ring-aquatic-500 focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export const AuthPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-ocean-950 outline-none focus:border-aquatic-500 focus:ring-1 focus:ring-aquatic-500 focus:bg-white transition-all"
                 />
               </div>
             </div>
@@ -228,7 +228,7 @@ export const AuthPage: React.FC = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98450 12345"
-                    className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white"
+                    className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-ocean-950 outline-none focus:border-aquatic-500 focus:ring-1 focus:ring-aquatic-500 focus:bg-white transition-all"
                   />
                 </div>
               </div>
@@ -243,7 +243,7 @@ export const AuthPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => { setIsResetModalOpen(true); setResetSent(false); }}
-                    className="text-[11px] text-blue-900 hover:underline font-semibold"
+                    className="text-[11px] text-aquatic-700 hover:underline font-semibold"
                   >
                     Forgot password?
                   </button>
@@ -259,7 +259,7 @@ export const AuthPage: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-9 pr-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:border-blue-600 focus:bg-white font-mono"
+                  className="w-full pl-9 pr-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-ocean-950 outline-none focus:border-aquatic-500 focus:ring-1 focus:ring-aquatic-500 focus:bg-white font-mono transition-all"
                 />
               </div>
             </div>
@@ -267,14 +267,14 @@ export const AuthPage: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn-primary w-full py-2.5 text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center gap-2 mt-2"
+              className="btn-primary w-full py-3 text-xs font-bold rounded-xl shadow-glow-cyan transition-all flex items-center justify-center gap-2 mt-2"
             >
               {isLoading ? (
                 <span>Processing...</span>
               ) : (
                 <>
                   <span>{mode === 'login' ? 'Sign In to Account' : 'Register Customer Account'}</span>
-                  <ArrowRight className="w-4 h-4 text-red-400" />
+                  <ArrowRight className="w-4 h-4 text-cyan-200" />
                 </>
               )}
             </button>
@@ -291,7 +291,7 @@ export const AuthPage: React.FC = () => {
           <span>Are you a store manager? </span>
           <Link
             to="/admin/login"
-            className="text-blue-900 hover:underline font-bold"
+            className="text-aquatic-700 hover:underline font-bold"
           >
             Staff & Administration Portal &rarr;
           </Link>

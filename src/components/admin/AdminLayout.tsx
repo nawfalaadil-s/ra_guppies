@@ -198,36 +198,36 @@ export const AdminLayout: React.FC = () => {
               <div className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 font-mono">
                 Management Modules
               </div>
-            {authorizedNavLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  end={link.path === '/admin'}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-blue-900 ${
-                      isActive
-                        ? 'bg-blue-900 text-white shadow-sm font-bold'
-                        : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
-                    }`
-                  }
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-4 h-4 shrink-0" aria-hidden="true" />
-                    <span>{link.label}</span>
-                  </div>
-                  {link.badge && (
-                    <span 
-                      aria-label={`${link.badge} pending orders`}
-                      className="bg-red-600 text-white font-bold text-[10px] px-2 py-0.5 rounded-full"
-                    >
-                      {link.badge}
-                    </span>
-                  )}
-                </NavLink>
-              );
-            })}
+              {authorizedNavLinks.map((link) => {
+                const Icon = link.icon;
+                return (
+                  <NavLink
+                    key={link.path}
+                    to={link.path}
+                    end={link.path === '/admin'}
+                    className={({ isActive }) =>
+                      `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-aquatic-600 ${
+                        isActive
+                          ? 'bg-ocean-950 text-white shadow-glow-cyan font-bold'
+                          : 'text-slate-700 hover:text-ocean-950 hover:bg-aquatic-50/50'
+                      }`
+                    }
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon className="w-4 h-4 shrink-0" aria-hidden="true" />
+                      <span>{link.label}</span>
+                    </div>
+                    {link.badge && (
+                      <span 
+                        aria-label={`${link.badge} pending orders`}
+                        className="bg-rose-600 text-white font-bold text-[10px] px-2 py-0.5 rounded-full"
+                      >
+                        {link.badge}
+                      </span>
+                    )}
+                  </NavLink>
+                );
+              })}
           </nav>
         </div>
 
@@ -289,10 +289,10 @@ export const AdminLayout: React.FC = () => {
                         end={link.path === '/admin'}
                         onClick={closeMobileMenu}
                         className={({ isActive }) =>
-                          `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-blue-900 ${
+                          `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-aquatic-600 ${
                             isActive
-                              ? 'bg-blue-900 text-white shadow-sm'
-                              : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
+                              ? 'bg-ocean-950 text-white shadow-glow-cyan font-bold'
+                              : 'text-slate-700 hover:text-ocean-950 hover:bg-aquatic-50/50'
                           }`
                         }
                       >

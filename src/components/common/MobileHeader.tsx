@@ -73,25 +73,25 @@ export const MobileHeader: React.FC = () => {
   const categories = mockDb.getCategories();
 
   return (
-    <div className="md:hidden sticky top-0 z-40 bg-white text-slate-900 shadow-xs border-b border-slate-200">
+    <div className="md:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-md text-slate-900 shadow-xs border-b border-slate-200/80">
       {/* Top Main Mobile Bar */}
-      <div className="px-3.5 py-2.5 flex items-center justify-between gap-2">
+      <div className="px-3 py-2 flex items-center justify-between gap-2">
         {/* Menu Drawer Toggle */}
         <button
           onClick={() => setIsDrawerOpen(true)}
-          className="btn-icon"
+          className="btn-icon min-h-[44px] min-w-[44px]"
           aria-label="Open Navigation Menu"
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-6 h-6 text-slate-800" />
         </button>
 
         {/* Center Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center overflow-hidden shrink-0 shadow-xs">
+          <div className="w-8 h-8 rounded-xl bg-black flex items-center justify-center overflow-hidden shrink-0 shadow-xs border border-slate-200/80">
             <BrandLogo variant="mobile" className="w-full h-full" imgClassName="w-full h-full object-contain" />
           </div>
-          <span className="font-display font-extrabold text-base tracking-tight text-slate-900 uppercase">
-            {firstWord} {restWords && <span className="text-red-600">{restWords}</span>}
+          <span className="font-display font-extrabold text-base tracking-tight text-ocean-950 uppercase">
+            {firstWord} {restWords && <span className="text-teal-600">{restWords}</span>}
           </span>
         </Link>
 
@@ -99,20 +99,20 @@ export const MobileHeader: React.FC = () => {
         <div className="flex items-center gap-1">
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
-            className="btn-icon"
+            className="btn-icon min-h-[44px] min-w-[44px]"
             aria-label="Search Store"
           >
-            <Search className="w-5 h-5" />
+            <Search className="w-5 h-5 text-slate-700" />
           </button>
 
           <Link
             to="/cart"
-            className="btn-icon relative"
+            className="btn-icon relative min-h-[44px] min-w-[44px]"
             aria-label="Cart"
           >
-            <ShoppingCart className="w-5 h-5" />
+            <ShoppingCart className="w-5 h-5 text-slate-700" />
             {itemCount > 0 && (
-              <span className="absolute top-1 right-1 bg-red-600 text-white font-bold text-xs w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute top-1 right-1 bg-emerald-500 text-slate-950 font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center shadow-xs">
                 {itemCount}
               </span>
             )}
@@ -122,9 +122,9 @@ export const MobileHeader: React.FC = () => {
 
       {/* Expandable Mobile Search Bar */}
       {isSearchOpen && (
-        <div className="p-3 bg-slate-50 border-t border-slate-200">
-          <form onSubmit={handleSearchSubmit} className="flex items-center bg-white rounded-xl overflow-hidden px-3 py-1.5 border border-slate-300 shadow-xs">
-            <Search className="w-4 h-4 text-slate-400 shrink-0 mr-2" />
+        <div className="p-3 bg-slate-50 border-t border-slate-200/80">
+          <form onSubmit={handleSearchSubmit} className="flex items-center bg-white rounded-2xl overflow-hidden px-3 py-1.5 border border-slate-300 focus-within:border-teal-600 focus-within:ring-2 focus-within:ring-teal-500/20 shadow-xs">
+            <Search className="w-4 h-4 text-teal-600 shrink-0 mr-2" />
             <input
               id="mobile-search-input"
               ref={searchInputRef}
@@ -139,7 +139,7 @@ export const MobileHeader: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="btn-icon"
+                className="p-1 text-slate-400 hover:text-slate-600"
                 aria-label="Clear mobile search query"
               >
                 <X className="w-4 h-4" />
@@ -147,7 +147,7 @@ export const MobileHeader: React.FC = () => {
             )}
             <button
               type="submit"
-              className="btn-primary shrink-0 ml-1.5"
+              className="btn-primary shrink-0 ml-1.5 min-h-[36px]"
             >
               Go
             </button>
@@ -155,7 +155,7 @@ export const MobileHeader: React.FC = () => {
 
           {/* Instant Suggestions on Mobile */}
           {suggestions.length > 0 && (
-            <div className="mt-2 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden divide-y divide-slate-100 text-slate-900">
+            <div className="mt-2 bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden divide-y divide-slate-100 text-slate-900">
               {suggestions.map((p) => (
                 <Link
                   key={p.id}
@@ -183,7 +183,7 @@ export const MobileHeader: React.FC = () => {
       <div className="bg-white border-t border-slate-100 px-3 py-2 overflow-x-auto no-scrollbar flex items-center gap-2">
         <Link
           to="/shop"
-          className="whitespace-nowrap text-xs font-semibold px-3 py-1 rounded-full bg-slate-900 text-white"
+          className="whitespace-nowrap text-xs font-bold px-3 py-1.5 rounded-full bg-ocean-950 text-white shadow-2xs"
         >
           All Items
         </Link>
@@ -191,7 +191,7 @@ export const MobileHeader: React.FC = () => {
           <Link
             key={c.id}
             to={`/shop?cat=${c.id}`}
-            className="whitespace-nowrap text-xs font-medium px-3 py-1 rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-200"
+            className="whitespace-nowrap text-xs font-semibold px-3 py-1.5 rounded-full bg-slate-100/80 text-slate-700 hover:bg-teal-50 hover:text-teal-900 border border-slate-200/80 transition-colors"
           >
             {c.name}
           </Link>
@@ -202,27 +202,27 @@ export const MobileHeader: React.FC = () => {
       {isDrawerOpen && (
         <div className="fixed inset-0 z-50 flex">
           <div
-            className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs"
+            className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs"
             onClick={() => setIsDrawerOpen(false)}
           />
           <div className="relative w-4/5 max-w-sm bg-white text-slate-900 h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-left duration-200 border-r border-slate-200">
             {/* Drawer Header */}
             <div>
-              <div className="bg-slate-900 text-white p-4 flex items-center justify-between">
+              <div className="bg-ocean-950 text-white p-4 flex items-center justify-between border-b border-ocean-850">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-black flex items-center justify-center overflow-hidden shrink-0 shadow-xs">
+                  <div className="w-8 h-8 rounded-xl bg-black flex items-center justify-center overflow-hidden shrink-0 shadow-xs border border-white/20">
                     <BrandLogo variant="mobile" className="w-full h-full" imgClassName="w-full h-full object-contain" />
                   </div>
                   <div>
                     <div className="font-display font-bold text-sm text-white uppercase tracking-tight">
-                      {firstWord} {restWords && <span className="text-red-500">{restWords}</span>}
+                      {firstWord} {restWords && <span className="text-teal-400">{restWords}</span>}
                     </div>
-                    <div className="text-xs text-slate-400">{currentSettings.tagline || 'Pure Strain Guppies & Aquatic Sanctuary'}</div>
+                    <div className="text-[11px] text-teal-200/80 font-medium">{currentSettings.tagline || 'Pure Strain Guppies & Aquatic Sanctuary'}</div>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsDrawerOpen(false)}
-                  className="btn-icon text-slate-400 hover:text-white hover:bg-slate-800"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />

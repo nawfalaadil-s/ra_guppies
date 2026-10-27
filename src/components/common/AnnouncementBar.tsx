@@ -24,41 +24,42 @@ export const AnnouncementBar: React.FC = () => {
   return (
     <aside 
       aria-label="Promotional announcement"
-      className="bg-blue-950 text-white border-b border-blue-900 text-xs py-2 px-3 sm:px-4 relative z-40"
+      className="bg-gradient-to-r from-ocean-950 via-ocean-900 to-ocean-950 text-white border-b border-teal-500/20 text-xs py-2 px-3 sm:px-4 relative z-40 shadow-xs"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
         <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3 text-center flex-wrap">
-          <span className="inline-flex items-center gap-1.5 font-semibold text-white">
-            <Tag className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">OFFER:</span>
+          <span className="inline-flex items-center gap-1.5 font-bold text-teal-300 tracking-wide text-[11px] uppercase bg-teal-950/60 px-2 py-0.5 rounded-full border border-teal-500/30">
+            <Tag className="w-3 h-3 text-teal-400" />
+            <span>Special Offer</span>
           </span>
-          <span className="text-white text-xs">
+          <span className="text-slate-100 text-xs font-medium">
             {settings.announcement_text}
           </span>
           {settings.announcement_code && (
             <button
               onClick={copyCode}
-              className="btn-primary font-mono"
+              className="inline-flex items-center gap-1.5 bg-teal-500/20 hover:bg-teal-500/30 text-teal-200 border border-teal-400/30 px-2.5 py-0.5 rounded-lg font-mono text-xs font-bold transition-all active:scale-95 cursor-pointer"
               title="Click to copy coupon code"
               aria-label={`Copy coupon code ${settings.announcement_code}`}
             >
               <span>{settings.announcement_code}</span>
-              <Copy className="w-3 h-3 text-white" />
+              <Copy className="w-3 h-3 text-teal-300" />
             </button>
           )}
           {settings.announcement_link && (
             <Link
               to={settings.announcement_link}
-              className="inline-flex items-center gap-0.5 text-xs text-white hover:underline underline-offset-2 font-medium"
+              className="inline-flex items-center gap-1 text-xs text-teal-300 hover:text-white underline underline-offset-2 font-semibold transition-colors"
             >
-              Shop Now <ArrowRight className="w-3 h-3 ml-0.5" />
+              <span>Shop Collection</span>
+              <ArrowRight className="w-3 h-3 ml-0.5" />
             </Link>
           )}
         </div>
         <button
           onClick={dismissAnnouncement}
-          className="btn-icon text-white hover:text-white hover:bg-blue-900 shrink-0"
-          aria-label="Dismiss announcement"
+          className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors shrink-0"
+          aria-label="Dismiss promotional announcement"
         >
           <X className="w-4 h-4" />
         </button>
