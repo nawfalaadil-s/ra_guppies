@@ -20,6 +20,7 @@ import { TaxInvoiceModal } from '../components/common/TaxInvoiceModal';
 import { INDIAN_STATES, getStateFromPincode, lookupPincode } from '../lib/shipping';
 import { syncOrderToSupabase, incrementSupabaseCouponUsage } from '../lib/supabaseSync';
 import { generateOrderConfirmationMessage, dispatchWhatsAppHandoff } from '../lib/whatsappService';
+import { recordAnalyticsEvent } from '../lib/analyticsService';
 
 export const CheckoutPage: React.FC = () => {
   const { user, addresses, addAddress, register, login, logout } = useAuth();
@@ -81,6 +82,16 @@ export const CheckoutPage: React.FC = () => {
       if (!newAddrPhone && user.phone) setNewAddrPhone(user.phone);
     }
   }, [user]);
+
+  // Track begin_checkout analytics event on mount
+  useEffect(() => {
+    if (items.length > 0) {
+      recordAnalyticsEvent('begin_checkout', {
+        order_total: total,
+        quantity: items.length,
+      });
+    }
+  }, []);
 
   const handleAuthSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

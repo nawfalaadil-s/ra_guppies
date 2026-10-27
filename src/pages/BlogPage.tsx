@@ -149,8 +149,11 @@ export const BlogPage: React.FC = () => {
             <div className="bg-white rounded-3xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 lg:grid-cols-12">
               <div className="lg:col-span-7 relative aspect-video lg:aspect-auto overflow-hidden bg-slate-900">
                 <img
-                  src={featuredPost.featured_image}
+                  src={featuredPost.featured_image || '/product_image/afr-flower-dorsal-400.jpeg'}
                   alt={featuredPost.title}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/product_image/afr-flower-dorsal-400.jpeg';
+                  }}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
                 <span className="absolute top-4 left-4 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-white bg-red-600 px-3 py-1 rounded-full shadow-sm">
@@ -225,8 +228,11 @@ export const BlogPage: React.FC = () => {
                 >
                   <Link to={`/blog/${post.slug}`} className="block relative aspect-video overflow-hidden bg-slate-100">
                     <img
-                      src={post.featured_image}
+                      src={post.featured_image || '/product_image/afr-flower-dorsal-400.jpeg'}
                       alt={post.title}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/product_image/afr-flower-dorsal-400.jpeg';
+                      }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <span className="absolute top-3 left-3 text-[10px] font-bold text-blue-900 bg-white/95 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-slate-200 shadow-2xs">

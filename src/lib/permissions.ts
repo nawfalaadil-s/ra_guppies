@@ -3,6 +3,7 @@ import { UserRole } from './types';
 
 export type AdminPermission =
   | 'view_dashboard'
+  | 'view_analytics'
   | 'manage_products'
   | 'manage_inventory'
   | 'manage_orders'
@@ -20,6 +21,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, AdminPermission[]> = {
   customer: [],
   admin: [
     'view_dashboard',
+    'view_analytics',
     'manage_products',
     'manage_inventory',
     'manage_orders',
@@ -35,17 +37,20 @@ export const ROLE_PERMISSIONS: Record<UserRole, AdminPermission[]> = {
   ],
   product_manager: [
     'view_dashboard',
+    'view_analytics',
     'manage_products',
     'manage_inventory',
   ],
   order_manager: [
     'view_dashboard',
+    'view_analytics',
     'manage_orders',
     'manage_inventory',
     'manage_invoices',
   ],
   payment_reviewer: [
     'view_dashboard',
+    'view_analytics',
     'manage_orders',
     'verify_payments',
     'manage_invoices',
@@ -53,6 +58,7 @@ export const ROLE_PERMISSIONS: Record<UserRole, AdminPermission[]> = {
   ],
   content_manager: [
     'view_dashboard',
+    'view_analytics',
     'manage_cms',
     'manage_blogs',
   ],

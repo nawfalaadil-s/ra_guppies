@@ -11,6 +11,7 @@ import { SEO } from '../components/common/SEO';
 import { Product, Category } from '../lib/types';
 import { formatCurrency } from '../lib/utils';
 import { useStoreSettings } from '../contexts/StoreSettingsContext';
+import { recordAnalyticsEvent } from '../lib/analyticsService';
 
 export const ShopPage: React.FC = () => {
   const { settings } = useStoreSettings();
@@ -55,6 +56,18 @@ export const ShopPage: React.FC = () => {
     setSelectedCategory(categoryParam);
     setSelectedSubcategory(subcategoryParam);
   }, [categoryParam, subcategoryParam]);
+
+  // Analytics event tracking
+  useEffect(() => {
+    recordAnalyticsEvent('view_item_list', {
+      category_name: categoryParam !== 'all' ? categoryParam : undefined,
+    });
+    if (queryParam.trim()) {
+      recordAnalyticsEvent('search', {
+        search_query: queryParam.trim(),
+      });
+    }
+  }, [categoryParam, queryParam]);
 
   // Strains list
   const availableStrains = useMemo(() => {

@@ -95,8 +95,11 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
                 {mediaType === 'image' ? (
                   <>
                     <img
-                      src={product.images[selectedImg] || product.images[0]}
+                      src={product.images?.[selectedImg] || product.images?.[0] || '/product_image/afr-flower-dorsal-400.jpeg'}
                       alt={product.name}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/product_image/afr-flower-dorsal-400.jpeg';
+                      }}
                       className="w-full h-full object-cover object-center"
                     />
                     {product.is_unique_specimen && (

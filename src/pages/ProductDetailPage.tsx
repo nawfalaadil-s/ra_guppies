@@ -17,6 +17,7 @@ import { SEO } from '../components/common/SEO';
 import { Product } from '../lib/types';
 import { calculateShipping } from '../lib/shipping';
 import { useStoreSettings } from '../contexts/StoreSettingsContext';
+import { recordAnalyticsEvent } from '../lib/analyticsService';
 
 export const ProductDetailPage: React.FC = () => {
   const { settings } = useStoreSettings();
@@ -40,9 +41,21 @@ export const ProductDetailPage: React.FC = () => {
     return () => window.removeEventListener('ba_products_updated', handleUpdate);
   }, [slug]);
 
+  useEffect(() => {
+    if (product) {
+      recordAnalyticsEvent('view_item', {
+        product_id: product.id,
+        product_name: product.name,
+        product_sku: product.sku,
+        category_name: product.category_name,
+        price: product.price,
+      });
+    }
+  }, [product?.id]);
+
   const productImages = product?.images && product.images.length > 0 
     ? product.images 
-    : ['https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80'];
+    : ['/product_image/afr-flower-dorsal-400.jpeg'];
   const productVideos = product?.videos || [];
 
   const [activeMediaType, setActiveMediaType] = useState<'image' | 'video'>('image');

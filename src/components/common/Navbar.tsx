@@ -100,7 +100,7 @@ export const Navbar: React.FC = () => {
   return (
     <header className="hidden md:block sticky top-0 z-40 bg-white/95 backdrop-blur-md text-slate-900 border-b border-slate-200/80 shadow-xs">
       {/* Top Notification & Trust Bar */}
-      <div className="bg-ocean-950 text-slate-300 border-b border-ocean-800/60 px-4 py-1.5 text-xs hidden md:block">
+      <div className="bg-ocean-950 text-slate-300 border-b border-ocean-800/60 px-4 py-1.5 text-xs hidden lg:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1.5 font-medium text-slate-200">
@@ -151,14 +151,14 @@ export const Navbar: React.FC = () => {
             <span className="font-display font-extrabold text-xl tracking-tight text-ocean-950 uppercase">
               {firstWord} {restWords && <span className="text-teal-600">{restWords}</span>}
             </span>
-            <span className="block text-xs tracking-wide text-slate-500 font-medium">
+            <span className="hidden lg:block text-xs tracking-wide text-slate-500 font-medium truncate max-w-[200px]">
               {currentSettings.tagline || 'Pure Strain Guppies & Aquatic Life'}
             </span>
           </div>
         </Link>
 
         {/* Global Search Bar */}
-        <div ref={searchRef} className="flex-1 max-w-xl relative hidden md:block">
+        <div ref={searchRef} className="flex-1 max-w-xs md:max-w-sm lg:max-w-xl relative hidden md:block">
           <form onSubmit={handleSearchSubmit} className="flex items-center rounded-2xl overflow-hidden border border-slate-200 bg-slate-50/70 hover:bg-white focus-within:bg-white focus-within:border-teal-600 focus-within:ring-2 focus-within:ring-teal-500/20 transition-all p-1 shadow-2xs">
             <div className="pl-3.5 flex items-center text-slate-400">
               <Search className="w-4 h-4 text-teal-600" />
@@ -272,7 +272,7 @@ export const Navbar: React.FC = () => {
               <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900">
                 <User className="w-4 h-4" />
               </div>
-              <div className="text-xs leading-tight">
+              <div className="text-xs leading-tight hidden lg:block">
                 <span className="block text-xs text-slate-600">
                   {user ? `Hi, ${user.full_name.split(' ')[0]}` : 'Welcome'}
                 </span>
@@ -368,7 +368,7 @@ export const Navbar: React.FC = () => {
                 </span>
               )}
             </div>
-            <span className="text-xs font-bold hidden sm:inline">
+            <span className="text-xs font-bold hidden lg:inline">
               {itemCount === 0 ? 'Cart' : formatCurrency(subtotal)}
             </span>
           </Link>
@@ -377,7 +377,7 @@ export const Navbar: React.FC = () => {
 
       {/* Dynamic Category Navigation Strip */}
       <nav aria-label="Category navigation" className="border-t border-slate-100 bg-white/80 backdrop-blur-xs hidden md:block relative z-30">
-        <div className="max-w-7xl mx-auto px-4 flex items-center gap-1.5 text-xs font-semibold text-slate-700 py-1.5 overflow-x-visible">
+        <div className="max-w-7xl mx-auto px-4 flex items-center gap-1.5 text-xs font-semibold text-slate-700 py-1.5 overflow-x-auto scrollbar-none">
           <Link
             to="/shop"
             className="px-3 py-1.5 rounded-xl hover:text-teal-700 hover:bg-teal-50/60 transition-colors shrink-0"

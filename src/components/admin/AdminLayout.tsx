@@ -5,7 +5,7 @@ import {
   Settings, History, LogOut, Menu, X, 
   ExternalLink, BookOpen, ChevronRight, ShieldCheck,
   FileSpreadsheet, FolderTree, Sparkles, Users, Ticket,
-  FileText, IndianRupee, Layers
+  FileText, IndianRupee, Layers, BarChart3
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useBranding } from '../../contexts/BrandingContext';
@@ -46,6 +46,7 @@ export const AdminLayout: React.FC = () => {
 
   const allNavLinks: AdminNavItem[] = [
     { label: 'Dashboard', path: '/admin', icon: LayoutDashboard, permission: 'view_dashboard' },
+    { label: 'Website Analytics', path: '/admin/analytics', icon: BarChart3, permission: 'view_analytics' },
     { 
       label: 'Orders & Verification', 
       path: '/admin/orders', 

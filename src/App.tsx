@@ -49,11 +49,21 @@ import { AdminCouponsPage } from './pages/admin/AdminCouponsPage';
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 import { AdminUsersPage } from './pages/admin/AdminUsersPage';
 import { AdminAuditLogsPage } from './pages/admin/AdminAuditLogsPage';
+import { AdminAnalyticsPage } from './pages/admin/AdminAnalyticsPage';
+import { recordAnalyticsEvent, initializeSampleTelemetryIfEmpty } from './lib/analyticsService';
 
 // Shell layout that conditionally hides public header/footer on admin
 const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+
+  // Privacy-conscious first-party page view tracking
+  useEffect(() => {
+    recordAnalyticsEvent('page_view', {
+      page_path: location.pathname,
+      page_title: typeof document !== 'undefined' ? document.title : undefined,
+    });
+  }, [location.pathname]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -91,6 +101,7 @@ export const App: React.FC = () => {
     // Automatically load live products & categories from Supabase on startup
     fetchSupabaseProducts();
     fetchSupabaseCategories();
+    initializeSampleTelemetryIfEmpty();
   }, []);
 
   return (
@@ -130,6 +141,9 @@ export const App: React.FC = () => {
                       <Route path="/admin" element={<AdminRoute />}>
                         <Route element={<AdminLayout />}>
                           <Route index element={<AdminDashboardPage />} />
+                          <Route element={<AdminRoute requiredPermission="view_analytics" />}>
+                            <Route path="analytics" element={<AdminAnalyticsPage />} />
+                          </Route>
                           <Route element={<AdminRoute requiredPermission="manage_orders" />}>
                             <Route path="orders" element={<AdminOrdersPage />} />
                           </Route>

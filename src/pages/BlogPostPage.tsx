@@ -198,8 +198,11 @@ export const BlogPostPage: React.FC = () => {
         {/* Featured Hero Image */}
         <div className="rounded-3xl overflow-hidden border border-slate-200 shadow-sm mb-10 bg-slate-900 max-h-[460px]">
           <img
-            src={post.featured_image}
+            src={post.featured_image || '/product_image/afr-flower-dorsal-400.jpeg'}
             alt={post.title}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/product_image/afr-flower-dorsal-400.jpeg';
+            }}
             className="w-full h-full object-cover max-h-[460px]"
           />
         </div>

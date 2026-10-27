@@ -16,8 +16,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ section }) => {
   const ctaPrimaryLink = config.ctaPrimaryLink || config.cta_link || '/shop';
   const ctaSecondary = config.ctaSecondary || config.secondary_cta_text || 'Live Stock Video';
   const ctaSecondaryLink = config.ctaSecondaryLink || config.secondary_cta_link || '/live-stock';
-  const image = config.backgroundImage || config.background_image || 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80';
-  const video = config.backgroundVideo || config.background_video || '';
+  const image = config.backgroundImage || config.background_image || '/product_image/electric-blue-300.jpeg';
+  const video = config.backgroundVideo || config.background_video || '/videos/guppy-pair-120.mp4';
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);

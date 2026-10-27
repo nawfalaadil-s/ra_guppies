@@ -52,9 +52,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }
       <div className="relative aspect-[4/3] sm:aspect-square bg-slate-100/70 overflow-hidden">
         <Link to={`/product/${product.slug}`} className="block w-full h-full" aria-label={`View details for ${product.name}`}>
           <img
-            src={product.images[0]}
+            src={product.images?.[0] || '/product_image/afr-flower-dorsal-400.jpeg'}
             alt={`${product.name} - ${product.strain || 'Pure Strain Guppy'}`}
             loading="lazy"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/product_image/afr-flower-dorsal-400.jpeg';
+            }}
             className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
           />
         </Link>

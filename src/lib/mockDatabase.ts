@@ -762,6 +762,9 @@ export const mockDb = {
       if (order.fulfillment_status === 'unfulfilled') {
         order.fulfillment_status = 'processing';
       }
+      import('./analyticsService').then(m => {
+        m.trackVerifiedPurchase(order);
+      }).catch(() => {});
     } else if (paymentStatus === 'rejected') {
       order.payment_details.rejection_reason = details?.rejection_reason || 'Invalid transaction reference or uncredited payment proof.';
     }

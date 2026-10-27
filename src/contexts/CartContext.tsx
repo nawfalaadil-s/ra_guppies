@@ -5,6 +5,7 @@ import { useToast } from './ToastContext';
 import { mockDb } from '../lib/mockDatabase';
 import { calculateShipping, ShippingCalculation, getStateFromPincode } from '../lib/shipping';
 import { fetchSupabaseCoupons } from '../lib/supabaseSync';
+import { recordAnalyticsEvent } from '../lib/analyticsService';
 
 interface CartContextType {
   items: CartItem[];
@@ -177,12 +178,23 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
 
     showToast(`Added ${product.name} to cart!`, 'success');
+    recordAnalyticsEvent('add_to_cart', {
+      product_id: product.id,
+      product_name: product.name,
+      product_sku: product.sku,
+      category_name: product.category_name,
+      price: product.price,
+      quantity,
+    });
     return true;
   };
 
   const removeFromCart = (productId: string) => {
     setItems(prev => prev.filter(item => item.product.id !== productId));
     showToast('Item removed from cart', 'info');
+    recordAnalyticsEvent('remove_from_cart', {
+      product_id: productId,
+    });
   };
 
   const updateQuantity = (productId: string, quantity: number) => {
